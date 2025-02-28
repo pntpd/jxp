@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app> 
+    <display-name>JourneyXPro APP</display-name> 
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <!-- Standard Action Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <!-- The Usual Welcome File List -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <session-config>
+        <session-timeout>
+            60
+        </session-timeout>
+    </session-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.html</location>
+    </error-page>
+
+    <!-- Struts Tag Library Descriptors -->
+    <taglib>
+        <taglib-uri>/tags/struts-html-el</taglib-uri>
+        <taglib-location>/WEB-INF/struts-html-el.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>/tags/c</taglib-uri>
+        <taglib-location>/WEB-INF/c.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>/tags/fmt</taglib-uri>
+        <taglib-location>/WEB-INF/fmt.tld</taglib-location>
+    </taglib>
+</web-app>

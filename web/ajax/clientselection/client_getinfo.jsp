@@ -1,0 +1,285 @@
+<%@page contentType="text/html"%>
+<%@page language="java" import="java.util.ArrayList"%>
+<%@page pageEncoding="UTF-8"%>
+<%@page import="com.web.jxp.clientselection.ClientselectionInfo" %>
+<%@page import="com.web.jxp.user.UserInfo" %>
+<jsp:useBean id="clientselection" class="com.web.jxp.clientselection.Clientselection" scope="page"/>
+<jsp:useBean id="vobj" class="com.web.jxp.base.Validate" scope="page"/>
+<%
+    try 
+    {
+        if (session.getAttribute("LOGININFO") != null)
+        {
+            int allclient = 0, companytype = 0;
+            UserInfo uinfo = ((UserInfo) request.getSession().getAttribute("LOGININFO"));
+            String per = "",  cids = "", assetids = "";
+            if (uinfo != null) 
+            {
+                per = uinfo.getPermission() != null ? uinfo.getPermission() : "N";
+                cids = uinfo.getCids();
+                allclient = uinfo.getAllclient();
+                assetids = uinfo.getAssetids();
+                companytype = uinfo.getCompanytype();
+            }
+            int showsizelist = clientselection.getCountList("show_size_list");            
+            StringBuilder sb = new StringBuilder();
+            
+            sb.append("<thead>");
+            sb.append("<tr>");
+            sb.append("<th width='10%'><span><b>Ref. No.</b> </span>");
+            sb.append("<a href=\"javascript: sortclientForm('1', '2');\" id='img_1_2' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-up'></i></a>");
+            sb.append("<a href=\"javascript: sortclientForm('1', '1');\" id='img_1_1' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-down'></i></a>");
+            sb.append("</th>");
+            sb.append("<th width='11%'><span><b>Posted On</b> </span>");
+            sb.append("<a href=\"javascript: sortclientForm('2', '2');\" id='img_2_2' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-up'></i></a>");
+            sb.append("<a href=\"javascript: sortclientForm('2', '1');\" id='img_2_1' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-down'></i></a>");
+            sb.append("</th>");
+            sb.append("<th width='20%'><span><b>Asset</b> </span>");
+            sb.append("<a href=\"javascript: sortclientForm('3', '2');\" id='img_3_2' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-up'></i></a>");
+            sb.append("<a href=\"javascript: sortclientForm('3', '1');\" id='img_3_1' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-down'></i></a>");
+            sb.append("</th>");
+            sb.append("<th width='20%'><span><b>Position - Rank</b> </span>");
+            sb.append("<a href=\"javascript: sortclientForm('4', '2');\" id='img_4_2' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-up'></i></a>");
+            sb.append("<a href=\"javascript: sortclientForm('4', '1');\" id='img_4_1' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-down'></i></a>");
+            sb.append("</th>");
+            sb.append("<th width='12%'><span><b>Mobilize By</b> </span>");
+            sb.append("<a href=\"javascript: sortclientForm('5', '2');\" id='img_5_2' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-up'></i></a>");
+            sb.append("<a href=\"javascript: sortclientForm('5', '1');\" id='img_5_1' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-down'></i></a>");
+            sb.append("</th>");
+            sb.append("<th width='10%'><span><b>Status</b></span>");
+            sb.append("<a href=\"javascript: sortclientForm('6', '2');\" id='img_6_2' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-up'></i></a>");
+            sb.append("<a href=\"javascript: sortclientForm('6', '1');\" id='img_6_1' class='sort_arrow deactive_sort'><i class='ion ion-ios-arrow-down'></i></a>");
+            sb.append("</th>");
+            sb.append("<th width='10%' class='text-center'><span><b>Accepted</b> </span>");
+            sb.append("</th>");
+            sb.append("<th width='7%' class='text-center'><span><b>Actions</b> </span>");
+            sb.append("</th>");
+            sb.append("</tr>");
+            sb.append("</thead>");
+            
+            String thead = sb.toString();
+            sb.setLength(0);
+            
+            String search = request.getParameter("search") != null ? vobj.replacedesc(request.getParameter("search")) : "";
+            String statusIndexs = request.getParameter("statusIndex") != null && !request.getParameter("statusIndex").equals("") ? vobj.replaceint(request.getParameter("statusIndex")) : "0";
+            String nextValue = request.getParameter("nextValue") != null && !request.getParameter("nextValue").equals("") ? vobj.replaceint(request.getParameter("nextValue")) : "0";
+            String dodirects = request.getParameter("doDirect") != null && !request.getParameter("doDirect").equals("") ? vobj.replaceint(request.getParameter("doDirect")) : "-1";
+            String pgvalue = request.getParameter("pgvalue") != null && !request.getParameter("pgvalue").equals("") ? request.getParameter("pgvalue") : "";
+            String assetIdIndexs = request.getParameter("assetIdIndex") != null && !request.getParameter("assetIdIndex").equals("") ? vobj.replaceint(request.getParameter("assetIdIndex")) : "-1";
+            int n = Integer.parseInt(nextValue);
+            int dodirect = Integer.parseInt(dodirects);
+            int statusIndex = Integer.parseInt(statusIndexs);
+            int clientIdIndex = Integer.parseInt(cids);
+            int assetIdIndex = Integer.parseInt(assetIdIndexs);            
+
+            if (request.getParameter("deleteVal") == null) 
+            {
+                StringBuilder str = new StringBuilder();
+                int m = n;
+                int next_value = 0;
+                String next1 = request.getParameter("next");
+                if (next1 != null && next1.equals("n")) {
+                    if (dodirect >= 0) {
+                        n = dodirect;
+                        next_value = dodirect + 1;
+                    } else {
+                        n = n;
+                        next_value = m + 1;
+                    }
+                } else if (next1 != null && next1.equals("p")) {
+                    n = n - 2;
+                    next_value = m - 1;
+                } else if (next1 != null && next1.equals("s")) {
+                    n = 0;
+                    next_value = 1;
+                }
+
+                session.setAttribute("NEXTVALUE", next_value + "");
+                int recordsperpage = clientselection.getCount();
+                ArrayList candidate_list = new ArrayList();
+                int count = 0;
+                if (next1.equals("p") || next1.equals("n")) {
+                    candidate_list = clientselection.getClientSelectByName(search, statusIndex, n, recordsperpage, clientIdIndex, assetIdIndex, pgvalue, allclient, per, cids, assetids);
+                    if (candidate_list.size() > 0) {
+                        ClientselectionInfo cinfo = (ClientselectionInfo) candidate_list.get(candidate_list.size() - 1);
+                        count = cinfo.getJobpostId();
+                        candidate_list.remove(candidate_list.size() - 1);
+                    }
+                } else {
+                    candidate_list = clientselection.getClientSelectByName(search, statusIndex, n, recordsperpage, clientIdIndex, assetIdIndex, pgvalue, allclient, per, cids, assetids);
+                    if (candidate_list.size() > 0) {
+                        ClientselectionInfo cinfo = (ClientselectionInfo) candidate_list.get(candidate_list.size() - 1);
+                        count = cinfo.getJobpostId();
+                        candidate_list.remove(candidate_list.size() - 1);
+                    }
+                }
+                session.setAttribute("COUNT_LIST", count + "");
+                session.setAttribute("CCOMPLANCE_LIST", candidate_list);
+
+                int pageSize = count / recordsperpage;
+                if (count % recordsperpage > 0) {
+                    pageSize = pageSize + 1;
+                }
+
+                int candidateCount = count;
+                String prev = "";
+                String prevclose = "";
+                String next = "";
+                String nextclose = "";
+                int last = 0;
+                int total = candidate_list.size();
+                str.append("<input type='hidden' name='totalpage' value='" + pageSize + "' />");
+                str.append("<input type='hidden' name='nextDel' value='" + total + "'/>");
+                str.append("<input type='hidden' name='nextValue' value='" + (next_value) + "'/>");
+                if (n == 0 && candidateCount > recordsperpage) {
+                    next = ("<li class='next'><a href=\"javascript: searchFormAjax('n','-1')\" title='First'><i class='fa fa-angle-right'>");
+                    nextclose = ("</i></a></li>");
+                } else if (n > 0 && candidateCount > ((n * recordsperpage) + recordsperpage)) {
+                    next = ("<li class='next'><a href=\"javascript: searchFormAjax('n','-1')\" title='Next'><i class='fa fa-angle-right'>");
+                    nextclose = ("</i></a></li>");
+                    prev = ("<li class='prev'><a href=\"javascript: searchFormAjax('p','-1')\" title='Prev'><i class='fa fa-angle-left'>");
+                    prevclose = ("</i></a></li>");
+                } else if (n > 0 && candidateCount <= ((n * recordsperpage) + recordsperpage)) {
+                    prev = ("<li class='prev'><a href=\"javascript: searchFormAjax('p','-1')\" title='Prev'><i class='fa fa-angle-left'>");
+                    prevclose = ("</i></a></li>");
+                    last = candidateCount;
+                } else {
+                    recordsperpage = candidateCount;
+                }
+                int value = n * recordsperpage + 1;
+                int value1 = last > 0 ? last : n * recordsperpage + recordsperpage;
+                int test = n;
+                int noOfPages = 1;
+                if (recordsperpage > 0) {
+                    noOfPages = candidateCount / recordsperpage;
+                    if (candidateCount % recordsperpage > 0) {
+                        noOfPages += 1;
+                    }
+                }
+                if (total > 0) 
+                {
+                    str.append("<div class='wesl_pagination pagination-mg m_15'>");
+                    str.append("<div class='wesl_pg_rcds'>");
+                    str.append("Page&nbsp;" + (next_value) + " of " + (noOfPages) + ", &nbsp;");
+                    str.append("(" + value + " - " + value1 + " record(s) of " + candidateCount + ")&nbsp;");
+                    str.append("</div>");
+                    str.append("<div class='wesl_No_pages'>");
+                    str.append("<div class='loanreportTables_paginate paging_bootstrap_full_number'>");
+                    str.append("<ul class='wesl_pagination'>");
+                    if (noOfPages > 1 && next_value != 1) {
+                        str.append("<li class='wesl_pg_navi'><a href=\"javascript: searchFormAjax('n', '0');\" title='First' style='height: 33px;'><i class='fa fa-angle-double-left'></i></a></li>");
+                    }
+                    str.append(prev + prevclose + "&nbsp;");
+                    int a1 = test - showsizelist;
+                    int a2 = test + showsizelist;
+                    for (int ii = a1; ii <= a2; ii++) {
+                        if (ii >= 0 && ii < noOfPages) {
+                            if (ii == test) {
+                                str.append("<li class='wesl_active'><a href='#'> " + (ii + 1) + " </a></li>");
+                            } else {
+                                str.append("<li><a href=\"javascript: searchFormAjax('n', '" + ii + "');\" title=''> " + (ii + 1) + " </a></li>");
+                            }
+                        }
+                    }
+                    str.append(next + nextclose);
+                    if (noOfPages > 1 && next_value != noOfPages) {
+                        str.append("<li class='wesl_pg_navi'><a href=\"javascript: searchFormAjax('n','" + (noOfPages - 1) + "');\" title='Last' style='height: 33px;'><i class='fa fa-angle-double-right'></i></a></li>");
+                    }
+                    str.append("</ul></div></div></div>");
+                    str.append("<div class='col-lg-12' id='printArea'>");
+                    str.append("<div class='table-rep-plugin sort_table'>");
+                    str.append("<div class='table-responsive mb-0 ellipse_code' data-bs-pattern='priority-columns'>");
+                    str.append("<table id='tech-companies-1' class='table table-striped'>");
+                    str.append(thead);
+                    str.append("<tbody id = 'sort_id'>");
+                    
+                    ClientselectionInfo info;
+                    for (int i = 0; i < total; i++) 
+                    {
+                        info = (ClientselectionInfo) candidate_list.get(i);
+                        if (info != null)
+                        {
+                            str.append("<tr class='hand_cursor' href='javascript: void(0);' \">");
+                            str.append("<td class='hand_cursor' href='javascript: void(0);' onclick=\"javascript: view('" + info.getJobpostId() + "','" + companytype + "');\">" + (clientselection.changeNum(info.getJobpostId(), 6)) + "</td>");
+                            str.append("<td class='hand_cursor' href='javascript: void(0);' onclick=\"javascript: view('" + info.getJobpostId() + "','" + companytype + "');\">" + (info.getDate() != null ? info.getDate() : "") + "</td>");
+                            str.append("<td class='hand_cursor' href='javascript: void(0);' onclick=\"javascript: view('" + info.getJobpostId() + "','" + companytype + "');\">" + (info.getClientAsset() != null ? info.getClientAsset() : "") + "</td>");
+                            str.append("<td class='hand_cursor' href='javascript: void(0);' onclick=\"javascript: view('" + info.getJobpostId() + "','" + companytype + "');\">" + (info.getPosition() != null ? info.getPosition() : "") + "</td>");
+                            str.append("<td class='hand_cursor' href='javascript: void(0);' onclick=\"javascript: view('" + info.getJobpostId() + "','" + companytype + "');\">" + (info.getMobdate() != null ? info.getMobdate() : "") + "</td>");
+                            str.append("<td class='hand_cursor' href='javascript: void(0);' onclick=\"javascript: view('" + info.getJobpostId() + "','" + companytype + "');\">" + (info.getCcStatus() != null ? info.getCcStatus() : "") + "</td>");
+                            str.append("<td class='assets_list text-center hand_cursor' href='javascript: void(0);' onclick=\"javascript: view('" + info.getJobpostId() + "','" + companytype + "');\"><a href=\"javascript:void(0);\">" + info.getSelcount() + "</a>&nbsp;/&nbsp;<a href=\"javascript:void(0);\">" + info.getOpening() + "</a></td>");
+                            str.append("<td class='text-center'>");
+                            str.append("<div class='main-nav'>");
+                            str.append("<ul>");
+                            str.append("<li class='drop_down'>");
+                            str.append("<a href = \"javascript:;\" class='toggle'><i class='fas fa-ellipsis-v'></i></a>");
+                            str.append("<div class='dropdown_menu'>");
+                            str.append("<div class='dropdown-wrapper'>");
+                            str.append("<div class='category-menu'>");
+                            str.append("<a href = \"javascript: ViewJobpost('" + info.getJobpostId() + "');\" > View Job Post</a>");
+                            str.append("<a href = \"javascript:;\" >Contact OCS</a>");
+                            str.append("</div> </div> </div>");
+                            str.append("</li> </ul>");
+                            str.append("</div> </td>");
+                            str.append("</tr>");
+                        }
+                    }
+                    str.append("</tbody>");
+                    str.append("</table>");
+                    str.append("</div>");
+                    str.append("</div>");
+                    str.append("</div>");
+
+                    str.append("<div class='wesl_pagination pagination-mg mt_15'>");
+                    str.append("<div class='wesl_pg_rcds'>");
+                    str.append("Page&nbsp;" + (next_value) + " of " + (noOfPages) + ", &nbsp;");
+                    str.append("(" + value + " - " + value1 + " record(s) of " + candidateCount + ")&nbsp;");
+                    str.append("</div>");
+                    str.append("<div class='wesl_No_pages'>");
+                    str.append("<div class='loanreportTables_paginate paging_bootstrap_full_number'>");
+                    str.append("<ul class='wesl_pagination'>");
+                    if (noOfPages > 1 && next_value != 1) {
+                        str.append("<li class='wesl_pg_navi'><a href=\"javascript: searchFormAjax('n', '0');\" title='First' style='height: 33px;'><i class='fa fa-angle-double-left'></i></a></li>");
+                    }
+                    str.append(prev + prevclose + "&nbsp;");
+                    for (int ii = a1; ii <= a2; ii++) {
+                        if (ii >= 0 && ii < noOfPages) {
+                            if (ii == test) {
+                                str.append("<li class='wesl_active'><a href='#'> " + (ii + 1) + " </a></li>");
+                            } else {
+                                str.append("<li><a href=\"javascript: searchFormAjax('n', '" + ii + "');\" title=''> " + (ii + 1) + " </a></li>");
+                            }
+                        }
+                    }
+                    str.append(next + nextclose);
+                    if (noOfPages > 1 && next_value != noOfPages) {
+                        str.append("<li class='wesl_pg_navi'><a href=\"javascript: searchFormAjax('n','" + (noOfPages - 1) + "');\" title='Last' style='height: 33px;'><i class='fa fa-angle-double-right'></i></a></li>");
+                    }
+                    str.append("</ul></div></div></div>");
+                } else {
+                    str.append("<div class='col-lg-12'>");
+                    str.append("<div class='table-rep-plugin sort_table'>");
+                    str.append("<div class='table-responsive mb-0' data-bs-pattern='priority-columns'>");
+                    str.append("<table id='tech-companies-1' class='table table-striped'>");
+                    str.append("<tbody>");
+                    str.append("<tr>");
+                    str.append("<td><b>" + clientselection.getMainPath("record_not_found") + "</b></td>");
+                    str.append("</tr>");
+                    str.append("</tbody>");
+                    str.append("</table>");
+                    str.append("</div>");
+                    str.append("</div>");
+                    str.append("</div>");
+                }
+                String s1 = str.toString();
+                str.setLength(0);
+                response.getWriter().write(s1);
+            } else {
+                response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            }
+        } else {
+            response.getWriter().write("Please check your login session....");
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>

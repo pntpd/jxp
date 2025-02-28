@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Invoice</title>
+</head>
+<body>
+	<table width="800px" border="0" cellspacing="5" cellpadding="5" align="center" style="font-family: 'Open Sans', sans-serif;font-size:13px;">		
+		<tr>
+			<td>
+				<table width="100%" border="1" cellspacing="5" cellpadding="5" align="center" style="border-collapse: collapse;">
+					<tr>
+						<td colspan="4" style="text-align:center;"><b>TAX INVOICE</b></td>
+					</tr>	
+						
+					<tr>
+						<td colspan="4">
+							<table width="100%">
+								<tr>
+									<td width="35%">
+										<b>To,</b><br/><br/>
+										<b>Vantage International Management Co.</b><br/>
+										G 120, First Floor, Kanakia Zillion 
+										BKC Annex, CST Road Junction<br/>
+										Mumbai - 400070<br/>
+										India<br/><br/>
+										
+										<b>Client GST Number : 97AADCV3089Q1ZB</b><br/>
+										<b>State Code : 97</b><br/><br/>
+									</td>
+									<td width="40%">&nbsp;</td>
+									<td width="25%" style="vertical-align:top;">
+										<table width="100%">
+											<tr>
+												<td><b>Invoice No. :</b></td>
+												<td><b>__INVOICENO__</b></td>
+											</tr>
+											<tr>
+												<td><b>Invoice Date :</b></td>
+												<td><b>__INVOICEDATE__</b></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<b style="text-decoration:underline;">Installation / Site / Vessel - "__ASSETNAME__"</b>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td width="7%" style="text-align:center;"><b>Sr. No.</b></td>
+						<td width="66%"><b>Description</b></td>
+						<td width="13%"><b>Rate of Tax</b></td>
+						<td width="14%" style="text-align:right;"><b>Amount __CURRENCY__</b></td>
+					</tr>
+					<tr>
+						<td style="text-align:center;">1</td>
+						<td>
+							<table width="100%">
+								<tr><td colspan="2"><b>Service Code</b></td></tr>
+								<tr>
+									<td width="12%" style="vertical-align:top;">998519</td>
+									<td width="88%">
+										Timesheet & statement of Re-imbursement <br/>
+										Expenses for National crew worked on <br/>
+										: __ASSETNAME__
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td>&nbsp;</td>
+						<td style="text-align:right;"><b>__AMOUNT1__</b></td>
+					</tr>
+					<tr>
+						<td style="text-align:center;">2</td>
+						<td>
+							<table width="100%">
+								<tr>
+									<td width="12%" style="vertical-align:top;">998519</td>
+									<td width="88%">
+										Crew Travel Related Expenses for<br/>
+										: __ASSETNAME__	
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td>&nbsp;</td>
+						<td style="text-align:right;">__AMOUNT2__</td>
+					</tr>
+					<tr>
+						<td style="text-align:center;">3</td>
+						<td>
+							<table width="100%">
+								<tr>
+									<td width="12%" style="vertical-align:top;">998519</td>
+									<td width="88%">
+										Total Service Charges<br/>
+										Wages + Airfare<br/>
+										: __ASSETNAME__	
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td>&nbsp;</td>
+						<td style="text-align:right;">__AMOUNT3__</td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" style="text-align:right;"><b>Sub Total</b></td>
+						<td>&nbsp;</td>
+						<td style="text-align:right;"><b>__SUBTOTAL__</b></td>
+					</tr>
+					__GSTSTR__
+					<tr>
+						<td colspan="2" style="text-align:right;"><b>Total Amount Payable</b></td>
+						<td style="text-align:right;">&nbsp;</td>
+						<td style="text-align:right;"><b>__TOTAL__</b></td>
+					</tr>
+					<tr>
+						<td colspan="4" style="text-align:left;"><b>(__CURRENCY__ __INWORDS__)</b></td>
+					</tr>
+					
+					
+					<tr>
+						<td colspan="4">
+							<b><i>Please arrange Remittance by Cheque / DD in favour of OCS SERVICES (INDIA) PVT.LTD.</i></b><br/>
+							<i>Kindly confirm remittance by e-mail to :</i> accounts@ocs.services<br/>	<br/>
+							
+							<table width="100%" style="margin-bottom:15px;">
+								<tr>
+									<td><b>BANK DETAILS</b></td>
+								</tr>
+								<tr>
+									<td width="25%"><b>Name of the Bank</b></td>
+									<td width="75%"><b>__BANKNAME__</b></td>
+								</tr>
+								<tr>
+									<td><b>Branch</b></td>
+									<td><b>__BRANCH__</b></td>
+								</tr>
+								<tr>
+									<td><b>Current A/c No</b></td>
+									<td><b>__ACCNO__</b></td>
+								</tr>
+								<tr>
+									<td><b>IFSC Code</b></td>
+									<td><b>__IFSCCODE__</b></td>
+								</tr>
+							</table>
+							
+							<table width="100%">
+								<tr>
+									<td width="70%">
+										<b>PLACE OF SUPPLY MUMBAI</b><br/>
+										<b>GST NO. 27AAACO1320J1ZS</b><br/>
+										<b>PAN NO. AAACO1320J</b>
+									</td>
+									<td width="30%">
+										For <b><i>OCS Services (India) Pvt. Ltd.</i></b><br/><br/><br/><br/><br/>
+										<b>Authorised Signatory</b>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					
+				</table>
+			</td>
+		</tr>		
+	</table>
+</body>
+</html>
+

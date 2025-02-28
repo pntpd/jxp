@@ -1,0 +1,206 @@
+package com.web.jxp.clientselection;
+
+import com.web.jxp.user.UserInfo;
+import java.util.ArrayList;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+public class ClientselectionExportAction extends Action {
+
+    @Override
+    @SuppressWarnings("static-access")
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        try 
+        {
+            Clientselection clientselection = new Clientselection();
+            ClientselectionForm frm = (ClientselectionForm) form;
+            String search = frm.getSearch() != null ? frm.getSearch() : "";
+            int statusIndex = frm.getStatusIndex();
+
+            int clientIdIndex = frm.getClientIdIndex();
+            int assetIdIndex = frm.getAssetIdIndex();
+            String pgvalue = frm.getPgvalue();
+
+            int allclient = 0;
+            String cids = "", assetids = "";
+            if (request.getSession().getAttribute("LOGININFO") != null) 
+            {
+                UserInfo uInfo = (UserInfo) request.getSession().getAttribute("LOGININFO");
+                if (uInfo != null) 
+                {
+                    cids = uInfo.getCids();
+                    allclient = uInfo.getAllclient();
+                    assetids = uInfo.getAssetids();
+                }
+            }
+
+            ArrayList list = clientselection.getClientSelectListForExcel(search, statusIndex, clientIdIndex, assetIdIndex, pgvalue, allclient, cids, assetids, assetids);
+            int total = list.size();
+            String fileName = "ComplianceCheck_Report";
+            HSSFWorkbook wb = new HSSFWorkbook();
+            HSSFSheet sheet = wb.createSheet("Data");
+            HSSFRow row = null;
+            HSSFCell cell = null;
+
+            HSSFFont titleFont = wb.createFont();
+            titleFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+            titleFont.setFontHeightInPoints((short) 12);
+
+            HSSFFont mergeFont = wb.createFont();
+            mergeFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+            mergeFont.setFontHeightInPoints((short) 10);
+
+            HSSFFont headFont = wb.createFont();
+            headFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+            headFont.setFontHeightInPoints((short) 10);
+
+            HSSFFont contentFont = wb.createFont();
+            contentFont.setBoldweight(HSSFFont.BOLDWEIGHT_NORMAL);
+            contentFont.setFontHeightInPoints((short) 10);
+
+            HSSFFont contentFontBold = wb.createFont();
+            contentFontBold.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+            contentFontBold.setFontHeightInPoints((short) 10);
+
+            HSSFCellStyle titlestyle = wb.createCellStyle();
+            titlestyle.setFont(titleFont);
+            titlestyle.setFillForegroundColor(HSSFColor.GREY_40_PERCENT.index);
+            titlestyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+
+            HSSFCellStyle mergestyle = wb.createCellStyle();
+            mergestyle.setFont(mergeFont);
+            mergestyle.setAlignment(HSSFCellStyle.ALIGN_LEFT);
+
+            HSSFCellStyle headstyle = wb.createCellStyle();
+            headstyle.setFont(headFont);
+            headstyle.setAlignment(HSSFCellStyle.ALIGN_LEFT);
+
+            HSSFCellStyle headstyle_right = wb.createCellStyle();
+            headstyle_right.setFont(headFont);
+            headstyle_right.setAlignment(HSSFCellStyle.ALIGN_RIGHT);
+
+            HSSFCellStyle contentstyle = wb.createCellStyle();
+            contentstyle.setFont(contentFont);
+            contentstyle.setAlignment(HSSFCellStyle.ALIGN_LEFT);
+
+            HSSFCellStyle contentstyle_right = wb.createCellStyle();
+            contentstyle_right.setFont(contentFont);
+            contentstyle_right.setAlignment(HSSFCellStyle.ALIGN_RIGHT);
+
+            HSSFCellStyle contentstylebold = wb.createCellStyle();
+            contentstylebold.setFont(contentFontBold);
+            contentstylebold.setAlignment(HSSFCellStyle.ALIGN_RIGHT);
+
+            int rowval = 0;
+            int c = 0;
+
+            row = sheet.createRow(rowval);
+
+            cell = row.createCell(c);
+            cell.setCellValue("Ref. No.");
+            sheet.setColumnWidth(c, 256 * 10);
+            cell.setCellStyle(headstyle);
+            c++;
+
+            cell = row.createCell(c);
+            cell.setCellValue("Posted On");
+            sheet.setColumnWidth(c, 256 * 30);
+            cell.setCellStyle(headstyle);
+            c++;
+
+            cell = row.createCell(c);
+            cell.setCellValue("Client - Asset");
+            sheet.setColumnWidth(c, 256 * 30);
+            cell.setCellStyle(headstyle);
+            c++;
+
+            cell = row.createCell(c);
+            cell.setCellValue("Position - Rank");
+            sheet.setColumnWidth(c, 256 * 30);
+            cell.setCellStyle(headstyle);
+            c++;
+
+            cell = row.createCell(c);
+            cell.setCellValue("Mobilize By");
+            sheet.setColumnWidth(c, 256 * 30);
+            cell.setCellStyle(headstyle);
+            c++;
+
+            cell = row.createCell(c);
+            cell.setCellValue("Status");
+            sheet.setColumnWidth(c, 256 * 30);
+            cell.setCellStyle(headstyle);
+            c++;
+
+            cell = row.createCell(c);
+            cell.setCellValue("Selected");
+            sheet.setColumnWidth(c, 256 * 30);
+            cell.setCellStyle(headstyle);
+            c++;
+
+            int col = 0;
+            int rownum = 1;
+
+            for (int i = 0; i < total; i++) {
+                ClientselectionInfo info = (ClientselectionInfo) list.get(i);
+                if (info != null) {
+                    col = 0;
+                    row = sheet.createRow(rownum++);
+
+                    cell = row.createCell(col++);
+                    cell.setCellValue((clientselection.changeNum(info.getJobpostId(), 6)));
+                    cell.setCellStyle(contentstyle);
+
+                    cell = row.createCell(col++);
+                    cell.setCellValue(info.getDate() != null ? info.getDate() : "");
+                    cell.setCellStyle(contentstyle);
+
+                    cell = row.createCell(col++);
+                    cell.setCellValue(info.getClientName() != null ? info.getClientName() : "");
+                    cell.setCellStyle(contentstyle);
+
+                    cell = row.createCell(col++);
+                    cell.setCellValue(info.getPosition() != null ? info.getPosition() : "");
+                    cell.setCellStyle(contentstyle);
+
+                    cell = row.createCell(col++);
+                    cell.setCellValue(info.getMobdate() != null ? info.getMobdate() : "");
+                    cell.setCellStyle(contentstyle);
+
+                    cell = row.createCell(col++);
+                    cell.setCellValue(info.getCcStatus() != null ? info.getCcStatus() : "");
+                    cell.setCellStyle(contentstyle);
+
+                    cell = row.createCell(col++);
+                    cell.setCellValue(info.getSelcount() + " / " + info.getOpening());
+                    cell.setCellStyle(contentstyle);
+
+                }
+                info = null;
+            }
+            list.clear();
+            response.setContentType("application/vnd.ms-excel");
+            response.setHeader("Content-Disposition", "attachment; filename = \"" + fileName + ".xls\"");
+            try (ServletOutputStream os = response.getOutputStream()) {
+                wb.write(os);
+                os.flush();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+}

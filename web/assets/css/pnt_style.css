@@ -1,0 +1,467 @@
+.form-body {
+    background-color: #f4f4f9;
+}
+
+.ocs_logo {
+    height: 50px;
+}
+
+.container {
+    width: 100%;
+    margin: 10px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.main-boder {
+    border: 1px solid #ccc;
+}
+.gray{
+    color:#A0A0A0
+}
+.black{
+    color:#000000;
+}
+.h-48{
+    height:48px;
+}
+.h-55{
+    height:55px;
+}
+.header {
+    background: #ffffff;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid #EFEFEF;
+    /*background: #EFEFEF 0% 0% no-repeat padding-box;*/
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    position: sticky; 
+    top: 0; 
+    z-index: 1; 
+}
+
+.header h2 {
+    color: #635a5b;
+    font-family: Roboto, sans-serif;
+}
+
+.scrollable-content {
+    height: calc(100% - 60px); 
+    overflow-y: auto; 
+}
+
+.action-buttons .btn {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border: none;
+    color: #ffffff;
+    background: #005f86;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-buttons .save-btn {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border: none;
+    color: #ffffff;
+    background: #2478A6;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.section {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.section-label {
+    background: transparent linear-gradient(90deg, #172A72 0%, #4990BE 100%) 0% 0% no-repeat padding-box;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+.section-header-label {
+    background-color: #2478A6;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px
+
+}
+
+.section-label img {
+    width: 20px;
+}
+
+#content-section {
+    border-radius: 0 0 8px 8px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-label {
+    height: 40px;
+    border-radius: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.mb-10{
+    margin-bottom: -10px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn.upload-btn {
+    margin-bottom: 10px;
+}
+
+.note {
+    color: red;
+    font-size: 12px;
+}
+
+div[style*="overflow-x: auto"] {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+div[style*="overflow-x: auto"]::-webkit-scrollbar {
+    display: none; 
+}
+
+.com-form-check {
+    display: inline-flex;
+    align-items: center;
+}
+
+.input-group {display: table;border-collapse: separate; z-index: 0}
+
+.container.main-boder {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-footer {
+    margin-top: auto;
+    background-color: #f8f9fa;
+    padding: 7px 0; 
+}
+.form-footer img {
+    height: 15px;
+    margin-right: 5px; 
+}
+
+::placeholder {
+    text-transform: none; 
+}
+
+.form-thead {
+    background-color: #172A72;
+    color: white;  
+}
+
+.form-thead .form-th {
+    /*border-radius: 4px;*/
+    border: 1px solid white; 
+    text-align: center; 
+}
+
+.orange-button {
+    background-color: #FF6F00; 
+    color: white; 
+    padding: 8px 24px; /* Padding inside the button */
+    font-size: 16px; /* Text size */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease; 
+}
+
+.newbtn {
+    padding: 12px 24px; 
+    font-size: 16px; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-wrap-mode: nowrap;
+}
+
+/* Save Button (Bright Orange) */
+.newbtn-save {
+    background-color: #172A72; /* Orange */
+    color: white;
+    padding:4px 16px;
+    font-size:15px!important;
+}
+
+/* Draft Button (Light Orange) */
+.newbtn-draft  {
+    background-color: #FD2419;
+    color: white;
+    border-radius: 7px;
+    padding: 8px 16px;
+}
+.newbtn-submit  {
+    background: transparent linear-gradient(82deg, #FB871E 0%, #FD2419 100%) 0% 0% no-repeat padding-box;
+    color: white;
+    border-radius: 7px;
+    padding: 8px 16px;
+}
+
+
+/*}
+.newbtn-draft:hover {
+    background-color: #FFCC80;  Lighter Orange 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}*/
+
+/* Submit Button (Deep Orange) */
+
+/*.newbtn-submit:hover {
+    background-color: #FF5722;  Slightly Darker Deep Orange 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}*/
+
+/* Cancel Button (Greyish Orange) */
+.newbtn-cancel {
+    background-color:white ; /* Greyish Orange */
+    color: #FF7043;
+    border-radius: 7px;
+    padding: 4px 16px;
+    outline: 2px solid #FF7043!important;
+}
+/*.newbtn-cancel:hover {
+    background-color: #FF8A65;  Slightly Darker Greyish Orange 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}*/
+
+.attache_btn{
+    background-color: #F1F2F2;
+    color: #9C9C9C;
+    font-size: 12px;
+    padding: 5px 15px;
+    display: inline-block;
+    min-width:100%;
+    text-align: center;
+
+}
+.h-35{
+
+    height: 35px;
+    display: flex ;
+    align-items: center;
+}
+.attache_btn i{
+    color: #9C9C9C !important;
+}
+.attache_btn.uploaded_img{
+    background-color:#2478A6;
+    color:#fff;
+    position:relative;
+}
+.attache_btn.uploaded_img i{
+    color:#fff !important;
+}
+.attache_btn.uploaded_ocs_img{
+    background-color:#172A72;
+    color:#fff;
+    position:relative;
+}
+.align-center{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.table>:not(caption)>*>*{
+    border-bottom-width:100%!important;
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    background:white!important;
+}
+/*    .table {
+    --bs-table-accent-bg: white;
+}*/
+#certtbody tr, #exptbody tr ,.table>:not(caption)>*>*{
+    border-bottom: 1px solid #ccc!important;
+}
+
+/*#certtbody tr, #exptbody tr:last-child ,.table tbody tr td:last-child{
+    border-bottom: none!important;
+}*/
+
+.socialIcon{
+    display:flex;
+    align-items: center;
+    gap:1rem;
+}
+nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.mt-3{
+    margin-top:1rem
+}
+.mx-5{
+    margin-left:3rem;
+    margin-right:3rem;
+}
+.h-22{
+    height:22px;
+}
+.h-60{
+    height:60px;
+}
+.mb-3{
+    margin-bottom:1rem;
+}
+
+.vertical-collpsed .footer{
+    position:relative!important;
+}
+.bgImgwithText {
+    background-image: url('../pnt-images/Group 41.jpg'); 
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    height:100%;
+    width: 100%;
+    display: flex; 
+    justify-content: left; 
+    align-items: center; 
+    position: relative;
+}
+.headerImg{
+    height:28vh;
+}
+
+.overlayText {
+    color: white;
+    font-size: 28px; 
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); 
+    z-index: 2;
+}
+.d-flex{
+    display:flex;
+} 
+.align-items-center{
+    align-items:center;
+}
+.h-30{
+    height:30px;
+}
+.gap-3{
+    gap:1rem
+}
+.ml-5{
+    margin-left:4rem;
+}
+.justify-content-start{
+    justify-content: flex-start;
+}
+.flex-column{
+    flex-direction:column;
+}
+.bgImgwithText::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+}
+.verticalRedLine {
+    width: 5px;
+    background-color: #FD2419;
+
+}
+.bg-white .btn-block:hover {
+    color:white;
+    font-weight: 400;
+}
+.get-otp{
+    background: transparent linear-gradient(76deg, #4D9BC6 0%, #111C68 100%) !important;
+}
+.mob-Experience{
+    background: #eff3f7;
+    padding:0.5rem ;
+    border-radius:6px;
+}
+.mobile-device{
+    display:none;
+}
+.Action-Btn{
+    border-radius:0.5rem;
+    padding:0.5rem;
+    background-color: #DADADA;
+}
+@media screen and (max-width: 768px) {
+    .newbtn-draft,.newbtn-submit {
+        padding:8px 8px;}
+    .newbtn-cancel{
+        padding:4px 8px;
+    }
+    .w-sm-50{
+        width:50%!important;
+    }
+    .smDevice-column{
+        flex-direction:column;
+    }
+    .add-label {
+        height: 63px;
+
+    }
+    .smDeviceD-none{
+        display:none;
+    }
+    .web-device{
+        display:none
+    }
+    .mobile-device{
+        display:block;
+    }
+}

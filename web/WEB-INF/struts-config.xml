@@ -1,0 +1,1957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+                               "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="userForm" type="com.web.jxp.user.UserForm"/>
+        <form-bean name="accessForm" type="com.web.jxp.access.AccessForm"/>
+        <form-bean name="countryForm" type="com.web.jxp.country.CountryForm"/>
+        <form-bean name="clientForm" type="com.web.jxp.client.ClientForm"/>
+        <form-bean name="crewdbForm" type="com.web.jxp.crewdb.CrewdbForm"/>
+        <form-bean name="assettypeForm" type="com.web.jxp.assettype.AssettypeForm"/>
+        <form-bean name="positionForm" type="com.web.jxp.position.PositionForm"/>
+        <form-bean name="assessmentForm" type="com.web.jxp.assessment.AssessmentForm"/>
+        <form-bean name="languageForm" type="com.web.jxp.language.LanguageForm"/>
+        <form-bean name="documentTypeForm" type="com.web.jxp.documenttype.DocumentTypeForm"/>
+        <form-bean name="currencyForm" type="com.web.jxp.currency.CurrencyForm"/>
+        <form-bean name="proficiencyForm" type="com.web.jxp.proficiency.ProficiencyForm"/>
+        <form-bean name="verificationtypeForm" type="com.web.jxp.verificationtype.VerificationtypeForm"/>
+        <form-bean name="verificationcheckpointForm" type="com.web.jxp.verificationcheckpoint.VerificationcheckpointForm"/>
+        <form-bean name="verificationstatusForm" type="com.web.jxp.verificationstatus.VerificationstatusForm"/>
+        <form-bean name="candidateForm" type="com.web.jxp.candidate.CandidateForm"/>
+        <form-bean name="maillogForm" type="com.web.jxp.maillog.MaillogForm"/>
+        <form-bean name="relationForm" type="com.web.jxp.relation.RelationForm"/>
+        <form-bean name="maritialstatusForm" type="com.web.jxp.maritialstatus.MaritialStatusForm"/>
+        <form-bean name="gradeForm" type="com.web.jxp.grade.GradeForm"/>
+        <form-bean name="rotationForm" type="com.web.jxp.rotation.RotationForm"/>
+        <form-bean name="hoursofworkForm" type="com.web.jxp.hoursofwork.HoursOfWorkForm"/>
+        <form-bean name="qualificationtypeForm" type="com.web.jxp.qualificationtype.QualificationTypeForm"/>
+        <form-bean name="cityForm" type="com.web.jxp.city.CityForm"/>
+        <form-bean name="vaccineForm" type="com.web.jxp.vaccine.VaccineForm"/>
+        <form-bean name="vaccinetypeForm" type="com.web.jxp.vaccinetype.VaccinetypeForm"/>
+        <form-bean name="experiencedeptForm" type="com.web.jxp.experiencedept.ExperienceDeptForm"/>
+        <form-bean name="experiencewaterdepthForm" type="com.web.jxp.experiencewaterdepth.ExperienceWaterDepthForm"/>
+        <form-bean name="companyindustryForm" type="com.web.jxp.companyindustry.CompanyindustryForm"/>
+        <form-bean name="bloodpressureForm" type="com.web.jxp.bloodpressure.BloodpressureForm"/>
+        <form-bean name="approvedbyForm" type="com.web.jxp.approvedby.ApprovedbyForm"/>
+        <form-bean name="documentissuedbyForm" type="com.web.jxp.documentissuedby.DocumentissuedbyForm"/>
+        <form-bean name="skillsForm" type="com.web.jxp.skills.SkillsForm"/>
+        <form-bean name="degreeForm" type="com.web.jxp.degree.DegreeForm"/>
+        <form-bean name="coursetypeForm" type="com.web.jxp.coursetype.CourseTypeForm"/>
+        <form-bean name="bankAccountTypeForm" type="com.web.jxp.bankaccounttype.BankAccountTypeForm"/>
+        <form-bean name="crewtypeForm" type="com.web.jxp.crewtype.CrewtypeForm"/>
+        <form-bean name="enginetypeForm" type="com.web.jxp.enginetype.EnginetypeForm"/>
+        <form-bean name="assessmentParameterForm" type="com.web.jxp.assessmentparameter.AssessmentParameterForm"/>
+        <form-bean name="assessmentAnswerTypeForm" type="com.web.jxp.assessmentanswertype.AssessmentAnswerTypeForm"/>
+        <form-bean name="assessmentquestionForm" type="com.web.jxp.assessmentquestion.AssessmentQuestionForm"/>
+        <form-bean name="benefitForm" type="com.web.jxp.benefit.BenefitForm"/>
+        <form-bean name="portForm" type="com.web.jxp.port.PortForm"/>
+        <form-bean name="jobpostForm" type="com.web.jxp.jobpost.JobPostForm"/>
+        <form-bean name="verificationForm" type="com.web.jxp.verification.VerificationForm"/>
+        <form-bean name="benefitinformationtypeForm" type="com.web.jxp.benefitinformationtype.BenefitinformationtypeForm"/>
+        <form-bean name="cassessmentForm" type="com.web.jxp.cassessment.CassessmentForm"/>
+        <form-bean name="timezoneForm" type="com.web.jxp.timezone.TimezoneForm"/>
+        <form-bean name="talentpoolForm" type="com.web.jxp.talentpool.TalentpoolForm"/>
+        <form-bean name="checkpointForm" type="com.web.jxp.checkpoint.CheckPointForm"/>
+        <form-bean name="resumetemplateForm" type="com.web.jxp.resumetemplate.ResumetemplateForm"/>
+        <form-bean name="shortlistingForm" type="com.web.jxp.shortlisting.ShortlistingForm"/>
+        <form-bean name="compliancecheckForm" type="com.web.jxp.compliancecheck.CompliancecheckForm"/>
+        <form-bean name="clientselectionForm" type="com.web.jxp.clientselection.ClientselectionForm"/>
+        <form-bean name="rejectionreasonForm" type="com.web.jxp.rejectionreason.RejectionreasonForm"/>
+        <form-bean name="airportForm" type="com.web.jxp.airport.AirportForm"/>
+        <form-bean name="onboardingkitForm" type="com.web.jxp.onboardingkit.OnboardingkitForm"/>
+        <form-bean name="formalityForm" type="com.web.jxp.formality.FormalityForm"/>
+        <form-bean name="onboardingForm" type="com.web.jxp.onboarding.OnboardingForm"/>
+        <form-bean name="crewrotationForm" type="com.web.jxp.crewrotation.CrewrotationForm"/>
+        <form-bean name="doccheckForm" type="com.web.jxp.doccheck.DoccheckForm"/>
+        <form-bean name="mobilizationForm" type="com.web.jxp.mobilization.MobilizationForm"/>
+        <form-bean name="tctypeForm" type="com.web.jxp.tctype.TctypeForm"/>
+        <form-bean name="trainingForm" type="com.web.jxp.training.TrainingForm"/>
+        <form-bean name="levelForm" type="com.web.jxp.level.LevelForm"/>
+        <form-bean name="createtrainingForm" type="com.web.jxp.createtraining.CreatetrainingForm"/>
+        <form-bean name="matrixForm" type="com.web.jxp.matrix.MatrixForm"/>
+        <form-bean name="coursenameForm" type="com.web.jxp.coursename.CoursenameForm"/>
+        <form-bean name="homeForm" type="com.web.jxp.home.HomeForm"/>
+        <form-bean name="trainingmatrixForm" type="com.web.jxp.trainingmatrix.TrainingmatrixForm"/>
+        <form-bean name="dashboardForm" type="com.web.jxp.dashboard.DashboardForm"/>
+        <form-bean name="managetrainingForm" type="com.web.jxp.managetraining.ManagetrainingForm"/>
+        <form-bean name="questionForm" type="com.web.jxp.question.QuestionForm"/>
+        <form-bean name="analyticsForm" type="com.web.jxp.analytics.AnalyticsForm"/>
+        <form-bean name="documentexpiryForm" type="com.web.jxp.documentexpiry.DocumentexpiryForm"/>
+        <form-bean name="wellnessfbForm" type="com.web.jxp.wellnessfb.WellnessfbForm"/>
+        <form-bean name="wellnessmatrixForm" type="com.web.jxp.wellnessmatrix.WellnessmatrixForm"/>
+        <form-bean name="crewinsuranceForm" type="com.web.jxp.crewinsurance.CrewinsuranceForm"/>
+        <form-bean name="crewloginForm" type="com.web.jxp.crewlogin.CrewloginForm"/>
+        <form-bean name="feedbackForm" type="com.web.jxp.feedback.FeedbackForm"/>
+        <form-bean name="managewellnessForm" type="com.web.jxp.managewellness.ManagewellnessForm"/>
+        <form-bean name="crewdayrateForm" type="com.web.jxp.crewdayrate.CrewdayrateForm"/>
+        <form-bean name="billingcycleForm" type="com.web.jxp.billingcycle.BillingcycleForm"/>
+        <form-bean name="timesheetForm" type="com.web.jxp.timesheet.TimesheetForm"/>
+        <form-bean name="revisionForm" type="com.web.jxp.revision.RevisionForm"/>
+        <form-bean name="invoicetemplateForm" type="com.web.jxp.invoicetemplate.InvoicetemplateForm"/>
+        <form-bean name="bankForm" type="com.web.jxp.bank.BankForm"/>
+        <form-bean name="clientinvoicingForm" type="com.web.jxp.clientinvoicing.ClientinvoicingForm"/>
+        <form-bean name="pdeptForm" type="com.web.jxp.pdept.PdeptForm"/>
+        <form-bean name="competencyassessmentsForm" type="com.web.jxp.competencyassessments.CompetencyassessmentsForm"/>
+        <form-bean name="competencyprioritiesForm" type="com.web.jxp.competencypriorities.CompetencyprioritiesForm"/>
+        <form-bean name="pcategoryForm" type="com.web.jxp.pcategory.PcategoryForm"/>
+        <form-bean name="pcodeForm" type="com.web.jxp.pcode.PcodeForm"/>
+        <form-bean name="frameworkForm" type="com.web.jxp.framework.FrameworkForm"/>
+        <form-bean name="appealForm" type="com.web.jxp.appeal.AppealForm"/>
+        <form-bean name="appealreasonForm" type="com.web.jxp.appealreason.AppealreasonForm"/>
+        <form-bean name="trackerForm" type="com.web.jxp.tracker.TrackerForm"/>
+        <form-bean name="appealrejectionForm" type="com.web.jxp.appealrejection.AppealrejectionForm"/>
+        <form-bean name="competencyForm" type="com.web.jxp.competency.CompetencyForm"/>
+        <form-bean name="knowledgecontentForm" type="com.web.jxp.knowledgecontent.KnowledgecontentForm"/>
+        <form-bean name="knowledgebasematrixForm" type="com.web.jxp.knowledgebasematrix.KnowledgebasematrixForm"/>
+        <form-bean name="policyForm" type="com.web.jxp.policy.PolicyForm"/>
+        <form-bean name="remarkForm" type="com.web.jxp.remark.RemarkForm"/>
+        <form-bean name="ppetypeForm" type="com.web.jxp.ppetype.PpetypeForm"/>
+        <form-bean name="contractForm" type="com.web.jxp.contract.ContractForm"/>
+        <form-bean name="stateForm" type="com.web.jxp.state.StateForm"/>
+        <form-bean name="clientloginForm" type="com.web.jxp.clientlogin.ClientloginForm"/>
+        <form-bean name="candidateRegistrationForm" type="com.web.jxp.candidateregistration.CandidateRegistrationForm"/>
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="regdefault" path="/candidateregistration/regindex1.jsp"/>
+        <forward name="homedefault" path="/homeindex1.jsp"/>
+        <forward name="crewlogindefault" path="/crewloginindex1.jsp"/>
+        <forward name="clientlogindefault" path="/managerindex.jsp"/>
+        <forward name="default" path="/index1.jsp"/>
+        <forward name="directPage" path="/direct.jsp"/>
+        <forward name="auth" path="/auth.jsp"/>
+    </global-forwards>
+
+    <action-mappings>        
+        <action path="/user/UserAction"
+                type="com.web.jxp.user.UserAction"
+                scope="request"
+                name="userForm">
+            <forward name="welcome" path="/dashboard/DashboardAction.do?doDashboard=yes"/>
+            <forward name="display" path="/user/index.jsp"/>
+            <forward name="add_user" path="/user/edit_user.jsp"/>
+            <forward name="detail_user" path="/user/detail_user.jsp"/>
+        </action>
+        
+        <action path="/user/LogoutAction"
+                type="com.web.jxp.user.LogoutAction"
+                scope="request"
+                name="userForm">
+            <forward name="success" path="/index1.jsp"/>
+        </action>
+        
+        <action path="/user/UserExportAction"
+                type="com.web.jxp.user.UserExportAction"
+                scope="request"
+                name="userForm">
+        </action>
+
+        
+        <action path="/access/AccessAction"
+                type="com.web.jxp.access.AccessAction"
+                scope="request"
+                name="accessForm">
+            <forward name="display" path="/access/index.jsp"/>
+        </action>
+		
+        <action path="/access/AccessExportAction"
+                type="com.web.jxp.access.AccessExportAction"
+                scope="request"
+                name="accessForm">
+        </action>
+        
+        <action path="/country/CountryAction"
+                type="com.web.jxp.country.CountryAction"
+                scope="request"
+                name="countryForm">
+            <forward name="display" path="/country/index.jsp" />
+            <forward name="add_country" path="/country/edit_country.jsp" />
+            <forward name="view_country" path="/country/view_country.jsp" />
+        </action>
+        
+        <action path="/country/CountryExportAction"
+                type="com.web.jxp.country.CountryExportAction"
+                scope="request"
+                name="countryForm">
+        </action>
+        
+        <action path="/assessment/AssessmentAction"
+                type="com.web.jxp.assessment.AssessmentAction"
+                scope="request"
+                name="assessmentForm">
+            <forward name="display" path="/assessment/index.jsp" />
+            <forward name="add_assessment" path="/assessment/edit_assessment.jsp" />
+            <forward name="view_assessment" path="/assessment/view_assessment.jsp" />
+        </action>
+        
+        <action path="/assessment/AssessmentExportAction"
+                type="com.web.jxp.assessment.AssessmentExportAction"
+                scope="request"
+                name="assessmentForm">
+        </action>
+        
+        <action path="/position/PositionAction"
+                type="com.web.jxp.position.PositionAction"
+                scope="request"
+                name="positionForm">
+            <forward name="display" path="/position/index.jsp" />
+            <forward name="add_position" path="/position/edit_position.jsp" />
+            <forward name="view_position" path="/position/view_position.jsp" />
+            <forward name="display_benefit" path="/position/index_empposbenefit.jsp" />
+            <forward name="add_benefit" path="/position/edit_benefit.jsp" />
+            <forward name="add_empposbenefit" path="/position/edit_empposbenefit.jsp" />
+            <forward name="add_assessmentdetail" path="/position/edit_assessmentdetail.jsp" />
+            <forward name="view_assessmentdetail" path="/position/view_assessmentdetail.jsp" />
+        </action>
+        
+        <action path="/position/PositionExportAction"
+                type="com.web.jxp.position.PositionExportAction"
+                scope="request"
+                name="positionForm">
+        </action>
+        
+        <action path="/client/ClientAction"
+                type="com.web.jxp.client.ClientAction"
+                scope="request"
+                name="clientForm">
+            <forward name="display" path="/client/index.jsp" />
+            <forward name="add_client" path="/client/edit_client.jsp" />
+            <forward name="view_client" path="/client/view_client.jsp" />
+            <forward name="edit_client_asset" path="/client/edit_client_asset.jsp" />            
+        </action>
+        
+        <action path="/crewdb/CrewdbAction"
+                type="com.web.jxp.crewdb.CrewdbAction"
+                scope="request"
+                name="crewdbForm">
+            <forward name="display" path="/crewdb/index.jsp" />
+            <forward name="add_crewdb" path="/crewdb/edit_crewdb.jsp" />
+            <forward name="view_crewdb" path="/crewdb/view_crewdb.jsp" />
+            <forward name="list1" path="/crewdb/list1.jsp" />            
+        </action>
+        
+        <action path="/crewdb/CrewdbExportAction"
+                type="com.web.jxp.crewdb.CrewdbExportAction"
+                scope="request"
+                name="crewdbForm">
+        </action>
+        
+        <action path="/candidate/CandidateAction"
+                type="com.web.jxp.candidate.CandidateAction"
+                scope="request"
+                name="candidateForm">
+            <forward name="display" path="/candidate/index.jsp" />
+            <forward name="add_candidate" path="/candidate/edit_candidate.jsp" />
+            <forward name="view_candidate" path="/candidate/view_candidate.jsp" />
+            <forward name="list1" path="/candidate/list1.jsp" />
+            <forward name="view_candidatebanklist" path="/candidate/view_banklist.jsp" />
+            <forward name="add_bankdetail" path="/candidate/edit_bankdetail.jsp" />
+            <forward name="add_candidatelanguage" path="/candidate/modify_candidatelanguage.jsp" />
+            <forward name="view_candidatelanguage" path="/candidate/view_candidatelanguage.jsp" />
+            <forward name="add_candidatevaccination" path="/candidate/edit_vaccinationdetail.jsp" />
+            <forward name="view_candidatevaccination" path="/candidate/view_vaccinationlist.jsp" /> 
+            <forward name="add_candidatehealth" path="/candidate/edit_candidatehealth.jsp" />
+            <forward name="view_candidatehealth" path="/candidate/view_candidatehealth.jsp" />
+            <forward name="modify_documentdetail" path="/candidate/edit_documentdetail.jsp" />
+            <forward name="view_documentdetail" path="/candidate/view_documentlist.jsp" />
+            <forward name="modify_hitchdetail" path="/candidate/edit_hitchdetail.jsp" />
+            <forward name="view_hitchdetail" path="/candidate/view_hitchlist.jsp" />
+            <forward name="modify_trainingcertdetail" path="/candidate/edit_trainingcertdetail.jsp" />
+            <forward name="view_trainingcertdetail" path="/candidate/view_trainingcertlist.jsp" />
+            <forward name="modify_educationaldetail" path="/candidate/edit_educationdetail.jsp" />
+            <forward name="view_educationallist" path="/candidate/view_educationlist.jsp" />
+            <forward name="modify_experiencedetail" path="/candidate/edit_experiencedetail.jsp" />
+            <forward name="view_experiencelist" path="/candidate/view_experiencelist.jsp" />       
+            <forward name="cancel" path="/candidate/CandidateAction.do?doCancel=yes" /> 
+            <forward name="view_candidatenomineelist" path="/candidate/view_nomineelist.jsp"/>
+            <forward name="add_nomineedetail" path="/candidate/edit_nominee.jsp"/>                   
+        </action>
+        
+        <action path="/candidate/CandidateIndexExportAction"
+                type="com.web.jxp.candidate.CandidateIndexExportAction"
+                scope="request"
+                name="candidateForm">
+        </action>
+        
+        <action path="/candidate/ExportExcelAction"
+                type="com.web.jxp.candidate.ExportExcelAction"
+                scope="request"
+                name="candidateForm">
+        </action>
+        
+        <action path="/assettype/AssettypeAction"
+                type="com.web.jxp.assettype.AssettypeAction"
+                scope="request"
+                name="assettypeForm">
+            <forward name="display" path="/assettype/index.jsp" />
+            <forward name="add_assettype" path="/assettype/edit_assettype.jsp" />
+            <forward name="view_assettype" path="/assettype/view_assettype.jsp" />
+        </action>
+        
+        <action path="/assettype/AssettypeExportAction"
+                type="com.web.jxp.assettype.AssettypeExportAction"
+                scope="request"
+                name="assettypeForm">
+        </action>
+        
+        <action path="/crewlogin/CrewloginAction"
+                type="com.web.jxp.crewlogin.CrewloginAction"
+                scope="request"
+                name="crewloginForm">
+            <forward name="display" path="/crewlogin/index.jsp" />
+            <forward name="verify_crewlogin" path="/crewlogin/verify_crewlogin.jsp" />
+            <forward name="crewlogin_welcome" path="/crewlogin/crewlogin_welcome.jsp" />
+        </action>
+        
+        <action path="/feedback/FeedbackAction"
+                type="com.web.jxp.feedback.FeedbackAction"
+                scope="request"
+                name="feedbackForm">
+            <forward name="display_feedback" path="/feedback/display_feedback.jsp" />
+            <forward name="view_feedback" path="/feedback/view_feedback.jsp" />
+            <forward name="feedback_welcome" path="/feedback/feedback_welcome.jsp" />
+            <forward name="view_profile" path="/feedback/view_profile.jsp" />
+            <forward name="crewlogin" path="/crewlogin/index.jsp" />
+            <forward name="view_candidatelanguage" path="/feedback/view_candidatelanguage.jsp" />
+            <forward name="view_candidatehealth" path="/feedback/view_candidatehealth.jsp" />
+            <forward name="view_candidatevaccination" path="/feedback/view_vaccinationlist.jsp" />
+            <forward name="view_trainingcertdetail" path="/feedback/view_trainingcertlist.jsp" />
+            <forward name="view_educationallist" path="/feedback/view_educationlist.jsp" />
+            <forward name="view_experiencelist" path="/feedback/view_experiencelist.jsp" />
+            <forward name="view_documentdetail" path="/feedback/view_documentlist.jsp" />
+            <forward name="view_experience" path="/feedback/view_experience.jsp" />
+            <forward name="view_trainingcert" path="/feedback/view_trainingcert.jsp" />            
+            <forward name="display_competency" path="/feedback/display_competency.jsp" />
+            <forward name="competency_assessment" path="/feedback/competency_assessment.jsp" /> 
+            <forward name="view_topic" path="/feedback/view_topic.jsp" /> 
+            <forward name="display_documents" path="/feedback/display_documents.jsp" /> 
+            <forward name="display_training" path="/feedback/display_training.jsp" /> 
+            <forward name="modify_documentdetail" path="/feedback/edit_documentdetail.jsp" />
+            <forward name="modify_trainingcertdetail" path="/feedback/edit_trainingcertdetail.jsp" />
+            <forward name="view_contractlist" path="/feedback/view_contractlist.jsp" />
+            <forward name="view_banklist" path="/feedback/view_banklist.jsp" />
+            <forward name="view_interviewlist" path="/feedback/view_interviewlist.jsp" />
+            <forward name="edit_interview" path="/feedback/edit_interview.jsp" />
+            <forward name="view_clientofferlist" path="/feedback/view_clientofferlist.jsp" />
+        </action>
+        
+        <action path="/language/LanguageAction"
+                type="com.web.jxp.language.LanguageAction"
+                scope="request"
+                name="languageForm">
+            <forward name="display" path="/language/index.jsp" />
+            <forward name="add_language" path="/language/edit_language.jsp" />
+            <forward name="view_language" path="/language/view_language.jsp" />
+        </action>
+        
+        <action path="/language/LanguageExportAction"
+                type="com.web.jxp.language.LanguageExportAction"
+                scope="request"
+                name="languageForm">
+        </action>
+
+        <action path="/documenttype/DocumentTypeAction"
+                type="com.web.jxp.documenttype.DocumentTypeAction"
+                scope="request"
+                name="documentTypeForm">
+            <forward name="display" path="/documenttype/index.jsp" />
+            <forward name="add_documentType" path="/documenttype/edit_documenttype.jsp" />
+            <forward name="view_documentType" path="/documenttype/view_documenttype.jsp" />
+        </action>
+        
+        <action path="/documenttype/DocumentTypeExportAction"
+                type="com.web.jxp.documenttype.DocumentTypeExportAction"
+                scope="request"
+                name="documentTypeForm">
+        </action>
+        
+        <action path="/currency/CurrencyAction"
+                type="com.web.jxp.currency.CurrencyAction"
+                scope="request"
+                name="currencyForm">
+            <forward name="display" path="/currency/index.jsp" />
+            <forward name="add_currency" path="/currency/edit_currency.jsp" />
+            <forward name="view_currency" path="/currency/view_currency.jsp" />
+        </action>
+        
+        <action path="/currency/CurrencyExportAction"
+                type="com.web.jxp.currency.CurrencyExportAction"
+                scope="request"
+                name="currencyForm">
+        </action>
+        
+        <action path="/proficiency/ProficiencyAction"
+                type="com.web.jxp.proficiency.ProficiencyAction"
+                scope="request"
+                name="proficiencyForm">
+            <forward name="display" path="/proficiency/index.jsp" />
+            <forward name="add_proficiency" path="/proficiency/edit_proficiency.jsp" />
+            <forward name="view_proficiency" path="/proficiency/view_proficiency.jsp" />
+        </action>
+        
+        <action path="/proficiency/ProficiencyExportAction"
+                type="com.web.jxp.proficiency.ProficiencyExportAction"
+                scope="request"
+                name="proficiencyForm">
+        </action>
+        
+        <action path="/verificationcheckpoint/VerificationcheckpointAction"
+                type="com.web.jxp.verificationcheckpoint.VerificationcheckpointAction"
+                scope="request"
+                name="verificationcheckpointForm">
+            <forward name="display" path="/verificationcheckpoint/index.jsp" />
+            <forward name="add_verificationcheckpoint" path="/verificationcheckpoint/edit_verificationcheckpoint.jsp" />
+            <forward name="view_verificationcheckpoint" path="/verificationcheckpoint/view_verificationcheckpoint.jsp" />
+        </action>
+        
+        <action path="/verificationcheckpoint/VerificationcheckpointExportAction"
+                type="com.web.jxp.verificationcheckpoint.VerificationcheckpointExportAction"
+                scope="request"
+                name="verificationcheckpointForm">
+        </action>
+        
+        <action path="/maillog/MaillogAction"
+                type="com.web.jxp.maillog.MaillogAction"
+                scope="request"
+                name="maillogForm">
+            <forward name="display" path="/maillog/index.jsp"/>
+            <forward name="view_maillog" path="/maillog/view_maillog.jsp"/>
+        </action>
+        
+        <action path="/maillog/MaillogExportAction"
+                type="com.web.jxp.maillog.MaillogExportAction"
+                scope="request"
+                name="maillogForm">
+        </action>
+        
+        <action path="/client/ClientExportAction"
+                type="com.web.jxp.client.ClientExportAction"
+                scope="request"
+                name="clientForm">
+        </action>
+        
+        <action path="/relation/RelationAction"
+                type="com.web.jxp.relation.RelationAction"
+                scope="request"
+                name="relationForm">
+            <forward name="display" path="/relation/index.jsp" />
+            <forward name="add_relation" path="/relation/edit_relation.jsp" />
+            <forward name="view_relation" path="/relation/view_relation.jsp" />
+        </action>
+        
+        <action path="/relation/RelationExportAction"
+                type="com.web.jxp.relation.RelationExportAction"
+                scope="request"
+                name="relationForm">
+        </action>
+
+        <action path="/maritialstatus/MaritialStatusAction"
+                type="com.web.jxp.maritialstatus.MaritialStatusAction"
+                scope="request"
+                name="maritialstatusForm">
+            <forward name="display" path="/maritialstatus/index.jsp" />
+            <forward name="add_maritialstatus" path="/maritialstatus/edit_maritialstatus.jsp" />
+            <forward name="view_maritialstatus" path="/maritialstatus/view_maritialstatus.jsp" />
+        </action>
+        
+        <action path="/maritialstatus/MaritialStatusExportAction"
+                type="com.web.jxp.maritialstatus.MaritialStatusExportAction"
+                scope="request"
+                name="maritialstatusForm">
+        </action>
+        
+        <action path="/grade/GradeAction"
+                type="com.web.jxp.grade.GradeAction"
+                scope="request"
+                name="gradeForm">
+            <forward name="display" path="/grade/index.jsp" />
+            <forward name="add_grade" path="/grade/edit_grade.jsp" />
+            <forward name="view_grade" path="/grade/view_grade.jsp" />
+        </action>
+        
+        <action path="/grade/GradeExportAction"
+                type="com.web.jxp.grade.GradeExportAction"
+                scope="request"
+                name="gradeForm">
+        </action>
+        
+        <action path="/rotation/RotationAction"
+                type="com.web.jxp.rotation.RotationAction"
+                scope="request"
+                name="rotationForm">
+            <forward name="display" path="/rotation/index.jsp" />
+            <forward name="add_rotation" path="/rotation/edit_rotation.jsp" />
+            <forward name="view_rotation" path="/rotation/view_rotation.jsp" />
+        </action>
+        
+        <action path="/rotation/RotationExportAction"
+                type="com.web.jxp.rotation.RotationExportAction"
+                scope="request"
+                name="rotationForm">
+        </action>
+        
+        <action path="/hoursofwork/HoursOfWorkAction"
+                type="com.web.jxp.hoursofwork.HoursOfWorkAction"
+                scope="request"
+                name="hoursofworkForm">
+            <forward name="display" path="/hoursofwork/index.jsp" />
+            <forward name="add_hoursofwork" path="/hoursofwork/edit_hoursofwork.jsp" />
+            <forward name="view_hoursofwork" path="/hoursofwork/view_hoursofwork.jsp" />
+        </action>
+        
+        <action path="/hoursofwork/HoursOfWorkExportAction"
+                type="com.web.jxp.hoursofwork.HoursOfWorkExportAction"
+                scope="request"
+                name="hoursofworkForm">
+        </action>
+        
+        <action path="/qualificationtype/QualificationTypeAction"
+                type="com.web.jxp.qualificationtype.QualificationTypeAction"
+                scope="request"
+                name="qualificationtypeForm">
+            <forward name="display" path="/qualificationtype/index.jsp" />
+            <forward name="add_qualificationtype" path="/qualificationtype/edit_qualificationtype.jsp" />
+            <forward name="view_qualificationtype" path="/qualificationtype/view_qualificationtype.jsp" />
+        </action>
+        
+        <action path="/qualificationtype/QualificationTypeExportAction"
+                type="com.web.jxp.qualificationtype.QualificationTypeExportAction"
+                scope="request"
+                name="qualificationtypeForm">
+        </action>
+
+
+        <action path="/city/CityAction"
+                type="com.web.jxp.city.CityAction"
+                scope="request"
+                name="cityForm">
+            <forward name="display" path="/city/index.jsp" />
+            <forward name="add_city" path="/city/edit_city.jsp" />
+            <forward name="view_city" path="/city/view_city.jsp" />
+        </action>
+
+        <action path="/city/CityExportAction"
+                type="com.web.jxp.city.CityExportAction"
+                scope="request"
+                name="cityForm">
+        </action>
+
+        <action path="/vaccine/VaccineAction"
+                type="com.web.jxp.vaccine.VaccineAction"
+                scope="request"
+                name="vaccineForm">
+            <forward name="display" path="/vaccine/index.jsp" />
+            <forward name="add_vaccine" path="/vaccine/edit_vaccine.jsp" />
+            <forward name="view_vaccine" path="/vaccine/view_vaccine.jsp" />
+        </action>
+
+        <action path="/vaccine/VaccineExportAction"
+                type="com.web.jxp.vaccine.VaccineExportAction"
+                scope="request"
+                name="vaccineForm">
+        </action>
+
+        <action path="/vaccinetype/VaccinetypeAction"
+                type="com.web.jxp.vaccinetype.VaccinetypeAction"
+                scope="request"
+                name="vaccinetypeForm">
+            <forward name="display" path="/vaccinetype/index.jsp" />
+            <forward name="add_vaccinetype" path="/vaccinetype/edit_vaccinetype.jsp" />
+            <forward name="view_vaccinetype" path="/vaccinetype/view_vaccinetype.jsp" />
+        </action>
+
+        <action path="/vaccinetype/VaccinetypeExportAction"
+                type="com.web.jxp.vaccinetype.VaccinetypeExportAction"
+                scope="request"
+                name="vaccinetypeForm">
+        </action>
+                
+        <action path="/experiencedept/ExperienceDeptAction"
+                type="com.web.jxp.experiencedept.ExperienceDeptAction"
+                scope="request"
+                name="experiencedeptForm">
+            <forward name="display" path="/experiencedept/index.jsp" />
+            <forward name="add_experiencedept" path="/experiencedept/edit_experiencedept.jsp" />
+            <forward name="view_experiencedept" path="/experiencedept/view_experiencedept.jsp" />
+        </action>
+        
+        <action path="/experiencedept/ExperienceDeptExportAction"
+                type="com.web.jxp.experiencedept.ExperienceDeptExportAction"
+                scope="request"
+                name="experiencedeptForm">
+        </action>
+        
+        <action path="/experiencewaterdepth/ExperienceWaterDepthAction"
+                type="com.web.jxp.experiencewaterdepth.ExperienceWaterDepthAction"
+                scope="request"
+                name="experiencewaterdepthForm">
+            <forward name="display" path="/experiencewaterdepth/index.jsp" />
+            <forward name="add_experiencewaterdepth" path="/experiencewaterdepth/edit_experiencewaterdepth.jsp" />
+            <forward name="view_experiencewaterdepth" path="/experiencewaterdepth/view_experiencewaterdepth.jsp" />
+        </action>
+        
+        <action path="/experiencewaterdepth/ExperienceWaterDepthExportAction"
+                type="com.web.jxp.experiencewaterdepth.ExperienceWaterDepthExportAction"
+                scope="request"
+                name="experiencewaterdepthForm">
+        </action>
+        
+        <action path="/skills/SkillsAction"
+                type="com.web.jxp.skills.SkillsAction"
+                scope="request"
+                name="skillsForm">
+            <forward name="display" path="/skills/index.jsp" />
+            <forward name="add_skills" path="/skills/edit_skills.jsp" />
+            <forward name="view_skills" path="/skills/view_skills.jsp" />
+        </action>
+        
+        <action path="/skills/SkillsExportAction"
+                type="com.web.jxp.skills.SkillsExportAction"
+                scope="request"
+                name="skillsForm">
+        </action>
+
+        <action path="/degree/DegreeAction"
+                type="com.web.jxp.degree.DegreeAction"
+                scope="request"
+                name="degreeForm">
+            <forward name="display" path="/degree/index.jsp" />
+            <forward name="add_degree" path="/degree/edit_degree.jsp" />
+            <forward name="view_degree" path="/degree/view_degree.jsp" />
+        </action>
+        
+        <action path="/degree/DegreeExportAction"
+                type="com.web.jxp.degree.DegreeExportAction"
+                scope="request"
+                name="degreeForm">
+        </action>
+        
+        <action path="/coursetype/CourseTypeAction"
+                type="com.web.jxp.coursetype.CourseTypeAction"
+                scope="request"
+                name="coursetypeForm">
+            <forward name="display" path="/coursetype/index.jsp" />
+            <forward name="add_coursetype" path="/coursetype/edit_coursetype.jsp" />
+            <forward name="view_coursetype" path="/coursetype/view_coursetype.jsp" />
+        </action>
+        
+        <action path="/coursetype/CourseTypeExportAction"
+                type="com.web.jxp.coursetype.CourseTypeExportAction"
+                scope="request"
+                name="coursetypeForm">
+        </action>
+              
+        <action path="/bankaccounttype/BankAccountTypeAction"
+                type="com.web.jxp.bankaccounttype.BankAccountTypeAction"
+                scope="request"
+                name="bankAccountTypeForm">
+            <forward name="display" path="/bankaccounttype/index.jsp" />
+            <forward name="add_bankaccounttype" path="/bankaccounttype/edit_bankaccounttype.jsp" />
+            <forward name="view_bankaccounttype" path="/bankaccounttype/view_bankaccounttype.jsp" />
+        </action>
+        
+        <action path="/bankaccounttype/BankAccountTypeExportAction"
+                type="com.web.jxp.bankaccounttype.BankAccountTypeExportAction"
+                scope="request"
+                name="bankAccountTypeForm">
+        </action>
+
+
+        <action path="/companyindustry/CompanyindustryAction"
+                type="com.web.jxp.companyindustry.CompanyindustryAction"
+                scope="request"
+                name="companyindustryForm">
+            <forward name="display" path="/companyindustry/index.jsp" />
+            <forward name="add_companyindustry" path="/companyindustry/edit_companyindustry.jsp" />
+            <forward name="view_companyindustry" path="/companyindustry/view_companyindustry.jsp" />
+        </action>
+
+        <action path="/companyindustry/CompanyindustryExportAction"
+                type="com.web.jxp.companyindustry.CompanyindustryExportAction"
+                scope="request"
+                name="companyindustryForm">
+        </action>
+                
+                 
+                
+        <action path="/bloodpressure/BloodpressureAction"
+                type="com.web.jxp.bloodpressure.BloodpressureAction"
+                scope="request"
+                name="bloodpressureForm">
+            <forward name="display" path="/bloodpressure/index.jsp" />
+            <forward name="add_bloodpressure" path="/bloodpressure/edit_bloodpressure.jsp" />
+            <forward name="view_bloodpressure" path="/bloodpressure/view_bloodpressure.jsp" />
+        </action>
+
+        <action path="/bloodpressure/BloodpressureExportAction"
+                type="com.web.jxp.bloodpressure.BloodpressureExportAction"
+                scope="request"
+                name="bloodpressureForm">
+        </action>
+
+        <action path="/approvedby/ApprovedbyAction"
+                type="com.web.jxp.approvedby.ApprovedbyAction"
+                scope="request"
+                name="approvedbyForm">
+            <forward name="display" path="/approvedby/index.jsp" />
+            <forward name="add_approvedby" path="/approvedby/edit_approvedby.jsp" />
+            <forward name="view_approvedby" path="/approvedby/view_approvedby.jsp" />
+        </action>
+
+        <action path="/approvedby/ApprovedbyExportAction"
+                type="com.web.jxp.approvedby.ApprovedbyExportAction"
+                scope="request"
+                name="approvedbyForm">
+        </action>
+
+        <action path="/documentissuedby/DocumentissuedbyAction"
+                type="com.web.jxp.documentissuedby.DocumentissuedbyAction"
+                scope="request"
+                name="documentissuedbyForm">
+            <forward name="display" path="/documentissuedby/index.jsp" />
+            <forward name="add_documentissuedby" path="/documentissuedby/edit_documentissuedby.jsp" />
+            <forward name="view_documentissuedby" path="/documentissuedby/view_documentissuedby.jsp" />
+        </action>
+
+        <action path="/documentissuedby/DocumentissuedbyExportAction"
+                type="com.web.jxp.documentissuedby.DocumentissuedbyExportAction"
+                scope="request"
+                name="documentissuedbyForm">
+        </action>
+        
+        <action path="/crewtype/CrewtypeAction"
+                type="com.web.jxp.crewtype.CrewtypeAction"
+                scope="request"
+                name="crewtypeForm">
+            <forward name="display" path="/crewtype/index.jsp" />
+            <forward name="add_crewtype" path="/crewtype/edit_crewtype.jsp" />
+            <forward name="view_crewtype" path="/crewtype/view_crewtype.jsp" />
+        </action>
+
+        <action path="/crewtype/CrewtypeExportAction"
+                type="com.web.jxp.crewtype.CrewtypeExportAction"
+                scope="request"
+                name="crewtypeForm">
+        </action>
+        
+        <action path="/enginetype/EnginetypeAction"
+                type="com.web.jxp.enginetype.EnginetypeAction"
+                scope="request"
+                name="enginetypeForm">
+            <forward name="display" path="/enginetype/index.jsp" />
+            <forward name="add_enginetype" path="/enginetype/edit_enginetype.jsp" />
+            <forward name="view_enginetype" path="/enginetype/view_enginetype.jsp" />
+        </action>
+        
+        <action path="/enginetype/EnginetypeExportAction"
+                type="com.web.jxp.enginetype.EnginetypeExportAction"
+                scope="request"
+                name="enginetypeForm">
+        </action>
+        
+        <action path="/assessmentparameter/AssessmentParameterAction"
+                type="com.web.jxp.assessmentparameter.AssessmentParameterAction"
+                scope="request"
+                name="assessmentParameterForm">
+            <forward name="display" path="/assessmentparameter/index.jsp" />
+            <forward name="add_assessmentparameter" path="/assessmentparameter/edit_assessmentparameter.jsp" />
+            <forward name="view_assessmentparameter" path="/assessmentparameter/view_assessmentparameter.jsp" />
+        </action>
+        
+        <action path="/assessmentparameter/AssessmentParameterExportAction"
+                type="com.web.jxp.assessmentparameter.AssessmentParameterExportAction"
+                scope="request"
+                name="assessmentParameterForm">
+        </action>
+        
+        <action path="/assessmentanswertype/AssessmentAnswerTypeAction"
+                type="com.web.jxp.assessmentanswertype.AssessmentAnswerTypeAction"
+                scope="request"
+                name="assessmentAnswerTypeForm">
+            <forward name="display" path="/assessmentanswertype/index.jsp" />
+            <forward name="add_assessmentanswertype" path="/assessmentanswertype/edit_assessmentanswertype.jsp" />
+            <forward name="view_assessmentanswertype" path="/assessmentanswertype/view_assessmentanswertype.jsp" />
+        </action>
+        
+        <action path="/assessmentanswertype/AssessmentAnswerTypeExportAction"
+                type="com.web.jxp.assessmentanswertype.AssessmentAnswerTypeExportAction"
+                scope="request"
+                name="assessmentAnswerTypeForm">
+        </action>
+        
+        <action path="/assessmentquestion/AssessmentQuestionAction"
+                type="com.web.jxp.assessmentquestion.AssessmentQuestionAction"
+                scope="request"
+                name="assessmentquestionForm">
+            <forward name="display" path="/assessmentquestion/index.jsp" />
+            <forward name="add_assessmentquestion" path="/assessmentquestion/edit_assessmentquestion.jsp" />
+            <forward name="view_assessmentquestion" path="/assessmentquestion/view_assessmentquestion.jsp" />
+        </action>
+        
+        <action path="/assessmentquestion/AssessmentQuestionExportAction"
+                type="com.web.jxp.assessmentquestion.AssessmentQuestionExportAction"
+                scope="request"
+                name="assessmentquestionForm">
+        </action>
+        
+        <action path="/benefit/BenefitAction"
+                type="com.web.jxp.benefit.BenefitAction"
+                scope="request"
+                name="benefitForm">
+            <forward name="display" path="/benefit/index.jsp" />
+            <forward name="add_benefit" path="/benefit/edit_benefit.jsp" />
+            <forward name="view_benefit" path="/benefit/view_benefit.jsp" />
+        </action>
+
+        <action path="/benefit/BenefitExportAction"
+                type="com.web.jxp.benefit.BenefitExportAction"
+                scope="request"
+                name="benefitForm">
+        </action>
+
+        <action path="/port/PortAction"
+                type="com.web.jxp.port.PortAction"
+                scope="request"
+                name="portForm">
+            <forward name="display" path="/port/index.jsp" />
+            <forward name="add_port" path="/port/edit_port.jsp" />
+            <forward name="view_port" path="/port/view_port.jsp" />
+        </action>
+        
+        <action path="/port/PortExportAction"
+                type="com.web.jxp.port.PortExportAction"
+                scope="request"
+                name="portForm">
+        </action>
+        
+        <action path="/jobpost/JobPostAction"
+                type="com.web.jxp.jobpost.JobPostAction"
+                scope="request"
+                name="jobpostForm">
+            <forward name="display" path="/jobpost/index.jsp" />
+            <forward name="add_jobpost" path="/jobpost/edit_jobpost.jsp" />
+            <forward name="view_jobpost" path="/jobpost/view_jobpost.jsp" />
+            <forward name="display_benefit" path="/jobpost/index_benefit.jsp" />
+            <forward name="add_benefit" path="/jobpost/edit_benefit.jsp" />
+            <forward name="add_empposbenefit" path="/jobpost/edit_empposbenefit.jsp" />
+            <forward name="add_assessmentdetail" path="/jobpost/edit_assessmentdetail.jsp" />
+            <forward name="view_assessmentdetail" path="/jobpost/view_assessmentdetail.jsp" />
+        </action>
+        
+        <action path="/jobpost/JobPostExportAction"
+                type="com.web.jxp.jobpost.JobPostExportAction"
+                scope="request"
+                name="jobpostForm">
+        </action>
+        
+        <action path="/verification/VerificationAction"
+                type="com.web.jxp.verification.VerificationAction"
+                scope="request"
+                name="verificationForm">
+            <forward name="display" path="/verification/index.jsp" />
+            <forward name="view_verification" path="/verification/view_Verification.jsp" />
+        </action>
+        
+        <action path="/verification/VerificationExportAction"
+                type="com.web.jxp.verification.VerificationExportAction"
+                scope="request"
+                name="verificationForm">
+        </action>
+        
+        <action path="/benefitinformationtype/BenefitinformationtypeAction"
+                type="com.web.jxp.benefitinformationtype.BenefitinformationtypeAction"
+                scope="request"
+                name="benefitinformationtypeForm">
+            <forward name="display" path="/benefitinformationtype/index.jsp" />
+            <forward name="view_benefitinformationtype" path="/benefitinformationtype/view_benefitinformationtype.jsp" />
+            <forward name="add_benefitinformationtype" path="/benefitinformationtype/edit_benefitinformationtype.jsp" />
+        </action>
+        
+        <action path="/benefitinformationtype/BenefitinformationtypeExportAction"
+                type="com.web.jxp.benefitinformationtype.BenefitinformationtypeExportAction"
+                scope="request"
+                name="benefitinformationtypeForm">
+        </action>
+        
+        <action path="/cassessment/CassessmentAction"
+                type="com.web.jxp.cassessment.CassessmentAction"
+                scope="request"
+                name="cassessmentForm">
+            <forward name="display" path="/cassessment/index.jsp" />
+            <forward name="display_assessor" path="/cassessment/index_assessor.jsp" />
+            <forward name="view_cassessment" path="/cassessment/view_Cassessment.jsp" />
+            <forward name="view_Assessor" path="/cassessment/view_Assessor.jsp" />
+            <forward name="view_assessnow" path="/cassessment/view_assessnow.jsp" />
+        </action>
+        
+        <action path="/cassessment/CassessmentExportAction"
+                type="com.web.jxp.cassessment.CassessmentExportAction"
+                scope="request"
+                name="cassessmentForm">
+        </action>
+        
+        <action path="/cassessment/CassessmentAExportAction"
+                type="com.web.jxp.cassessment.CassessmentAExportAction"
+                scope="request"
+                name="cassessmentForm">
+        </action>
+        
+        <action path="/timezone/TimezoneAction"
+                type="com.web.jxp.timezone.TimezoneAction"
+                scope="request"
+                name="timezoneForm">
+            <forward name="display" path="/timezone/index.jsp" />
+            <forward name="add_timezone" path="/timezone/edit_timezone.jsp" />
+            <forward name="view_timezone" path="/timezone/view_timezone.jsp" />
+        </action>
+
+        <action path="/timezone/TimezoneExportAction"
+                type="com.web.jxp.timezone.TimezoneExportAction"
+                scope="request"
+                name="timezoneForm">
+        </action>
+		
+        <action path="/talentpool/TalentpoolAction"
+                type="com.web.jxp.talentpool.TalentpoolAction"
+                scope="request"
+                name="talentpoolForm">
+            <forward name="display" path="/talentpool/index.jsp" />
+            <forward name="add_candidate" path="/talentpool/edit_candidate.jsp" />
+            <forward name="view_candidate" path="/talentpool/view_candidate.jsp" />
+            <forward name="list1" path="/talentpool/list1.jsp" />
+            <forward name="view_candidatebanklist" path="/talentpool/view_banklist.jsp" />
+            <forward name="add_bankdetail" path="/talentpool/edit_bankdetail.jsp" />
+            <forward name="add_candidatelanguage" path="/talentpool/modify_candidatelanguage.jsp" />
+            <forward name="view_candidatelanguage" path="/talentpool/view_candidatelanguage.jsp" />
+            <forward name="add_candidatevaccination" path="/talentpool/edit_vaccinationdetail.jsp" />
+            <forward name="view_candidatevaccination" path="/talentpool/view_vaccinationlist.jsp" /> 
+            <forward name="add_candidatehealth" path="/talentpool/edit_candidatehealth.jsp" />
+            <forward name="view_candidatehealth" path="/talentpool/view_candidatehealth.jsp" />
+            <forward name="modify_documentdetail" path="/talentpool/edit_documentdetail.jsp" />
+            <forward name="view_documentdetail" path="/talentpool/view_documentlist.jsp" />
+            <forward name="modify_hitchdetail" path="/talentpool/edit_hitchdetail.jsp" />
+            <forward name="view_hitchdetail" path="/talentpool/view_hitchlist.jsp" />
+            <forward name="modify_trainingcertdetail" path="/talentpool/edit_trainingcertdetail.jsp" />
+            <forward name="view_trainingcertdetail" path="/talentpool/view_trainingcertlist.jsp" />
+            <forward name="modify_educationaldetail" path="/talentpool/edit_educationdetail.jsp" />
+            <forward name="view_educationallist" path="/talentpool/view_educationlist.jsp" />
+            <forward name="modify_experiencedetail" path="/talentpool/edit_experiencedetail.jsp" />
+            <forward name="view_experiencelist" path="/talentpool/view_experiencelist.jsp" />
+            <forward name="view_verificationlist" path="/talentpool/view_verificationlist.jsp" />
+            <forward name="view_assessmentlist" path="/talentpool/view_assessmentlist.jsp" />
+            <forward name="view_compliancelist" path="/talentpool/view_compliancelist.jsp" />
+            <forward name="view_shortlisting" path="/talentpool/view_shortlisting.jsp" />
+            <forward name="view_clientselectionlist" path="/talentpool/view_clientselectionlist.jsp"/>
+            <forward name="view_onbording" path="/talentpool/view_onbording.jsp"/>
+            <forward name="view_mobilization" path="/talentpool/view_mobilization.jsp"/>
+            <forward name="view_rotation" path="/talentpool/view_rotation.jsp"/>
+            <forward name="cancel" path="/talentpool/TalentpoolAction.do?doCancel=yes" />
+            <forward name="generate_cv" path="/talentpool/generate_cv.jsp" />
+            <forward name="view_notificationlist" path="/talentpool/view_notificationlist.jsp"/>
+            <forward name="view_transferterminationlist" path="/talentpool/view_transferterminationlist.jsp"/>
+            <forward name="view_wellnessfeedbacklist" path="/talentpool/view_wellnessfeedbacklist.jsp"/>
+            <forward name="view_competencylist" path="/talentpool/view_competencylist.jsp"/>
+            <forward name="generate_formality" path="/talentpool/generate_formality.jsp" />
+            <forward name="view_offshorelist" path="/talentpool/view_offshorelist.jsp"/>
+            <forward name="edit_offshore" path="/talentpool/edit_offshore.jsp"/>
+            <forward name="view_candidatenomineelist" path="/talentpool/view_nomineelist.jsp"/>
+            <forward name="add_nomineedetail" path="/talentpool/edit_nominee.jsp"/>
+            <forward name="view_ppelist" path="/talentpool/view_ppelist.jsp"/>
+            <forward name="add_ppedetail" path="/talentpool/edit_ppe.jsp"/>
+            <forward name="view_contractlist" path="/talentpool/view_contractlist.jsp"/>
+            <forward name="add_contractdetail" path="/talentpool/edit_contractdetail.jsp"/>
+            <forward name="view_appraisallist" path="/talentpool/view_appraisallist.jsp"/>
+            <forward name="add_appraisaldetail" path="/talentpool/edit_appraisaldetail.jsp"/>
+            <forward name="view_dayratelist" path="/talentpool/view_dayratelist.jsp"/>
+            <forward name="add_dayratedetail" path="/talentpool/edit_dayratedetail.jsp"/>
+        </action>
+        
+        <action path="/talentpool/TalentpoolIndexExportAction"
+                type="com.web.jxp.talentpool.TalentpoolIndexExportAction"
+                scope="request"
+                name="talentpoolForm">
+        </action>
+        
+        <action path="/talentpool/ExportdetailAction"
+                type="com.web.jxp.talentpool.ExportdetailAction"
+                scope="request"
+                name="talentpoolForm">
+        </action>
+        
+        <action path="/checkpoint/CheckPointAction"
+                type="com.web.jxp.checkpoint.CheckPointAction"
+                scope="request"
+                name="checkpointForm">
+            <forward name="display" path="/checkpoint/index.jsp" />
+            <forward name="add_checkpoint" path="/checkpoint/edit_checkpoint.jsp" />
+            <forward name="view_checkpoint" path="/checkpoint/view_checkpoint.jsp" />
+        </action>
+
+        <action path="/checkpoint/CheckPointExportAction"
+                type="com.web.jxp.checkpoint.CheckPointExportAction"
+                scope="request"
+                name="checkpointForm">
+        </action>
+        
+        <action path="/resumetemplate/ResumetemplateAction"
+                type="com.web.jxp.resumetemplate.ResumetemplateAction"
+                scope="request"
+                name="resumetemplateForm">
+            <forward name="display" path="/resumetemplate/index.jsp" />
+            <forward name="add_resumetemplate" path="/resumetemplate/edit_resumetemplate.jsp" />
+            <forward name="view_resumetemplate" path="/resumetemplate/view_resumetemplate.jsp" />
+        </action>
+        
+        <action path="/resumetemplate/ResumetemplateExportAction"
+                type="com.web.jxp.resumetemplate.ResumetemplateExportAction"
+                scope="request"
+                name="resumetemplateForm">
+        </action>
+        
+        <action path="/shortlisting/ShortlistingAction"
+                type="com.web.jxp.shortlisting.ShortlistingAction"
+                scope="request"
+                name="shortlistingForm">
+            <forward name="display" path="/shortlisting/shortlisting_details.jsp" />
+        </action>
+        
+        <action path="/compliancecheck/CompliancecheckAction"
+                type="com.web.jxp.compliancecheck.CompliancecheckAction"
+                scope="request"
+                name="compliancecheckForm">
+            <forward name="display" path="/compliancecheck/index.jsp" />
+            <forward name="view" path="/compliancecheck/view.jsp" />
+            <forward name="cancel" path="/compliancecheck/CompliancecheckAction.do?doCancel=yes" />
+        </action>
+        
+        <action path="/compliancecheck/CompliancecheckExportAction"
+                type="com.web.jxp.compliancecheck.CompliancecheckExportAction"
+                scope="request"
+                name="compliancecheckForm">
+        </action>
+        
+        <action path="/clientselection/ClientselectionAction"
+                type="com.web.jxp.clientselection.ClientselectionAction"
+                scope="request"
+                name="clientselectionForm">
+            <forward name="display" path="/clientselection/index.jsp" />
+            <forward name="generate_cv" path="/clientselection/generate_cv.jsp" />
+            <forward name="generate_offerlett" path="/clientselection/generate_offerlett.jsp" />
+            <forward name="cancel" path="/clientselection/ClientselectionAction.do?doCancel=yes" />
+            <forward name="client_display" path="/clientselection/client_index.jsp" />
+            <forward name="selection_details" path="/clientselection/selection_details.jsp" />
+            <forward name="selection_summary" path="/clientselection/selection_summary.jsp" />
+        </action>
+        
+        <action path="/clientselection/ClientselectionExportAction"
+                type="com.web.jxp.clientselection.ClientselectionExportAction"
+                scope="request"
+                name="clientselectionForm">
+        </action>
+        
+        <action path="/clientselection/ClientselectionclientExportAction"
+                type="com.web.jxp.clientselection.ClientselectionclientExportAction"
+                scope="request"
+                name="clientselectionForm">
+        </action>
+        
+        <action path="/rejectionreason/RejectionreasonAction"
+                type="com.web.jxp.rejectionreason.RejectionreasonAction"
+                scope="request"
+                name="rejectionreasonForm">
+            <forward name="display" path="/rejectionreason/index.jsp" />
+            <forward name="add_rejectionreason" path="/rejectionreason/edit_rejectionreason.jsp" />
+            <forward name="view_rejectionreason" path="/rejectionreason/view_rejectionreason.jsp" />
+        </action>
+        
+        <action path="/rejectionreason/RejectionreasonExportAction"
+                type="com.web.jxp.rejectionreason.RejectionreasonExportAction"
+                scope="request"
+                name="rejectionreasonForm">
+        </action>
+        
+        <action path="/airport/AirportAction"
+                type="com.web.jxp.airport.AirportAction"
+                scope="request"
+                name="airportForm">
+            <forward name="display" path="/airport/index.jsp" />
+            <forward name="add_airport" path="/airport/edit_airport.jsp" />
+            <forward name="view_airport" path="/airport/view_airport.jsp" />
+        </action>
+
+        <action path="/airport/AirportExportAction"
+                type="com.web.jxp.airport.AirportExportAction"
+                scope="request"
+                name="airportForm">
+        </action>
+        
+        <action path="/onboardingkit/OnboardingkitAction"
+                type="com.web.jxp.onboardingkit.OnboardingkitAction"
+                scope="request"
+                name="onboardingkitForm">
+            <forward name="display" path="/onboardingkit/index.jsp" />
+            <forward name="add_onboardingkit" path="/onboardingkit/edit_onboardingkit.jsp" />
+            <forward name="view_onboardingkit" path="/onboardingkit/view_onboardingkit.jsp" />
+        </action>
+        
+        <action path="/onboardingkit/OnboardingkitExportAction"
+                type="com.web.jxp.onboardingkit.OnboardingkitExportAction"
+                scope="request"
+                name="onboardingkitForm">
+        </action>
+        
+        <action path="/formality/FormalityAction"
+                type="com.web.jxp.formality.FormalityAction"
+                scope="request"
+                name="formalityForm">
+            <forward name="display" path="/formality/index.jsp" />
+            <forward name="add_formality" path="/formality/edit_formality.jsp" />
+            <forward name="view_formality" path="/formality/view_formality.jsp" />
+        </action>
+        
+        <action path="/formality/FormalityExportAction"
+                type="com.web.jxp.formality.FormalityExportAction"
+                scope="request"
+                name="formalityForm">
+        </action>
+        
+        <action path="/onboarding/OnboardingAction"
+                type="com.web.jxp.onboarding.OnboardingAction"
+                scope="request"
+                name="onboardingForm">
+            <forward name="display" path="/onboarding/index.jsp" />
+            <forward name="generate_formalities" path="/onboarding/generate_formalities.jsp" />
+            <forward name="cancel" path="/onboarding/OnboardingAction.do?doCancel=yes" />
+            <forward name="onboarding_details" path="/onboarding/onboarding_details.jsp" />
+            <forward name="upload_formalities" path="/onboarding/upload_formalities.jsp" />
+            <forward name="summary_details" path="/onboarding/summary_details.jsp" />
+            <forward name="dtls_mobaccomm" path="/onboarding/dtls_mobaccomm.jsp" />
+            <forward name="dtls_mobtravel" path="/onboarding/dtls_mobtravel.jsp" />
+        </action>
+        
+        <action path="/onboarding/OnboardingExportAction"
+                type="com.web.jxp.onboarding.OnboardingExportAction"
+                scope="request"
+                name="onboardingForm">
+        </action>
+        
+        <action path="/doccheck/DoccheckAction"
+                type="com.web.jxp.doccheck.DoccheckAction"
+                scope="request"
+                name="doccheckForm">
+            <forward name="display" path="/doccheck/index.jsp" />
+            <forward name="add_doccheck" path="/doccheck/edit_doccheck.jsp" />
+            <forward name="view_doccheck" path="/doccheck/view_doccheck.jsp" />
+        </action>
+        
+        <action path="/doccheck/DoccheckExportAction"
+                type="com.web.jxp.doccheck.DoccheckExportAction"
+                scope="request"
+                name="doccheckForm">
+        </action>
+
+
+        <action path="/crewrotation/CrewrotationAction"
+                type="com.web.jxp.crewrotation.CrewrotationAction"
+                scope="request"
+                name="crewrotationForm">
+            <forward name="display" path="/crewrotation/index.jsp" />
+            <forward name="add_crewrotation" path="/crewrotation/edit_crewrotation.jsp" />
+            <forward name="crewrotation_details" path="/crewrotation/crewrotation_details.jsp" />
+            <forward name="crewrotation_activity" path="/crewrotation/crewrotation_activity.jsp" />
+            <forward name="indexplan" path="/crewrotation/indexplan.jsp" />
+        </action>
+        
+        <action path="/crewrotation/CrewrotationExportAction"
+                type="com.web.jxp.crewrotation.CrewrotationExportAction"
+                scope="request"
+                name="crewrotationForm">
+        </action>
+        
+        <action path="/crewrotation/CrewrotationActivityExportAction"
+                type="com.web.jxp.crewrotation.CrewrotationActivityExportAction"
+                scope="request"
+                name="crewrotationForm">
+        </action>
+        
+        <action path="/crewrotation/CrewrotationplanningExportAction"
+                type="com.web.jxp.crewrotation.CrewrotationplanningExportAction"
+                scope="request"
+                name="crewrotationForm">
+        </action>
+        
+        <action path="/crewrotation/CrewrotationDetailsExport"
+                type="com.web.jxp.crewrotation.CrewrotationDetailsExport"
+                scope="request"
+                name="crewrotationForm">
+        </action>
+        
+        <action path="/mobilization/MobilizationAction"
+                type="com.web.jxp.mobilization.MobilizationAction"
+                scope="request"
+                name="mobilizationForm">
+            <forward name="display" path="/mobilization/index.jsp" />
+            <forward name="details_mobilization" path="/mobilization/dtls_mobilization.jsp" />
+            <forward name="dtls_mobtravel" path="/mobilization/dtls_mobtravel.jsp" />
+            <forward name="dtls_mobaccomm" path="/mobilization/dtls_mobaccomm.jsp" />
+        </action>
+        <action path="/mobilization/MobilizationExportAction"
+                type="com.web.jxp.mobilization.MobilizationExportAction"
+                scope="request"
+                name="mobilizationForm">
+        </action>
+        
+        <action path="/mobilization/MobilizationExportTravelAction"
+                type="com.web.jxp.mobilization.MobilizationExportTravelAction"
+                scope="request"
+                name="mobilizationForm">
+        </action>
+        
+        <action path="/mobilization/MobilizationAccomExportAction"
+                type="com.web.jxp.mobilization.MobilizationAccomExportAction"
+                scope="request"
+                name="mobilizationForm">
+        </action>
+        
+        <action path="/tctype/TctypeAction"
+                type="com.web.jxp.tctype.TctypeAction"
+                scope="request"
+                name="tctypeForm">
+            <forward name="display" path="/tctype/index.jsp" />
+            <forward name="add_tctype" path="/tctype/edit_tctype.jsp" />
+            <forward name="view_tctype" path="/tctype/view_tctype.jsp" />
+        </action>
+        
+        <action path="/tctype/TctypeExportAction"
+                type="com.web.jxp.tctype.TctypeExportAction"
+                scope="request"
+                name="tctypeForm">
+        </action>
+        
+        <action path="/training/TrainingAction"
+                type="com.web.jxp.training.TrainingAction"
+                scope="request"
+                name="trainingForm">
+            <forward name="display" path="/training/index.jsp" />
+            <forward name="add_training" path="/training/edit_training.jsp" />
+            <forward name="view_training" path="/training/view_training.jsp" />
+        </action>
+        
+        <action path="/training/TrainingExportAction"
+                type="com.web.jxp.training.TrainingExportAction"
+                scope="request"
+                name="trainingForm">
+        </action>
+        
+        <action path="/level/LevelAction"
+                type="com.web.jxp.level.LevelAction"
+                scope="request"
+                name="levelForm">
+            <forward name="display" path="/level/index.jsp" />
+            <forward name="add_level" path="/level/edit_level.jsp" />
+            <forward name="view_level" path="/level/view_level.jsp" />
+        </action>
+        
+        <action path="/level/LevelExportAction"
+                type="com.web.jxp.level.LevelExportAction"
+                scope="request"
+                name="levelForm">
+        </action>
+        
+        <action path="/createtraining/CreatetrainingAction"
+                type="com.web.jxp.createtraining.CreatetrainingAction"
+                scope="request"
+                name="createtrainingForm">
+            <forward name="display" path="/createtraining/index.jsp" />
+            <forward name="add_category" path="/createtraining/edit_category.jsp" />
+            <forward name="view_category" path="/createtraining/view_category.jsp" />
+            <forward name="view_subcategory" path="/createtraining/index_subcategory.jsp" />
+            <forward name="add_subcategory" path="/createtraining/edit_subcategory.jsp" />
+            <forward name="add_course" path="/createtraining/edit_course.jsp" />
+            <forward name="view_course" path="/createtraining/index_course.jsp" />
+        </action>
+        
+        <action path="/createtraining/CreatetrainingExportAction"
+                type="com.web.jxp.createtraining.CreatetrainingExportAction"
+                scope="request"
+                name="createtrainingForm">
+        </action>
+        
+        <action path="/matrix/MatrixAction"
+                type="com.web.jxp.matrix.MatrixAction"
+                scope="request"
+                name="matrixForm">
+            <forward name="display" path="/matrix/index.jsp" />
+            <forward name="add_matrix" path="/matrix/edit_matrix.jsp" />
+            <forward name="view_matrix" path="/matrix/view_matrix.jsp" />
+            <forward name="assign" path="/matrix/assign.jsp" />
+        </action>
+        
+        <action path="/matrix/MatrixExportAction"
+                type="com.web.jxp.matrix.MatrixExportAction"
+                scope="request"
+                name="matrixForm">
+        </action>
+        
+        <action path="/coursename/CoursenameAction"
+                type="com.web.jxp.coursename.CoursenameAction"
+                scope="request"
+                name="coursenameForm">
+            <forward name="display" path="/coursename/index.jsp" />
+            <forward name="add_coursename" path="/coursename/edit_coursename.jsp" />
+            <forward name="view_coursename" path="/coursename/view_coursename.jsp" />
+        </action>
+        
+        <action path="/coursename/CoursenameExportAction"
+                type="com.web.jxp.coursename.CoursenameExportAction"
+                scope="request"
+                name="coursenameForm">
+        </action>
+        
+        <action path="/home/HomeAction"
+                type="com.web.jxp.home.HomeAction"
+                scope="request"
+                name="homeForm">
+            <forward name="display" path="/home/index.jsp" />
+            <forward name="verify_home" path="/home/verify_home.jsp" />
+            <forward name="add_candidate" path="/home/edit_candidate.jsp" />
+            <forward name="view_candidate" path="/home/view_candidate.jsp" />
+            <forward name="list1" path="/home/list1.jsp" />
+            <forward name="view_candidatebanklist" path="/home/view_banklist.jsp" />
+            <forward name="add_bankdetail" path="/home/edit_bankdetail.jsp" />
+            <forward name="add_candidatelanguage" path="/home/modify_candidatelanguage.jsp" />
+            <forward name="view_candidatelanguage" path="/home/view_candidatelanguage.jsp" />
+            <forward name="add_candidatevaccination" path="/home/edit_vaccinationdetail.jsp" />
+            <forward name="view_candidatevaccination" path="/home/view_vaccinationlist.jsp" /> 
+            <forward name="add_candidatehealth" path="/home/edit_candidatehealth.jsp" />
+            <forward name="view_candidatehealth" path="/home/view_candidatehealth.jsp" />
+            <forward name="modify_documentdetail" path="/home/edit_documentdetail.jsp" />
+            <forward name="view_documentdetail" path="/home/view_documentlist.jsp" />
+            <forward name="modify_hitchdetail" path="/home/edit_hitchdetail.jsp" />
+            <forward name="view_hitchdetail" path="/home/view_hitchlist.jsp" />
+            <forward name="modify_trainingcertdetail" path="/home/edit_trainingcertdetail.jsp" />
+            <forward name="view_trainingcertdetail" path="/home/view_trainingcertlist.jsp" />
+            <forward name="modify_educationaldetail" path="/home/edit_educationdetail.jsp" />
+            <forward name="view_educationallist" path="/home/view_educationlist.jsp" />
+            <forward name="modify_experiencedetail" path="/home/edit_experiencedetail.jsp" />
+            <forward name="view_experiencelist" path="/home/view_experiencelist.jsp" />
+            <forward name="cancel" path="/home/CandidateAction.do?doCancel=yes" />
+        </action>
+        
+        <action path="/trainingmatrix/TrainingmatrixAction"
+                type="com.web.jxp.trainingmatrix.TrainingmatrixAction"
+                scope="request"
+                name="trainingmatrixForm">
+            <forward name="display" path="/trainingmatrix/index.jsp" />
+            <forward name="assign" path="/trainingmatrix/assign.jsp" />
+        </action>
+        
+        <action path="/trainingmatrix/TrainingmatrixExportAction"
+                type="com.web.jxp.trainingmatrix.TrainingmatrixExportAction"
+                scope="request"
+                name="trainingmatrixForm">
+        </action>        
+        
+        <action path="/dashboard/DashboardAction"
+                type="com.web.jxp.dashboard.DashboardAction"
+                scope="request"
+                name="dashboardForm">
+            <forward name="dashboard" path="/dashboard/dashboard.jsp"/>
+            <forward name="crewrotation" path="/dashboard/crewrotation.jsp"/>
+            <forward name="crewenrollment" path="/dashboard/crewenrollment.jsp"/>
+            <forward name="training" path="/dashboard/training.jsp"/>
+            <forward name="crewrecruitment" path="/dashboard/crewrecruitment.jsp"/>
+        </action>
+        
+        <action path="/dashboard/ExportdetailAction"
+                type="com.web.jxp.dashboard.ExportdetailAction"
+                scope="request"
+                name="dashboardForm">
+        </action>
+        
+        <action path="/managetraining/ManagetrainingAction"
+                type="com.web.jxp.managetraining.ManagetrainingAction"
+                scope="request"
+                name="managetrainingForm">
+            <forward name="list1" path="/managetraining/list1.jsp" />
+            <forward name="list2" path="/managetraining/list2.jsp" />
+            <forward name="assign1" path="/managetraining/assign1.jsp" />
+            <forward name="assign2" path="/managetraining/assign2.jsp" />
+        </action>
+        
+        <action path="/managetraining/ManagetrainingExportAction"
+                type="com.web.jxp.managetraining.ManagetrainingExportAction"
+                scope="request"
+                name="managetrainingForm">
+        </action>
+        
+        <action path="/question/QuestionAction"
+                type="com.web.jxp.question.QuestionAction"
+                scope="request"
+                name="questionForm">
+            <forward name="display" path="/question/index.jsp" />
+            <forward name="add_question" path="/question/edit_question.jsp" />
+            <forward name="view_question" path="/question/view_question.jsp" />
+        </action>
+
+        <action path="/question/QuestionExportAction"
+                type="com.web.jxp.question.QuestionExportAction"
+                scope="request"
+                name="questionForm">
+        </action>
+        
+        <action path="/analytics/AnalyticsAction"
+                type="com.web.jxp.analytics.AnalyticsAction"
+                scope="request"
+                name="analyticsForm">
+            <forward name="crew" path="/analytics/crew.jsp" />
+            <forward name="analytics" path="/analytics/analytics.jsp" />
+            <forward name="training" path="/analytics/training.jsp" /> 
+            <forward name="attendance" path="/analytics/attendance.jsp" /> 
+        </action>
+        
+        <action path="/documentexpiry/DocumentexpiryAction"
+                type="com.web.jxp.documentexpiry.DocumentexpiryAction"
+                scope="request"
+                name="documentexpiryForm">
+            <forward name="display" path="/documentexpiry/index.jsp" />
+            <forward name="display_alert" path="/documentexpiry/indexAlert.jsp" />
+        </action>
+        
+        <action path="/documentexpiry/DocumentexpiryExportAction"
+                type="com.web.jxp.documentexpiry.DocumentexpiryExportAction"
+                scope="request"
+                name="documentexpiryForm">
+        </action>
+        <action path="/documentexpiry/DocumentexpiryAlertExport"
+                type="com.web.jxp.documentexpiry.DocumentexpiryAlertExport"
+                scope="request"
+                name="documentexpiryForm">
+        </action>
+        
+        <action path="/wellnessfb/WellnessfbAction"
+                type="com.web.jxp.wellnessfb.WellnessfbAction"
+                scope="request"
+                name="wellnessfbForm">
+            <forward name="display" path="/wellnessfb/index.jsp" />
+            <forward name="add_category" path="/wellnessfb/edit_category.jsp" />
+            <forward name="view_category" path="/wellnessfb/view_category.jsp" />
+            <forward name="view_subcategory" path="/wellnessfb/index_subcategory.jsp" />
+            <forward name="add_subcategory" path="/wellnessfb/edit_subcategory.jsp" />
+            <forward name="add_question" path="/wellnessfb/edit_question.jsp" />
+            <forward name="view_question" path="/wellnessfb/index_question.jsp" />
+        </action>
+        
+        <action path="/wellnessfb/WellnessfbExportAction"
+                type="com.web.jxp.wellnessfb.WellnessfbExportAction"
+                scope="request"
+                name="wellnessfbForm">
+        </action>
+        
+        <action path="/wellnessmatrix/WellnessmatrixAction"
+                type="com.web.jxp.wellnessmatrix.WellnessmatrixAction"
+                scope="request"
+                name="wellnessmatrixForm">
+            <forward name="display" path="/wellnessmatrix/index.jsp" />
+            <forward name="add_wellnessmatrix" path="/wellnessmatrix/edit_wellnessmatrix.jsp" />
+            <forward name="view_wellnessmatrix" path="/wellnessmatrix/view_wellnessmatrix.jsp" />
+            <forward name="assign" path="/wellnessmatrix/assign.jsp" />
+        </action>
+        
+        <action path="/wellnessmatrix/WellnessmatrixExportAction"
+                type="com.web.jxp.wellnessmatrix.WellnessmatrixExportAction"
+                scope="request"
+                name="wellnessmatrixForm">
+        </action>
+        
+        <action path="/crewinsurance/CrewinsuranceAction"
+                type="com.web.jxp.crewinsurance.CrewinsuranceAction"
+                scope="request"
+                name="crewinsuranceForm">
+            <forward name="display" path="/crewinsurance/index.jsp" />
+            <forward name="add_crewinsurance" path="/crewinsurance/edit_crewinsurance.jsp" />
+            <forward name="view_crewinsurance" path="/crewinsurance/view_crewinsurance.jsp" />
+        </action>
+        
+        <action path="/crewinsurance/CrewinsuranceExportAction"
+                type="com.web.jxp.crewinsurance.CrewinsuranceExportAction"
+                scope="request"
+                name="crewinsuranceForm">
+        </action>
+        <action path="/managewellness/ManagewellnessAction"
+                type="com.web.jxp.managewellness.ManagewellnessAction"
+                scope="request"
+                name="managewellnessForm">
+            <forward name="list1" path="/managewellness/list1.jsp" />
+            <forward name="list2" path="/managewellness/list2.jsp" />
+            <forward name="assign1" path="/managewellness/assign1.jsp" />
+            <forward name="assign2" path="/managewellness/assign2.jsp" />
+        </action>
+        
+        <action path="/managewellness/ManagewellnessExportAction"
+                type="com.web.jxp.managewellness.ManagewellnessExportAction"
+                scope="request"
+                name="managewellnessForm">
+        </action>
+        
+        <action path="/crewdayrate/CrewdayrateAction"
+                type="com.web.jxp.crewdayrate.CrewdayrateAction"
+                scope="request"
+                name="crewdayrateForm">
+            <forward name="display" path="/crewdayrate/index.jsp" />
+            <forward name="view_crewdayrate" path="/crewdayrate/view_crewdayrate.jsp" />
+        </action>
+        
+        <action path="/crewdayrate/CrewdayrateExportAction"
+                type="com.web.jxp.crewdayrate.CrewdayrateExportAction"
+                scope="request"
+                name="crewdayrateForm">
+        </action>
+        
+        <action path="/crewdayrate/CrewdayrateViewExport"
+                type="com.web.jxp.crewdayrate.CrewdayrateViewExport"
+                scope="request"
+                name="crewdayrateForm">
+        </action>
+        
+        <action path="/billingcycle/BillingcycleAction"
+                type="com.web.jxp.billingcycle.BillingcycleAction"
+                scope="request"
+                name="billingcycleForm">
+            <forward name="display" path="/billingcycle/index.jsp" />
+            <forward name="add_billingcycle" path="/billingcycle/add_billingcycle.jsp" />
+        </action>
+        
+        <action path="/billingcycle/BillingcycleExportAction"
+                type="com.web.jxp.billingcycle.BillingcycleExportAction"
+                scope="request"
+                name="billingcycleForm">
+        </action>
+        
+        <action path="/timesheet/TimesheetAction"
+                type="com.web.jxp.timesheet.TimesheetAction"
+                scope="request"
+                name="timesheetForm">
+            <forward name="display" path="/timesheet/index.jsp" />
+            <forward name="view_timesheet" path="/timesheet/view_timesheet.jsp" />
+            <forward name="view_timesheetdetails" path="/timesheet/view_timesheetdetails.jsp" />
+        </action>
+                
+        <action path="/timesheet/TimesheetExportAction"
+                type="com.web.jxp.timesheet.TimesheetExportAction"
+                scope="request"
+                name="timesheetForm">
+        </action>
+        
+        <action path="/timesheet/TimesheetDetailExport"
+                type="com.web.jxp.timesheet.TimesheetDetailExport"
+                scope="request"
+                name="timesheetForm">
+        </action>
+		
+        <action path="/revision/RevisionAction"
+                type="com.web.jxp.revision.RevisionAction"
+                scope="request"
+                name="revisionForm">
+            <forward name="display" path="/revision/index.jsp" />
+            <forward name="add_revision" path="/revision/edit_revision.jsp" />
+            <forward name="view_revision" path="/revision/view_revision.jsp" />
+        </action>
+        
+        <action path="/revision/RevisionExportAction"
+                type="com.web.jxp.revision.RevisionExportAction"
+                scope="request"
+                name="revisionForm">
+        </action>
+        
+        <action path="/invoicetemplate/InvoicetemplateAction"
+                type="com.web.jxp.invoicetemplate.InvoicetemplateAction"
+                scope="request"
+                name="invoicetemplateForm">
+            <forward name="display" path="/invoicetemplate/index.jsp" />
+            <forward name="add_invoicetemplate" path="/invoicetemplate/edit_invoicetemplate.jsp" />
+            <forward name="view_invoicetemplate" path="/invoicetemplate/view_invoicetemplate.jsp" />
+        </action>
+        
+        <action path="/invoicetemplate/InvoicetemplateExportAction"
+                type="com.web.jxp.invoicetemplate.InvoicetemplateExportAction"
+                scope="request"
+                name="invoicetemplateForm">
+        </action>
+        
+        <action path="/bank/BankAction"
+                type="com.web.jxp.bank.BankAction"
+                scope="request"
+                name="bankForm">
+            <forward name="display" path="/bank/index.jsp" />
+            <forward name="add_bank" path="/bank/edit_bank.jsp" />
+            <forward name="view_bank" path="/bank/view_bank.jsp" />
+        </action>
+        
+        <action path="/bank/BankExportAction"
+                type="com.web.jxp.bank.BankExportAction"
+                scope="request"
+                name="bankForm">
+        </action>
+
+        <action path="/clientinvoicing/ClientinvoicingAction"
+                type="com.web.jxp.clientinvoicing.ClientinvoicingAction"
+                scope="request"
+                name="clientinvoicingForm">
+            <forward name="display" path="/clientinvoicing/index.jsp" />
+            <forward name="view_indextimesheet" path="/clientinvoicing/indextimesheet.jsp" />
+            <forward name="generate_invoice" path="/clientinvoicing/generate_invoice.jsp" />
+            <forward name="invoice_detail" path="/clientinvoicing/invoice_detail.jsp" />
+            <forward name="payment_detail" path="/clientinvoicing/payment_detail.jsp" />
+        </action>
+        
+        <action path="/clientinvoicing/ClientinvoicingExportAction"
+                type="com.web.jxp.clientinvoicing.ClientinvoicingExportAction"
+                scope="request"
+                name="clientinvoicingForm">
+        </action>
+        
+        <action path="/pdept/PdeptAction"
+                type="com.web.jxp.pdept.PdeptAction"
+                scope="request"
+                name="pdeptForm">
+            <forward name="display" path="/pdept/index.jsp" />
+            <forward name="add_pdept" path="/pdept/edit_pdept.jsp" />
+            <forward name="view_pdept" path="/pdept/view_pdept.jsp" />
+        </action>
+
+        <action path="/pdept/PdeptExportAction"
+                type="com.web.jxp.pdept.PdeptExportAction"
+                scope="request"
+                name="pdeptForm">
+        </action>
+        
+        <action path="/competencyassessments/CompetencyassessmentsAction"
+                type="com.web.jxp.competencyassessments.CompetencyassessmentsAction"
+                scope="request"
+                name="competencyassessmentsForm">
+            <forward name="display" path="/competencyassessments/index.jsp" />
+            <forward name="add_competencyassessments" path="/competencyassessments/edit_competencyassessments.jsp" />
+            <forward name="view_competencyassessments" path="/competencyassessments/view_competencyassessments.jsp" />
+        </action>
+
+        <action path="/competencyassessments/CompetencyassessmentsExportAction"
+                type="com.web.jxp.competencyassessments.CompetencyassessmentsExportAction"
+                scope="request"
+                name="competencyassessmentsForm">
+        </action>
+        
+        <action path="/competencypriorities/CompetencyprioritiesAction"
+                type="com.web.jxp.competencypriorities.CompetencyprioritiesAction"
+                scope="request"
+                name="competencyprioritiesForm">
+            <forward name="display" path="/competencypriorities/index.jsp" />
+            <forward name="add_competencypriorities" path="/competencypriorities/edit_competencypriorities.jsp" />
+            <forward name="view_competencypriorities" path="/competencypriorities/view_competencypriorities.jsp" />
+        </action>
+
+        <action path="/competencypriorities/CompetencyprioritiesExportAction"
+                type="com.web.jxp.competencypriorities.CompetencyprioritiesExportAction"
+                scope="request"
+                name="competencyprioritiesForm">
+        </action>
+        
+        <action path="/pcategory/PcategoryAction"
+                type="com.web.jxp.pcategory.PcategoryAction"
+                scope="request"
+                name="pcategoryForm">
+            <forward name="display" path="/pcategory/index.jsp" />
+            <forward name="add_pcategory" path="/pcategory/edit_pcategory.jsp" />
+            <forward name="view_pcategory" path="/pcategory/view_pcategory.jsp" />
+        </action>
+
+        <action path="/pcategory/PcategoryExportAction"
+                type="com.web.jxp.pcategory.PcategoryExportAction"
+                scope="request"
+                name="pcategoryForm">
+        </action>
+
+        <action path="/pcode/PcodeAction"
+                type="com.web.jxp.pcode.PcodeAction"
+                scope="request"
+                name="pcodeForm">
+            <forward name="display" path="/pcode/index.jsp" />
+            <forward name="add_pcode" path="/pcode/edit_pcode.jsp" />
+            <forward name="view_pcode" path="/pcode/view_pcode.jsp" />
+        </action>
+
+        <action path="/pcode/PcodeExportAction"
+                type="com.web.jxp.pcode.PcodeExportAction"
+                scope="request"
+                name="pcodeForm">
+        </action>
+        
+        <action path="/framework/FrameworkAction"
+                type="com.web.jxp.framework.FrameworkAction"
+                scope="request"
+                name="frameworkForm">
+            <forward name="display" path="/framework/index.jsp" />
+            <forward name="positionlist" path="/framework/positionlist.jsp" />
+            <forward name="assign" path="/framework/assign.jsp" /> 
+        </action>
+       
+        <action path="/framework/FrameworkExportAction"
+                type="com.web.jxp.framework.FrameworkExportAction"
+                scope="request"
+                name="frameworkForm">
+        </action>
+        
+        <action path="/appeal/AppealAction"
+                type="com.web.jxp.appeal.AppealAction"
+                scope="request"
+                name="appealForm">
+            <forward name="display" path="/appeal/index.jsp" />
+            <forward name="add_appeal" path="/appeal/edit_appeal.jsp" />
+            <forward name="view_appeal" path="/appeal/view_appeal.jsp" />
+        </action>
+        
+        <action path="/appeal/AppealExportAction"
+                type="com.web.jxp.appeal.AppealExportAction"
+                scope="request"
+                name="appealForm">
+        </action>
+        
+        <action path="/appealreason/AppealreasonAction"
+                type="com.web.jxp.appealreason.AppealreasonAction"
+                scope="request"
+                name="appealreasonForm">
+            <forward name="display" path="/appealreason/index.jsp" />
+            <forward name="add_appealreason" path="/appealreason/edit_appealreason.jsp" />
+            <forward name="view_appealreason" path="/appealreason/view_appealreason.jsp" />
+        </action>
+        
+        <action path="/appealreason/AppealreasonExportAction"
+                type="com.web.jxp.appealreason.AppealreasonExportAction"
+                scope="request"
+                name="appealreasonForm">
+        </action>
+        
+        <action path="/tracker/TrackerAction"
+                type="com.web.jxp.tracker.TrackerAction"
+                scope="request"
+                name="trackerForm">
+            <forward name="list1" path="/tracker/list1.jsp" />
+            <forward name="list2" path="/tracker/list2.jsp" />
+            <forward name="assign1" path="/tracker/assign1.jsp" />
+            <forward name="assign2" path="/tracker/assign2.jsp" />
+        </action>
+        
+        <action path="/tracker/TrackerExportAction"
+                type="com.web.jxp.tracker.TrackerExportAction"
+                scope="request"
+                name="trackerForm">
+        </action>
+        
+        <action path="/appealrejection/AppealrejectionAction"
+                type="com.web.jxp.appealrejection.AppealrejectionAction"
+                scope="request"
+                name="appealrejectionForm">
+            <forward name="display" path="/appealrejection/index.jsp" />
+            <forward name="add_appealrejection" path="/appealrejection/edit_appealrejection.jsp" />
+            <forward name="view_appealrejection" path="/appealrejection/view_appealrejection.jsp" />
+        </action>
+        
+        <action path="/appealrejection/AppealrejectionExportAction"
+                type="com.web.jxp.appealrejection.AppealrejectionExportAction"
+                scope="request"
+                name="appealrejectionForm">
+        </action>
+
+        <action path="/competency/CompetencyAction"
+                type="com.web.jxp.competency.CompetencyAction"
+                scope="request"
+                name="competencyForm">
+            <forward name="display" path="/competency/index.jsp" />
+            <forward name="view_competency" path="/competency/view_competency.jsp" />
+        </action>
+        
+        <action path="/competency/CompetencyExportAction"
+                type="com.web.jxp.competency.CompetencyExportAction"
+                scope="request"
+                name="competencyForm">
+        </action>
+        
+        <action path="/competency/CompetencyExportDetails"
+                type="com.web.jxp.competency.CompetencyExportDetails"
+                scope="request"
+                name="competencyForm">
+        </action>
+        
+        <action path="/knowledgecontent/KnowledgecontentAction"
+                type="com.web.jxp.knowledgecontent.KnowledgecontentAction"
+                scope="request"
+                name="knowledgecontentForm">
+            <forward name="display" path="/knowledgecontent/index.jsp" />
+            <forward name="add_category" path="/knowledgecontent/edit_category.jsp" />
+            <forward name="view_category" path="/knowledgecontent/view_category.jsp" />
+            <forward name="view_subcategory" path="/knowledgecontent/index_subcategory.jsp" />
+            <forward name="add_subcategory" path="/knowledgecontent/edit_subcategory.jsp" />
+            <forward name="add_course" path="/knowledgecontent/edit_course.jsp" />
+            <forward name="view_course" path="/knowledgecontent/index_course.jsp" />
+        </action>
+        
+        <action path="/knowledgecontent/KnowledgecontentExportAction"
+                type="com.web.jxp.knowledgecontent.KnowledgecontentExportAction"
+                scope="request"
+                name="knowledgecontentForm">
+        </action>
+        
+        <action path="/knowledgebasematrix/KnowledgebasematrixAction"
+                type="com.web.jxp.knowledgebasematrix.KnowledgebasematrixAction"
+                scope="request"
+                name="knowledgebasematrixForm">
+            <forward name="display" path="/knowledgebasematrix/index.jsp" />
+            <forward name="add_knowledgebasematrix" path="/knowledgebasematrix/edit_knowledgebasematrix.jsp" />
+            <forward name="view_knowledgebasematrix" path="/knowledgebasematrix/view_knowledgebasematrix.jsp" />
+            <forward name="assign" path="/knowledgebasematrix/assign.jsp" />
+        </action>
+        
+        <action path="/knowledgebasematrix/KnowledgebasematrixExportAction"
+                type="com.web.jxp.knowledgebasematrix.KnowledgebasematrixExportAction"
+                scope="request"
+                name="knowledgebasematrixForm">
+        </action>        
+         
+        <action path="/policy/PolicyAction"
+                type="com.web.jxp.policy.PolicyAction"
+                scope="request"
+                name="policyForm">
+            <forward name="display" path="/policy/index.jsp" />
+            <forward name="add_policy" path="/policy/edit_policy.jsp" />
+            <forward name="view_policy" path="/policy/view_policy.jsp" />
+        </action>
+        
+        <action path="/policy/PolicyExportAction"
+                type="com.web.jxp.policy.PolicyExportAction"
+                scope="request"
+                name="policyForm">
+        </action>
+        
+        <action path="/remark/RemarkAction"
+                type="com.web.jxp.remark.RemarkAction"
+                scope="request"
+                name="remarkForm">
+            <forward name="display" path="/remark/index.jsp" />
+            <forward name="add_remark" path="/remark/edit_remark.jsp" />
+            <forward name="view_remark" path="/remark/view_remark.jsp" />
+        </action>
+        
+        <action path="/remark/RemarkExportAction"
+                type="com.web.jxp.remark.RemarkExportAction"
+                scope="request"
+                name="remarkForm">
+        </action>
+        
+        <action path="/ppetype/PpetypeAction"
+                type="com.web.jxp.ppetype.PpetypeAction"
+                scope="request"
+                name="ppetypeForm">
+            <forward name="display" path="/ppetype/index.jsp" />
+            <forward name="add_ppetype" path="/ppetype/edit_ppetype.jsp" />
+            <forward name="view_ppetype" path="/ppetype/view_ppetype.jsp" />
+        </action>
+        
+        <action path="/ppetype/PpetypeExportAction"
+                type="com.web.jxp.ppetype.PpetypeExportAction"
+                scope="request"
+                name="ppetypeForm">
+        </action>
+        
+        <action path="/contract/ContractAction"
+                type="com.web.jxp.contract.ContractAction"
+                scope="request"
+                name="contractForm">
+            <forward name="display" path="/contract/index.jsp" />
+            <forward name="add_contract" path="/contract/edit_contract.jsp" />
+            <forward name="view_contract" path="/contract/view_contract.jsp" />
+        </action>
+        
+        <action path="/contract/ContractExportAction"
+                type="com.web.jxp.contract.ContractExportAction"
+                scope="request"
+                name="contractForm">
+        </action>
+      
+        <action path="/state/StateAction"
+                type="com.web.jxp.state.StateAction"
+                scope="request"
+                name="stateForm">
+            <forward name="display" path="/state/index.jsp" />
+            <forward name="add_state" path="/state/edit_state.jsp" />
+            <forward name="view_state" path="/state/view_state.jsp" />
+        </action>
+
+        <action path="/state/StateExportAction"
+                type="com.web.jxp.state.StateExportAction"
+                scope="request"
+                name="stateForm">
+        </action>
+        
+        <action path="/clientlogin/ClientloginAction"
+                type="com.web.jxp.clientlogin.ClientloginAction"
+                scope="request"
+                name="clientloginForm">
+            <forward name="display" path="/clientlogin/index.jsp" />
+            <forward name="view_clientlogin" path="/clientlogin/view_clientlogin.jsp" />
+            <forward name="view_details" path="/clientlogin/view_details.jsp" />
+        </action>
+      
+        <!--//added by suraj for download data report-->
+        <action path="/talentpool/ExcelDetails"
+                type="com.web.jxp.talentpool.ExcelDetails"
+                scope="request"
+                name="talentpoolForm">
+        </action>
+        <action path="/talentpool/DataReportAction"
+                type="com.web.jxp.talentpool.DataReportAction"
+                scope="request"
+                name="talentpoolForm">
+        </action>
+        <action path="/talentpool/AnaliticsReportAction"
+                type="com.web.jxp.talentpool.AnaliticsReportAction"
+                scope="request"
+                name="talentpoolForm">
+        </action>
+        <action path="/talentpool/ExportData"
+                type="com.web.jxp.talentpool.ExportData"
+                scope="request"
+                name="talentpoolForm">
+        </action>
+        <!-- end -->
+        
+        <action path="/candidateregistration/CandidateRegistrationAction"
+                type="com.web.jxp.candidateregistration.CandidateRegistrationAction"
+                scope="request"
+                name="candidateRegistrationForm">
+            <forward name="display" path="/candidateregistration/edit_registration.jsp" />
+        </action>
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>  
+   
+</struts-config>

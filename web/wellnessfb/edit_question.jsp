@@ -1,0 +1,346 @@
+<%@page language="java"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.web.jxp.user.UserInfo"%>
+<%@page import="com.web.jxp.base.StatsInfo"%>
+<%@page import="com.web.jxp.wellnessfb.WellnessfbInfo"%>
+<%@taglib uri="/WEB-INF/struts-html-el.tld" prefix="html"%>
+<%@taglib uri="/WEB-INF/fmt.tld" prefix="fmt"%>
+<%@taglib uri="/WEB-INF/c.tld" prefix="c"%>
+<jsp:useBean id="wellnessfb" class="com.web.jxp.wellnessfb.Wellnessfb" scope="page"/>
+<!doctype html>
+<html lang="en">
+    <%
+        try
+        {
+            int mtp = 7, submtp = 69, ctp = 3;
+            String per = "N", addper = "N", editper = "N", deleteper = "N";
+            if (session.getAttribute("LOGININFO") == null)
+            {
+    %>
+    <jsp:forward page="/index1.jsp"/>
+    <%
+            }
+            else
+            {
+                UserInfo uinfo = (UserInfo) session.getAttribute("LOGININFO");
+                if(uinfo != null)
+                {
+                    per = uinfo.getPermission() != null ? uinfo.getPermission() : "N";
+                    addper = uinfo.getAddper() != null ? uinfo.getAddper() : "N";
+                    editper = uinfo.getEditper() != null ? uinfo.getEditper() : "N";
+                    deleteper = uinfo.getDeleteper() != null ? uinfo.getDeleteper() : "N";
+                }
+            }
+            String message = "", clsmessage = "red_font";
+            if (request.getAttribute("MESSAGE") != null)
+            {
+                message = (String)request.getAttribute("MESSAGE");
+                request.removeAttribute("MESSAGE");
+            }        
+            if(message != null && (message.toLowerCase()).indexOf("success") != -1)
+                clsmessage = "updated-msg";
+
+            ArrayList assettypelist = new ArrayList();
+            if (request.getAttribute("ASSETTYPELIST") != null) {
+                assettypelist = (ArrayList) request.getAttribute("ASSETTYPELIST");
+            }
+            int assettypelisttotal = assettypelist.size();
+            String assettypecb = "";
+            if (request.getAttribute("ASSETTYPECB") != null) {
+                assettypecb = (String) request.getAttribute("ASSETTYPECB");
+            }
+
+            String respondercb = "";
+            if (request.getAttribute("RESPONDERCB") != null) {
+                respondercb = (String) request.getAttribute("RESPONDERCB");
+            }
+    %>
+    <head>
+        <meta charset="utf-8">
+        <title><%= wellnessfb.getMainPath("title") != null ? wellnessfb.getMainPath("title") : "" %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="../assets/images/favicon.png">
+        <!-- Bootstrap Css -->
+        <link href="../assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+        <link href="../assets/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css">
+        <!-- Icons Css -->
+        <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/drop/dropzone.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="../assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+        <link href="../assets/css/minimal.css" rel="stylesheet">
+        <link href="../assets/css/style.css" rel="stylesheet" type="text/css"/>
+        <script src="../jsnew/common.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../jsnew/validation.js"></script>
+        <script type="text/javascript" src="../jsnew/wellnessfb.js"></script>
+    </head>
+    <body data-sidebar="dark" data-keep-enlarged="true" class="vertical-collpsed">
+        <html:form action="/wellnessfb/WellnessfbAction.do" onsubmit="return false;" styleClass="form-horizontal" enctype="multipart/form-data">
+            <html:hidden property="doView"/>
+            <html:hidden property="categoryId"/>
+            <html:hidden property="subcategoryId"/>
+            <html:hidden property="questionId"/>
+            <html:hidden property="doSaveQuestion"/>
+            <html:hidden property="doIndexQuestion"/>
+            <html:hidden property="doIndexSubcategory"/>
+            <html:hidden property="doCancel"/>
+            <html:hidden property="search"/>
+            <html:hidden property="fname"/>
+            <html:hidden property="assettypecb"/>
+            <html:hidden property="respondercb"/>
+            <!-- Begin page -->
+            <div id="layout-wrapper">
+                <%@include file="../header.jsp" %>
+                <%@include file="../sidemenu.jsp" %>
+                <!-- Start right Content -->
+                <div class="main-content">
+                    <div class="page-content tab_panel">
+                        <div class="row head_title_area">
+                            <div class="col-md-12 col-xl-12">
+                                <div class="float-start"><a href="javascript: viewQuestioncat(-1);" class="back_arrow"><img  src="../assets/images/back-arrow.png"/>Wellness Feedback</a></div>
+                                <div class="float-end">                            
+                                    <div class="toggled-off usefool_tool">
+                                        <div class="toggle-title">
+                                            <img src="../assets/images/left-arrow.png" class="fa-angle-left"/>
+                                            <img src="../assets/images/right-arrow.png" class="fa-angle-right"/>
+
+                                        </div>
+                                        <!-- end toggle-title --->
+                                        <div class="toggle-content">
+                                            <h4>Useful Tools</h4>
+                                            <%@include file ="../shortcutmenu_edit.jsp"%>
+                                        </div>                                
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xl-12 tab_head_area">
+                                <ul class='nav nav-tabs nav-tabs-custom' id='tab_menu'>
+                                    <li id='list_menu1' class='list_menu1 nav-item <%=(ctp == 1) ? " active" : ""%>'>
+                                        <a class='nav-link' href="javascript: showDetailcategory();">
+                                            <span class='d-none d-md-block'>Category</span><span class='d-block d-md-none'><i class='mdi mdi-home-variant h5'></i></span>
+                                        </a>
+                                    </li>
+                                    <li id='list_menu1' class='list_menu1 nav-item <%=(ctp == 2) ? " active" : ""%>'>
+                                        <a class='nav-link' href="javascript: viewSubcategory();">
+                                            <span class='d-none d-md-block'>Sub-Category</span><span class='d-block d-md-none'><i class='mdi mdi-home-variant h5'></i></span>
+                                        </a>
+                                    </li>
+                                    <li id='list_menu1' class='list_menu1 nav-item <%=(ctp == 3) ? " active" : ""%>'>
+                                        <a class='nav-link' href="javascript: viewQuestion('-1');">
+                                            <span class='d-none d-md-block'>Questions</span><span class='d-block d-md-none'><i class='mdi mdi-home-variant h5'></i></span>
+                                        </a>
+                                    </li>
+                                </ul> 
+                            </div>    
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12 col-xl-12">
+                                    <div class="body-background">
+                                        <div class="row d-none1">
+                                            <div class="col-lg-12">
+                                                <% if(!message.equals("")) {%><div class="sbold <%=clsmessage%>">
+                                                    <%=message%>
+                                                </div><% } %>
+                                                <div class="main-heading">
+                                                    <div class="add-btn">
+                                                        <h4>&nbsp;</h4>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                    <label class="form_label">Category Code</label>
+                                                    <html:text property="categorycode" styleId="categorycode" styleClass="form-control" maxlength="100" readonly="true" />
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                    <label class="form_label">Category Name</label>
+                                                    <html:text property="categoryname" styleId="categoryname" styleClass="form-control" maxlength="100" readonly="true" />
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                    <label class="form_label">Sub-category Name</label>
+                                                    <html:select property="esubcategoryId" styleId="esubcategoryId" styleClass="form-select">
+                                                        <html:optionsCollection filter="false" property="subcategorys" label="ddlLabel" value="ddlValue">
+                                                        </html:optionsCollection>
+                                                    </html:select>
+                                                </div>
+                                                
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 form_group">
+                                                    <label class="form_label">Question</label>
+                                                    <html:text property="question" styleId="question" styleClass="form-control" maxlength="1000"/>
+                                                </div>
+                                                
+                                                  <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                    <label class="form_label">Answer Type</label>
+                                                    <html:select property="answertypeId" styleId="answertypeId" styleClass="form-select" onchange=" javascript: setaddvaluedisplay()">
+                                                        <html:option value="-1">- Select -</html:option>
+                                                        <html:option value="1">Text Answer</html:option>
+                                                        <html:option value="2">Any one of</html:option>
+                                                    </html:select>
+                                                </div>
+                                                
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group" id="addvalueId">
+                                                    <label class="form_label">Add Values (comma separated)</label>
+                                                    <html:text property="addvalue" styleId="addvalue" styleClass="form-control" maxlength="100"/>
+                                                </div>
+                                                
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                    <label class="form_label">Asset Type</label>
+
+                                                    <select name="assettype" id="assettypemultiselect_dd" multiple="multiple" class="form-select">
+<%
+                                                                    if(assettypelisttotal > 0){
+                                                                    for(int i = 0 ;i < assettypelisttotal; i++){
+                                                                  WellnessfbInfo assettypeinfo = (WellnessfbInfo)assettypelist.get(i);
+                                                                    if (assettypeinfo != null) {
+%>                                                      
+                                        <option value="<%= assettypeinfo.getDdlValue()%>" <% if (wellnessfb.checkToStr(assettypecb, assettypeinfo.getDdlValue()+"")) {%>selected<%}%>><%= assettypeinfo.getDdlLabel()%></option>
+
+                                                        <%}}}%>
+                                                    </Select>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                    <label class="form_label">Responder</label>
+                                                    <select name="responder" id="respondermultiselect_dd" multiple="multiple" class="form-select">
+                                                        <option value="1" <% if (wellnessfb.checkToStr(respondercb, "1")) {%>selected<%}%>>Crew</option>
+                                                        <option value="2" <% if (wellnessfb.checkToStr(respondercb, "2")) {%>selected<%}%>>Coordinator</option>
+                                                    </Select>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                    <label class="form_label">Recipient</label>
+                                                    <html:select property="recipientId" styleId="recipientId" styleClass="form-select">
+                                                        <html:option value="-1">- Select -</html:option>
+                                                        <html:option value="1">Crew Coordinator</html:option>
+                                                    </html:select>
+                                                </div>
+
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 form_group">
+                                                    <label class="form_label">Description</label>
+                                                    <html:textarea property="cdescription" rows="5" styleId="cdescription" styleClass="form-control"></html:textarea>
+                                                    <script type="text/javascript">
+                                                        document.getElementById("cdescription").setAttribute('placeholder', '');
+                                                        document.getElementById("cdescription").setAttribute('maxlength', '1000');
+                                                    </script>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row" id="submitdiv">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <a href="javascript: submitquestionForm();" class="save_btn"><img src="../assets/images/save.png">Save</a>
+                                                    <a href="javascript: viewQuestioncat('-1');" class="cl_btn"><i class="ion ion-md-close"></i> Close</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- End Page-content -->
+                </div>
+                <!-- end main content-->
+            </div>
+        </div>
+        <!-- END layout-wrapper -->
+        <%@include file="../footer.jsp" %>
+
+        <div id="drag_drop_modal" class="modal fade drag_drop_div" tabindex="-1" data-bs-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <h4 class="modal-title">View File</h4> -->
+                        <button type="button" class="close close_modal_btn pull-right" data-bs-dismiss="modal" aria-hidden="true"><i class="ion ion-md-close"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="dropzone dropzone-file-area" id="my-dropzone" action="##">
+                                    <h3 class="sbold">
+                                        <img src="../assets/images/drag_drop_upload.png"/>
+                                        Drag and Drop <br/> <span>or browse your files</span>
+                                    </h3>
+                                    <div class="drop_list_save" id="dSave"><a href="javascript:void(0);" onclick="javascript: setClassRes();"  data-bs-dismiss="modal"><img src="../assets/images/save.png"> Save</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- JAVASCRIPT -->
+        <script src="../assets/drop/jquery.min.js"></script>	
+        <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script> 
+        <script src="../assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="../assets/drop/dropzone.min.js" type="text/javascript"></script>  
+        <script src="../assets/drop/app.min.js" type="text/javascript"></script>
+        <script src="../assets/js/bootstrap-select.min.js"></script>
+        <script src="../assets/js/bootstrap-datepicker.min.js"></script>
+        <script src="../assets/js/bootstrap-multiselect.js" type="text/javascript"></script> 
+        <script src="../assets/drop/form-dropzone.min.js" type="text/javascript"></script>
+         <script src="/jxp/assets/js/sweetalert2.min.js"></script>
+         <script>
+             setaddvaluedisplay();
+         </script>
+         <script>
+                                                                                        // toggle class show hide text section
+                                                                                        $(document).on('click', '.toggle-title', function () {
+                                                                                            $(this).parent()
+                                                                                                    .toggleClass('toggled-on')
+                                                                                                    .toggleClass('toggled-off');
+                                                                                        });
+         </script>
+        <script type="text/javascript">
+                                                                    jQuery(document).ready(function () {
+                                                                        $(".kt-selectpicker").selectpicker();
+                                                                        $(".wesl_dt").datepicker({
+                                                                            autoclose: "true",
+                                                                            orientation: "bottom",
+                                                                            format: "yyyy",
+                                                                            viewMode: "years",
+                                                                            minViewMode: "years"
+                                                                        });
+                                                                    });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#assettypemultiselect_dd').multiselect({
+                    includeSelectAllOption: true,
+                    //maxHeight: 400,
+                    numberDisplayed: 2,
+                    dropUp: true,
+                    nonSelectedText: '- Select -',
+                    maxHeight: 200,
+                    enableFiltering: false,
+                    enableCaseInsensitiveFiltering: false,
+                    buttonWidth: '100%'
+                });
+                $('#respondermultiselect_dd').multiselect({
+                    includeSelectAllOption: true,
+                    //maxHeight: 400,
+                    numberDisplayed: 2,
+                    dropUp: true,
+                    nonSelectedText: '- Select -',
+                    maxHeight: 200,
+                    enableFiltering: false,
+                    enableCaseInsensitiveFiltering: false,
+                    buttonWidth: '100%'
+                });
+            });
+        </script>
+    </html:form>
+</body>
+<%
+}
+catch(Exception e)
+{
+    e.printStackTrace();
+}
+%>
+</html>
