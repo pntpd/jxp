@@ -1,5 +1,6 @@
 package com.web.jxp.crewlogin;
 
+import com.mysql.jdbc.Statement;
 import com.web.jxp.base.Base;
 import com.web.jxp.base.Template;
 import java.sql.Connection;
@@ -75,14 +76,18 @@ public class Crewlogin extends Base {
             sb.setLength(0);
 
             conn = getConnection();
-            pstmt = conn.prepareStatement(query);
+            pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             int scc = 0;
             pstmt.setString(++scc, (emailId));
             pstmt.setString(++scc, otp);
             pstmt.setString(++scc, date);
             pstmt.setString(++scc, currDate1());
-            //print(this,"createCrewlogin :: " + pstmt.toString());
-            cc = pstmt.executeUpdate();
+//            print(this,"insertOTP :: " + pstmt.toString());
+            pstmt.executeUpdate();
+            rs = pstmt.getGeneratedKeys();
+            while (rs.next()) {
+                cc = rs.getInt(1);
+            }
         } catch (Exception exception) {
             print(this, "createCrewlogin :: " + exception.getMessage());
         } finally {
@@ -124,9 +129,31 @@ public class Crewlogin extends Base {
         }
         return ck;
     }
-    
-   public CrewloginInfo getCandidateInfo(String emailId) 
-   {
+
+    public boolean checkOTPByAPI(String emailId, String otpcode, int otpId) {
+        boolean bval = false;
+        String query = "SELECT i_otpid FROM t_otp WHERE s_emailid =? AND s_otpvalue =? AND i_otpid =?";
+        try {
+            conn = getConnection();
+            pstmt = conn.prepareStatement(query);
+            int scc = 0;
+            pstmt.setString(++scc, emailId);
+            pstmt.setString(++scc, otpcode);
+            pstmt.setInt(++scc, otpId);
+            print(this, "checkOTPByAPI :: " + pstmt.toString());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                bval = true;
+            }
+        } catch (Exception exception) {
+            print(this, "checkOTPByAPI :: " + exception.getMessage());
+        } finally {
+            close(conn, pstmt, rs);
+        }
+        return bval;
+    }
+
+    public CrewloginInfo getCandidateInfo(String emailId) {
         CrewloginInfo info = null;
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT cr.i_crewrotationid, c.i_candidateid, c.i_positionid, CONCAT_WS(' ', c.s_firstname, c.s_middlename, c.s_lastname), ");
@@ -140,8 +167,7 @@ public class Crewlogin extends Base {
         sb.append("WHERE c.s_email = ? AND c.i_status =1 ");
         String query = (sb.toString()).intern();
         sb.setLength(0);
-        try
-        {
+        try {
             conn = getConnection();
             pstmt = conn.prepareStatement(query);
             int scc = 0;
@@ -150,8 +176,7 @@ public class Crewlogin extends Base {
             rs = pstmt.executeQuery();
             int crewrotationId = 0, candidateId = 0, positionId = 0, clientId = 0, clientassetId = 0;
             String name = "", clientname = "", assetname = "", position = "", grade = "";
-            while (rs.next()) 
-            {
+            while (rs.next()) {
                 crewrotationId = rs.getInt(1);
                 candidateId = rs.getInt(2);
                 positionId = rs.getInt(3);
@@ -162,10 +187,8 @@ public class Crewlogin extends Base {
                 assetname = rs.getString(8) != null ? rs.getString(8) : "";
                 position = rs.getString(9) != null ? rs.getString(9) : "";
                 grade = rs.getString(10) != null ? rs.getString(10) : "";
-                if(!position.equals(""))
-                {
-                    if(!grade.equals(""))
-                    {
+                if (!position.equals("")) {
+                    if (!grade.equals("")) {
                         position += " | " + grade;
                     }
                 }

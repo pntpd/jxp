@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -94,13 +95,23 @@ public class Test extends Base {
         Base base = new Base();
 //            Onboarding ob = new Onboarding();
         Test tt = new Test();
-        String s = "1234";
-        try {
-            System.out.println("Val :: " + base.cipher(s));
-            System.out.println("Val :: " + base.decipher(s));
-        } catch (Exception e) {
-            e.printStackTrace();
+        String str = "//[***]\n1***245***3";
+        StringBuilder currentNumber = new StringBuilder();
+        int sum = 0;
+        for (char ch : str.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                currentNumber.append(ch);
+            } else {
+                if (currentNumber.length() > 0) {
+                    sum += Integer.parseInt(currentNumber.toString());
+                    currentNumber.setLength(0); 
+                }
+            }
         }
+        if (currentNumber.length() > 0) {
+            sum += Integer.parseInt(currentNumber.toString());
+        }
+        System.out.println("sum= " + sum);
 
 //            String s = "<ul><li>Test</li><li>Design</li><li>Coding</li></ul>";
 //            String p1 = s.replaceAll("<ul>", "").replaceAll("</ul>", "").replaceAll("<li>", "").replaceAll("</li>", "\n");
@@ -119,7 +130,7 @@ public class Test extends Base {
 //            int d = base.getDiffTwoDateInt("2023-04-10", "2023-05-22", "yyyy-MM-dd");
 //            System.out.println("d :: " + d);
 //            try{
-        Clientselection clientselection1 = new Clientselection();
+//        Clientselection clientselection1 = new Clientselection();
         //String langcontent = clientselection1.createResumeTeamplateFile(370, 2, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 49, 0, "", 0.0);
 //            }catch(Exception e){
 //                e.printStackTrace();
@@ -136,49 +147,49 @@ public class Test extends Base {
 //        String content = template.patch(hashmap);
 //        hashmap.clear();
 //        content = "संतोष सिंह";
-        String content = "BOSIET: Basic Offshore Safety Induction and Emergency Training Crew code will be substituted with crew name for interviews.\n"
-                + "Resume submitted by candidate will be attached to the crew profile for the interview round.\n"
-                + "\n"
-                + "Disclaimer\n"
-                + "\n"
-                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents. BOSIET: Basic Offshore Safety Induction and Emergency Training Crew code will be substituted with crew name for interviews.\n"
-                + "Resume submitted by candidate will be attached to the crew profile for the interview round.\n"
-                + "\n"
-                + "Disclaimer\n"
-                + "\n"
-                + "Disclaimer\n"
-                + "\n"
-                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents."
-                + ""
-                + ""
-                + ""
-                + ""
-                + ""
-                + "BOSIET: Basic Offshore Safety Induction and Emergency Training Crew code will be substituted with crew name for interviews.\n"
-                + "Resume submitted by candidate will be attached to the crew profile for the interview round.\n"
-                + "\n"
-                + "Disclaimer\n"
-                + "\n"
-                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents."
-                + "\n"
-                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents."
-                + ""
-                + ""
-                + "BOSIET: Basic Offshore Safety Induction and Emergency Training Crew code will be substituted with crew name for interviews.\n"
-                + "Resume submitted by candidate will be attached to the crew profile for the interview round.\n"
-                + "\n"
-                + "Disclaimer\n"
-                + "\n"
-                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents.";
-        String header = "<table style=\"width: 100%;\" align=\"center\">\n"
-                + "<tbody>\n"
-                + "<tr>\n"
-                + "<td style=\"width: 300px;\"><span style=\"font-family: 'arial black', 'avant garde';\"><strong><img src='https://system.journeyxpro.com/jxp/assets/images/header-logo.png' alt=\"\" /><br /><span style=\"font-family: georgia, palatino; font-size: 12px;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Talent Assurance<br /></span></strong></span></td>\n"
-                + "<td style=\"width: 300px; text-align: center;\"><span style=\"font-family: Cambria, serif; font-size: 30px; font-weight: bold;\"> Crew Profile </span></td>\n"
-                + "<td style=\"width: 300px;\">&nbsp;</td>\n"
-                + "</tr>\n"
-                + "</tbody>\n"
-                + "</table>";
+//        String content = "BOSIET: Basic Offshore Safety Induction and Emergency Training Crew code will be substituted with crew name for interviews.\n"
+//                + "Resume submitted by candidate will be attached to the crew profile for the interview round.\n"
+//                + "\n"
+//                + "Disclaimer\n"
+//                + "\n"
+//                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents. BOSIET: Basic Offshore Safety Induction and Emergency Training Crew code will be substituted with crew name for interviews.\n"
+//                + "Resume submitted by candidate will be attached to the crew profile for the interview round.\n"
+//                + "\n"
+//                + "Disclaimer\n"
+//                + "\n"
+//                + "Disclaimer\n"
+//                + "\n"
+//                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents."
+//                + ""
+//                + ""
+//                + ""
+//                + ""
+//                + ""
+//                + "BOSIET: Basic Offshore Safety Induction and Emergency Training Crew code will be substituted with crew name for interviews.\n"
+//                + "Resume submitted by candidate will be attached to the crew profile for the interview round.\n"
+//                + "\n"
+//                + "Disclaimer\n"
+//                + "\n"
+//                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents."
+//                + "\n"
+//                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents."
+//                + ""
+//                + ""
+//                + "BOSIET: Basic Offshore Safety Induction and Emergency Training Crew code will be substituted with crew name for interviews.\n"
+//                + "Resume submitted by candidate will be attached to the crew profile for the interview round.\n"
+//                + "\n"
+//                + "Disclaimer\n"
+//                + "\n"
+//                + "All information contained herein is strictly confidential and intended solely for recruitment purposes for the client. Candidates must be contacted and interviewed exclusively through OCS. The company assumes no responsibility for information or verification if contacted directly or through other agents.";
+//        String header = "<table style=\"width: 100%;\" align=\"center\">\n"
+//                + "<tbody>\n"
+//                + "<tr>\n"
+//                + "<td style=\"width: 300px;\"><span style=\"font-family: 'arial black', 'avant garde';\"><strong><img src='https://system.journeyxpro.com/jxp/assets/images/header-logo.png' alt=\"\" /><br /><span style=\"font-family: georgia, palatino; font-size: 12px;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Talent Assurance<br /></span></strong></span></td>\n"
+//                + "<td style=\"width: 300px; text-align: center;\"><span style=\"font-family: Cambria, serif; font-size: 30px; font-weight: bold;\"> Crew Profile </span></td>\n"
+//                + "<td style=\"width: 300px;\">&nbsp;</td>\n"
+//                + "</tr>\n"
+//                + "</tbody>\n"
+//                + "</table>";
         //String fbody = "<p><span style=\"text-decoration-line: underline;\"><br />Disclaimer<br /></span>All information contained herein is strictly confidential and intended solely for recruitment purposes for <strong>the client.</strong> Candidates must be contacted and interviewed exclusively through <strong>OCS</strong>. The company assumes no responsibility for information or verification if contacted directly or through other agents.</p>";
         //System.out.println("content :: " + content);
         //File outputPDFFile = new File("C:\\Users\\wesld\\OneDrive\\Documents\\OCS\\lang55.pdf");

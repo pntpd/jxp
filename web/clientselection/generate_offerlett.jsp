@@ -145,7 +145,7 @@
                                                         </html:optionsCollection>
                                                     </html:select>
                                                 </div>
-                                                
+
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 form_group">
                                                     <label class="form_label">Variable Pay Element (%)</label>
                                                     <html:text property="variablepay" styleId="variablepay" styleClass="form-control" maxlength="12"/>
@@ -216,7 +216,7 @@
                                                         document.getElementById("comments").setAttribute('maxlength', '1000');
                                                     </script>
                                                 </div>
-                                                
+
 
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 form_group">
                                                     <label class="form_label">Custom Value 1</label>
@@ -239,7 +239,7 @@
                                                         document.getElementById("cval3").setAttribute('placeholder', '');
                                                     </script>
                                                 </div>
-                                                    
+
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 form_group">
                                                     <label class="form_label">Custom Value 4</label>
                                                     <html:text property="cval4" styleId="cval4" styleClass="form-control" maxlength="100"/>
@@ -289,8 +289,10 @@
                                                         document.getElementById("cval10").setAttribute('placeholder', '');
                                                     </script>
                                                 </div>
-                                                    
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12"  id="generatepdfdiv"><a href=" javascript: generateofferpdf('<%=clientasset%>');" class="gen_btn"> Generate</a></div>
+
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="generatepdfdiv">
+                                                    <a href="javascript: generateofferpdf('<%=clientasset%>');" class="gen_btn"> Generate</a>
+                                                </div>
                                             </div>	
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-12 col-12">
@@ -344,7 +346,8 @@
                                 <h2>Thank You!</h2>
                                 <center><img src="../assets/images/thank-you.png"></center>
                                 <h3>Email Sent</h3>
-                                <p>Candidate CV has been successfully sent to the client.</p>
+                                <!--<p>Candidate CV has been successfully sent to the client.</p>-->
+                                <p>Offer letter has been successfully sent to candidate.</p>
                                 <a href="javascript: view('<%= jobpostId%>', '');" class="msg_button" style="text-decoration: underline;">Client Selection</a>
                             </div>
                         </div>
@@ -366,15 +369,15 @@
         <script src="/jxp/assets/js/sweetalert2.min.js"></script>
 
         <script type="text/javascript">
-            jQuery(document).ready(function () {
-                $(".kt-selectpicker").selectpicker();
-                $(".wesl_dt").datepicker({
-                    todayHighlight: !0,
-                    format: "dd-M-yyyy",
-                    autoclose: "true",
-                    orientation: "bottom"
-                });
-            });
+                                                jQuery(document).ready(function () {
+                                                    $(".kt-selectpicker").selectpicker();
+                                                    $(".wesl_dt").datepicker({
+                                                        todayHighlight: !0,
+                                                        format: "dd-M-yyyy",
+                                                        autoclose: "true",
+                                                        orientation: "bottom"
+                                                    });
+                                                });
         </script>
         <script type="text/javascript">
             jQuery(document).ready(function () {

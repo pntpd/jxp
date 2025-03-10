@@ -226,8 +226,7 @@ public class ClientselectionAction extends Action {
             request.getSession().setAttribute("CLIENTSELECTIONJOBPOST_DETAIL", info);
             request.getSession().setAttribute("SHORTLISTEDCANDIDATE_LIST", shortcandList);
             return mapping.findForward("selection_details");
-        } 
-        else if (frm.getDoDecline() != null && frm.getDoDecline().equals("yes")) {
+        } else if (frm.getDoDecline() != null && frm.getDoDecline().equals("yes")) {
             frm.setDoDecline("no");
             print(this, " getDoDecline block :: ");
 
@@ -242,15 +241,20 @@ public class ClientselectionAction extends Action {
             String strDeclineRemark = vobj.replacedesc(frm.getTxtDeclineremark());
             int cc = clientselection.getClientCandidateDecline(shortlistId, username, declineReasons, strDeclineRemark, companytype, uId, candidateId);
 
+            int id = clientselection.updateStatus(shortlistId);
+            if (id > 0) {
+                clientselection.unlockCandidate(candidateId);
+                clientselection.insertclientselectionhistory(shortlistId, 4, companytype, 0, uId, 5);
+            }
             ClientselectionInfo info = clientselection.getClientSelectionByIdforDetail(jobpostId);
             ArrayList shortcandList = clientselection.getShortlistedCandidateListByIDs(jobpostId, companytype, "", 0, 0);
             request.getSession().setAttribute("CLIENTSELECTIONJOBPOST_DETAIL", info);
             request.getSession().setAttribute("SHORTLISTEDCANDIDATE_LIST", shortcandList);
             return mapping.findForward("selection_details");
-        } else if (frm.getDoRelease()!= null && frm.getDoRelease().equals("yes")) {
+        } else if (frm.getDoRelease() != null && frm.getDoRelease().equals("yes")) {
             frm.setDoRelease("no");
             print(this, " getDoRelease block :: ");
-            
+
             int jobpostId = frm.getJobpostId();
             frm.setJobpostId(jobpostId);
             int candidateId = frm.getCandidateId();
@@ -258,18 +262,16 @@ public class ClientselectionAction extends Action {
             int shortlistId = frm.getShortlistId();
             frm.setShortlistId(shortlistId);
             int id = clientselection.updateStatus(shortlistId);
-            if(id > 0)
-            {
+            if (id > 0) {
                 clientselection.unlockCandidate(candidateId);
                 clientselection.insertclientselectionhistory(shortlistId, 4, companytype, 0, uId, 5);
-            }            
+            }
             ClientselectionInfo info = clientselection.getClientSelectionByIdforDetail(jobpostId);
             ArrayList shortcandList = clientselection.getShortlistedCandidateListByIDs(jobpostId, companytype, "", 0, 0);
             request.getSession().setAttribute("CLIENTSELECTIONJOBPOST_DETAIL", info);
             request.getSession().setAttribute("SHORTLISTEDCANDIDATE_LIST", shortcandList);
             return mapping.findForward("selection_details");
-        }
-        else if (frm.getDoCancel() != null && frm.getDoCancel().equals("yes")) {
+        } else if (frm.getDoCancel() != null && frm.getDoCancel().equals("yes")) {
             frm.setDoCancel("no");
             print(this, " getDoCancel block :: ");
 

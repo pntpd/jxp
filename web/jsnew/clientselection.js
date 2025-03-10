@@ -71,7 +71,7 @@ function checkSearch()
 
 function searchFormAjax(v, v1)
 {
-    if (checkSearch()) 
+    if (checkSearch())
     {
         var url = "../ajax/clientselection/getinfo.jsp";
         var httploc = getHTTPObject();
@@ -491,7 +491,7 @@ function generateofferpdf(assetname)
             {
                 var response = httploc.responseText;
                 setIframe(response);
-                document.getElementById("generatepdfdiv").innerHTML = '<a href="javascript: generateofferpdf('+assetname+');" class="gen_btn"> Generate</a>';
+                document.getElementById("generatepdfdiv").innerHTML = "<a href=\"javascript: generateofferpdf('" + assetname + "');\" class='gen_btn'> Generate</a>";
             }
         }
     };
@@ -510,7 +510,7 @@ function setIframe(uval)
         classname = "doc_mode";
     } else if (uval.includes(".pdf"))
     {
-        url_v = uval+"#toolbar=0&page=1&view=fitH,100";
+        url_v = uval + "#toolbar=0&page=1&view=fitH,100";
         classname = "pdf_mode";
     } else
     {
@@ -521,7 +521,8 @@ function setIframe(uval)
     setTimeout(function () {
         window.top.$('#iframe').attr('src', url_v);
         document.getElementById("iframe").className = classname;
-        document.getElementById("diframe").href = uval;
+        if (document.getElementById("diframe"))
+            document.getElementById("diframe").href = uval;
     }, 1000);
 
     $("#iframe").on("load", function () {
@@ -754,7 +755,7 @@ function checkMailoffer()
 
 function submitmailofferForm(candidatename, filename, clientname, shortlistId)
 {
-    
+
     if (document.forms[0].getElementsByTagName("input"))
     {
         var inputElements = document.forms[0].getElementsByTagName("input");
@@ -776,8 +777,10 @@ function submitmailofferForm(candidatename, filename, clientname, shortlistId)
         var subject = document.forms[0].subject.value;
         var description = document.forms[0].description.value;
         var attachfile = document.forms[0].attachfile.value;
-        var fromDate = document.forms[0].validfrom.value;
-        var toDate = document.forms[0].validto.value;
+        if (document.forms[0].validfrom)
+            var fromDate = document.forms[0].validfrom.value;
+        if (document.forms[0].validto)
+            var toDate = document.forms[0].validto.value;
         var clientId = document.forms[0].clientId.value;
         var assetId = document.forms[0].assetId.value;
         var type = document.forms[0].type.value;
@@ -1246,9 +1249,9 @@ function Declinevalidation() {
     return true;
 }
 
-function getDeclineCandidate() 
+function getDeclineCandidate()
 {
-    if (Declinevalidation()) 
+    if (Declinevalidation())
     {
         var s = "<span>The Candidate will be removed from the <br/> job post selection list for the client.</span></br> ";
         Swal.fire({

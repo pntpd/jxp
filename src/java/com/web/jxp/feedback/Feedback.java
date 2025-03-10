@@ -1783,7 +1783,7 @@ public class Feedback extends Base {
         sb.append("LEFT JOIN t_jobpost ON(t_jobpost.i_jobpostid = t_shortlist.i_jobpostid) ");
         sb.append("LEFT JOIN t_position ON(t_position.i_positionid = t_jobpost.i_positionid) ");
         sb.append("LEFT JOIN t_grade ON(t_grade.i_gradeid = t_position.i_gradeid) ");
-        sb.append("WHERE i_candidateid = ? AND i_oflag = 3 ");
+        sb.append("WHERE i_candidateid = ? AND i_oflag = 3 AND i_sflag = 4");
         
         String query = (sb.toString()).intern();
         sb.setLength(0);
