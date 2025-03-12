@@ -49,16 +49,20 @@
         </div>
 
         <div class="d-flex flex-center align-items-center">
+            <%if (crewId > 0) {%>
             <div class="cleint_asset_name">
                 <ul>
-                    <%if(crewId > 0) {%>
                     <li><label>Client Name</label><span><%=c_name%></span></li>
                     <li><label>Asset Name</label><span><%=a_name%></span></li>
-                    <%}else{%>
-                        <li><label></label><span><%=userName%></span></li>
-                    <%}%>
                 </ul>
             </div>
+            <%} else {%>
+            <div class="cleint_asset_name">
+                <ul>
+                    <li><label></label><span><%=userName%></span></li> 
+                </ul>
+            </div>
+            <%}%>
             <div class="dropdown noti_user">
                 <a class="btn header-item waves-effect" href="javascript: ;" onclick="javascript: logout();">
                     <img class="header-profile-user user_noti" src="../assets/images/log_out.png" alt="User"></br>
@@ -85,28 +89,28 @@
                         <li><a class="<%=(ctp == 7) ? " active" : ""%>"  href="javascript:;" onclick="openTab('8');">Certifications</a></li>
                         <li><a class="<%=(ctp == 8) ? " active" : ""%>"  href="javascript:;" onclick="openTab('6');">Documents</a></li>
                         <li><a class="<%=(ctp == 14) ? " active" : ""%>"  href="javascript:;" onclick="openTab('14');">Bank</a></li>
-                        <%if(crewId > 0) {%><li><a class="<%=(ctp == 13) ? " active" : ""%>"  href="javascript:;" onclick="openTab('13');">Contract</a></li><%}%>
+                        <%if (crewId > 0) {%><li><a class="<%=(ctp == 13) ? " active" : ""%>"  href="javascript:;" onclick="openTab('13');">Contract</a></li><%}%>
                     </ul>
                 </li>
-                <%if(crewId > 0) {%>
-                    <li class="menu2<%=(ctp == 9) ? " mm-active active" : ""%>">
-                        <a href="javascript:;" onclick="getFeedbacklist();" class="waves-effect<%=(ctp == 9) ? " active" : ""%>"><strong>Wellness Feedback</strong></a>
-                    </li>
-                    <li class="menu3<%=(ctp == 10) ? " mm-active active" : ""%>">
-                        <a href="javascript:;" onclick="javascript: getCompetencylist();" class="waves-effect">
-                            <strong>Competency</strong>
-                        </a>
-                    </li>
-                    <li class="menu3<%=(ctp == 11) ? " mm-active active" : ""%>">
-                        <a href="javascript:;" onclick="javascript: getDocumentlist();" class="waves-effect">
-                            <strong>Documents</strong>
-                        </a>
-                    </li>
-                    <li class="menu3<%=(ctp == 12) ? " mm-active active" : ""%>">
-                        <a href="javascript:;" onclick="javascript: getTraininglist();" class="waves-effect">
-                            <strong>Training Course</strong>
-                        </a>
-                    </li>
+                <%if (crewId > 0) {%>
+                <li class="menu2<%=(ctp == 9) ? " mm-active active" : ""%>">
+                    <a href="javascript:;" onclick="getFeedbacklist();" class="waves-effect<%=(ctp == 9) ? " active" : ""%>"><strong>Wellness Feedback</strong></a>
+                </li>
+                <li class="menu3<%=(ctp == 10) ? " mm-active active" : ""%>">
+                    <a href="javascript:;" onclick="javascript: getCompetencylist();" class="waves-effect">
+                        <strong>Competency</strong>
+                    </a>
+                </li>
+                <li class="menu3<%=(ctp == 11) ? " mm-active active" : ""%>">
+                    <a href="javascript:;" onclick="javascript: getDocumentlist();" class="waves-effect">
+                        <strong>Documents</strong>
+                    </a>
+                </li>
+                <li class="menu3<%=(ctp == 12) ? " mm-active active" : ""%>">
+                    <a href="javascript:;" onclick="javascript: getTraininglist();" class="waves-effect">
+                        <strong>Training Course</strong>
+                    </a>
+                </li>
                 <%}%>
                 <li class="menu3<%=(ctp == 15) ? " mm-active active" : ""%>">
                     <a href="javascript:;" onclick="javascript: getInterviewlist();" class="waves-effect">
@@ -118,11 +122,11 @@
                         <strong>Client Offer</strong>
                     </a>
                 </li>
-                <li class="menu4 log_out_button">
-                    <a  href="/jxp/feedback/FeedbackAction.do?doLogout=yes" class="waves-effect">
-                        <img src="../assets/images/log_out.png"/> <strong>Log Out</strong>
-                    </a>
-                </li>
+                <!--                <li class="menu4 log_out_button">
+                                    <a  href="/jxp/feedback/FeedbackAction.do?doLogout=yes" class="waves-effect">
+                                        <img src="../assets/images/log_out.png"/> <strong>Log Out</strong>
+                                    </a>
+                                </li>-->
                 <li class="menu5 privacy_button mm-active">
                     <a href="/jxp/feedback/crewprivacy_policy.jsp" class="waves-effect active">Privacy Policy</a>                    
                 </li>

@@ -38,16 +38,17 @@ public class MobCrewloginAction extends HttpServlet {
 
         if (action != null && !action.equals("")) {
             if (action.equals("login") || action.equals("resentotp")) {
+                int candidateId = 0, cr_id = 0, otpId = 0;
+                String crew_name = "";
                 if (email != null && !email.equals("")) {
                     CrewloginInfo info = crewlogin.getCandidateInfo(email);
-                    int candidateId = 0;
                     if (info != null) {
                         candidateId = info.getCandidateId();
                     }
                     if (candidateId > 0) {
                         String otp = crewlogin.generateotp();
                         String date = crewlogin.getDateAfter(crewlogin.currDate1(), 5, 5, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm:ss");
-                        int otpId = crewlogin.insertOTP(email, otp.replaceAll("\\s", ""), date);
+                        otpId = crewlogin.insertOTP(email, otp.replaceAll("\\s", ""), date);
                         if (otpId > 0) {
                             request.getSession().removeAttribute("CREWLOGIN");
                             request.getSession().setAttribute("CREWLOGIN", info);
@@ -75,28 +76,33 @@ public class MobCrewloginAction extends HttpServlet {
                             crewlogin.createMailLog(12, "", email, "", "", from, subject, filePath + "/" + fname, "", 0, "", 0);
                             if (flag <= 0) {
                                 jo.put("status", "error");
-                                jo.put("message", "Something went wrong.");
+                                jo.put("message", "An unexpected error occurred. Please try again later.");
                             } else {
                                 jo.put("status", "success");
-                                jo.put("message", "OTP Sent");
-                                jo.put("crewName", (info.getName() != null ? info.getName() : ""));
-                                jo.put("crId", (info.getCrewrotationId()));
-                                jo.put("otpId", otpId);
+                                jo.put("message", "OTP sent successfully to your email.");
+                                crew_name = info.getName() != null ? (info.getName().replaceAll("\\s+", " ").trim()) : "";
+                                cr_id = info.getCrewrotationId();
                             }
                         } catch (Exception e) {
                             jo.put("status", "error");
-                            jo.put("message", e.getMessage());
+                             jo.put("message", "An unexpected error occurred. Please try again later.");
                         }
                     } else {
                         jo.put("status", "error");
-                        jo.put("message", "Email Id not exist in our database.");
+                        jo.put("message", "The entered user does not exist. Please check your credentials and try again.");
                     }
                 } else {
                     jo.put("status", "error");
-                    jo.put("message", "OTP cannot be sent. Please check your email Id or contact your Administrator.");
+                    jo.put("message", "An unexpected error occurred. Please try again later.");
                 }
+                jo.put("crew_name", crew_name);
+                jo.put("cr_id", cr_id);
+                jo.put("otp_id", otpId);
             } else if (action.equals("verification")) {
-                String otpIds = jsonRequest.optString("otpId", "");
+
+                int id = 0;
+                String user_name = "", client = "", asset = "", position = "";
+                String otpIds = jsonRequest.optString("otp_id", "");
                 String otpCode = jsonRequest.optString("otp", "");
                 if (otpIds != null && otpCode != null && email != null) {
                     int otpId = Integer.parseInt(otpIds);
@@ -105,7 +111,17 @@ public class MobCrewloginAction extends HttpServlet {
                         if (bval) {
                             jo.put("status", "success");
                             jo.put("message", "Verified");
-                            jo.put("url", "/jxp/feedback/feedback_welcome.jsp");
+                            jo.put("url", crewlogin.getMainPath("web_path") + "/jxp/feedback/feedback_welcome.jsp?mobLogin=" + email);
+                            if (request.getSession().getAttribute("CREWLOGIN") != null) {
+                                CrewloginInfo info = (CrewloginInfo) request.getSession().getAttribute("CREWLOGIN");
+                                if (info != null) {
+                                    id = info.getCandidateId();
+                                    user_name = info.getName() != null ? (info.getName().replaceAll("\\s+", " ").trim()) : "";
+                                    client = info.getClientname() != null ? (info.getClientname().replaceAll("\\s+", " ").trim()) : "";
+                                    asset = info.getAssetname() != null ? (info.getAssetname().replaceAll("\\s+", " ").trim()) : "";
+                                    position = info.getPosition() != null ? (info.getPosition().replaceAll("\\s+", " ").trim()) : "";
+                                }
+                            }
                         } else {
                             jo.put("status", "error");
                             jo.put("message", "Invalid OTP.");
@@ -119,6 +135,11 @@ public class MobCrewloginAction extends HttpServlet {
                     jo.put("status", "error");
                     jo.put("message", "Please check your email Id and OTP.");
                 }
+                jo.put("id", id);
+                jo.put("user_name", user_name);
+                jo.put("client", client);
+                jo.put("asset", asset);
+                jo.put("position", position);
             } else {
                 jo.put("status", "error");
                 jo.put("message", "Something went wrong.");

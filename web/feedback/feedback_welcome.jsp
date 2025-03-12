@@ -7,21 +7,33 @@
 <%@taglib uri="/WEB-INF/fmt.tld" prefix="fmt"%>
 <%@taglib uri="/WEB-INF/c.tld" prefix="c"%>
 <jsp:useBean id="feedback" class="com.web.jxp.feedback.Feedback" scope="page"/>
+<jsp:useBean id="crewlogin" class="com.web.jxp.crewlogin.Crewlogin" scope="page"/>
 <!doctype html>
 <html lang="en">
     <%
         try {
-              int ctp = 0;      
+            int ctp = 0;
+            if (session.getAttribute("CREWLOGIN") == null && request.getParameter("mobLogin") != null) {
+                String stremail = request.getParameter("mobLogin");
+                CrewloginInfo info = crewlogin.getCandidateInfo(stremail);
+                session.setAttribute("CREWLOGIN", info);
+                if (info != null) {
+                    session.setAttribute("WELCOMECRL", (info.getName() != null ? info.getName() : ""));
+                }
+            }
             if (session.getAttribute("CREWLOGIN") == null) {
 
     %>
     <jsp:forward page="/crewloginindex1.jsp"/>
     <%        }
+        String assetname = "", position = "";
         int crewrotationId = 0;
         if (session.getAttribute("CREWLOGIN") != null) {
             CrewloginInfo info = (CrewloginInfo) session.getAttribute("CREWLOGIN");
             if (info != null) {
                 crewrotationId = info.getCrewrotationId();
+                assetname = info.getAssetname() != null ? info.getAssetname() : "";
+                position = info.getPosition() != null ? info.getPosition() : "";
             }
         }
         ArrayList feedback_list = new ArrayList();
@@ -56,7 +68,7 @@
     %>
     <head>
         <meta charset="utf-8">
-        <title><%= feedback.getMainPath("title") != null ? feedback.getMainPath("title") : "" %></title>
+        <title><%= feedback.getMainPath("title") != null ? feedback.getMainPath("title") : ""%></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- App favicon -->
         <link rel="shortcut icon" href="../assets/images/favicon.png">
@@ -82,7 +94,8 @@
                 <div class="page-content">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12 col-xl-12 heading_title"><h1>Welcome,  <%=userName != null ? userName : ""%>!</h1></div>
+                            <div class="col-md-12 col-xl-12 heading_title"><h1>Welcome,  <%=userName != null ? userName : ""%>!<br><span><%=(!assetname.equals("") ? assetname + " , " + position : position)%></span></h1></div>
+
                             <div class="col-md-12 col-xl-12">
                                 <div class="body-background bg_null dash_bg">
                                     <div class="row row-flex justify-content-between">
@@ -141,19 +154,19 @@
         <script src="../assets/libs/metismenu/metisMenu.min.js"></script>
         <script src="../assets/js/app.js"></script>
         <script type="text/javascript">
-        function addLoadEvent(func) {
-            var oldonload = window.onload;
-            if (typeof window.onload != 'function') {
-                window.onload = func;
-            } else {
-                window.onload = function () {
-                    if (oldonload) {
-                        oldonload();
-                    }
-                }
-            }
-        }
-        addLoadEvent(setmenu('11'))
+                                                    function addLoadEvent(func) {
+                                                        var oldonload = window.onload;
+                                                        if (typeof window.onload != 'function') {
+                                                            window.onload = func;
+                                                        } else {
+                                                            window.onload = function () {
+                                                                if (oldonload) {
+                                                                    oldonload();
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    addLoadEvent(setmenu('11'))
         </script>
     </html:form>
 </body>
