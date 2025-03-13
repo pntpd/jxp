@@ -94,7 +94,7 @@
                 <div class="page-content">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12 col-xl-12 heading_title"><h1>Welcome,  <%=userName != null ? userName : ""%>!<br><span><%=(!assetname.equals("") ? assetname + " , " + position : position)%></span></h1></div>
+                            <div class="col-md-12 col-xl-12 heading_title"><h1>Welcome,  <%=userName != null ? userName : ""%>!<br><span><%=(!assetname.equals("") ? assetname + " | " + position : position)%></span></h1></div>
 
                             <div class="col-md-12 col-xl-12">
                                 <div class="body-background bg_null dash_bg">

@@ -13,12 +13,12 @@ import java.util.Calendar;
 import java.util.logging.Logger;
 
 public class Crewlogin extends Base {
-
+    
     private static final Logger logger = Logger.getLogger(Class.class.getName());
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
-
+    
     public String generateotp() {
         String chars = "0123456789";
         int numberOfCodes = 0;
@@ -30,7 +30,7 @@ public class Crewlogin extends Base {
         }
         return code;
     }
-
+    
     public static String getDateAfter(String date, int type, int no, String sformatv, String endformatv) {
         String dt = "";
         try {
@@ -64,7 +64,7 @@ public class Crewlogin extends Base {
         }
         return dt;
     }
-
+    
     public int insertOTP(String emailId, String otp, String date) {
         int cc = 0;
         try {
@@ -74,7 +74,7 @@ public class Crewlogin extends Base {
             sb.append("values (?, ?, ?, ?)");
             String query = (sb.toString()).intern();
             sb.setLength(0);
-
+            
             conn = getConnection();
             pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             int scc = 0;
@@ -95,7 +95,7 @@ public class Crewlogin extends Base {
         }
         return cc;
     }
-
+    
     public String getOTPMessage(String otp, String htmlFile) {
         String adminpage = getMainPath("template_path") + htmlFile;
         HashMap hashmap = new HashMap();
@@ -103,12 +103,12 @@ public class Crewlogin extends Base {
         hashmap.put("OTP", otp);
         return template.patch(hashmap);
     }
-
+    
     public int checkOTP(String emailId, String otp) {
         int ck = 0;
         StringBuilder sb = new StringBuilder();
         sb.append("select i_otpid FROM t_otp where s_emailid = ? and s_otpvalue = ? and d_expirydate > now() ");
-
+        
         String query = (sb.toString()).intern();
         sb.setLength(0);
         try {
@@ -129,17 +129,30 @@ public class Crewlogin extends Base {
         }
         return ck;
     }
-
+    
     public boolean checkOTPByAPI(String emailId, String otpcode, int otpId) {
         boolean bval = false;
-        String query = "SELECT i_otpid FROM t_otp WHERE s_emailid =? AND s_otpvalue =? AND i_otpid =?";
+        StringBuilder sb = new StringBuilder();
+        sb.append("SELECT i_otpid FROM t_otp WHERE s_emailid =? ");
+        if (otpcode != null && !otpcode.equals("")) {
+            sb.append("AND s_otpvalue =? ");
+        }
+        if (otpId > 0) {
+            sb.append("AND i_otpid =? ");
+        }
+        String query = sb.toString().intern();
+        sb.setLength(0);
         try {
             conn = getConnection();
             pstmt = conn.prepareStatement(query);
             int scc = 0;
             pstmt.setString(++scc, emailId);
-            pstmt.setString(++scc, otpcode);
-            pstmt.setInt(++scc, otpId);
+            if (otpcode != null && !otpcode.equals("")) {
+                pstmt.setString(++scc, otpcode);
+            }
+            if (otpId > 0) {
+                pstmt.setInt(++scc, otpId);
+            }
             print(this, "checkOTPByAPI :: " + pstmt.toString());
             rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -152,7 +165,7 @@ public class Crewlogin extends Base {
         }
         return bval;
     }
-
+    
     public CrewloginInfo getCandidateInfo(String emailId) {
         CrewloginInfo info = null;
         StringBuilder sb = new StringBuilder();
@@ -187,11 +200,11 @@ public class Crewlogin extends Base {
                 assetname = rs.getString(8) != null ? rs.getString(8) : "";
                 position = rs.getString(9) != null ? rs.getString(9) : "";
                 grade = rs.getString(10) != null ? rs.getString(10) : "";
-                if (!position.equals("")) {
-                    if (!grade.equals("")) {
-                        position += " | " + grade;
-                    }
-                }
+//                if (!position.equals("")) {
+//                    if (!grade.equals("")) {
+//                        position += " | " + grade;
+//                    }
+//                }
                 info = new CrewloginInfo(crewrotationId, candidateId, positionId, name, emailId, clientId, clientassetId, clientname, assetname, position);
             }
         } catch (Exception exception) {
