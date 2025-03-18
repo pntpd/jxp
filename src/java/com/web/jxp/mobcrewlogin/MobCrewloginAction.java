@@ -102,7 +102,7 @@ public class MobCrewloginAction extends HttpServlet {
                 int id = 0;
                 boolean bflag = false;
                 String user_name = "", client = "", asset = "", position = "";
-                String otpIds = jsonRequest.optString("otp_id", "");
+                String otpIds = jsonRequest.optString("otp_id", "0");
                 String otpCode = jsonRequest.optString("otp", "");
                 if (email != null && !email.equals("") && email.equals("apurva.save@planetngtech.com") && otpCode.equals("123456")) {
                     bflag = true;

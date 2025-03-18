@@ -63,5 +63,46 @@
         <servlet-name>MobCrewloginAction</servlet-name>
         <url-pattern>/mob/login</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MobWellnessAction</servlet-name>
+        <servlet-class>com.web.jxp.mobwellness.MobWellnessAction</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>MobWellnessAction</servlet-name>
+        <url-pattern>/mob/getwellnessdetails</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>MobWellnessSaveAction</servlet-name>
+        <servlet-class>com.web.jxp.mobwellness.MobWellnessSaveAction</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>MobWellnessSaveAction</servlet-name>
+        <url-pattern>/mob/setwellnessdetails</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MobWellnessScheduleAction</servlet-name>
+        <servlet-class>com.web.jxp.mobwellness.MobWellnessScheduleAction</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>MobWellnessScheduleAction</servlet-name>
+        <url-pattern>/mob/getschedule</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>MobWellnessScheduleSaveAction</servlet-name>
+        <servlet-class>com.web.jxp.mobwellness.MobWellnessScheduleSaveAction</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>MobWellnessScheduleSaveAction</servlet-name>
+        <url-pattern>/mob/setschedule</url-pattern>
+    </servlet-mapping>
 
 </web-app>

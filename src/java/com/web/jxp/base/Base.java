@@ -284,7 +284,7 @@ public class Base {
         rv.setLength(0);
         return s;
     }
-    
+
     public static String makeCommaDelimInt(int[] langs) {
         if (langs == null || langs.length == 0) {
             return "";
@@ -1190,6 +1190,20 @@ public class Base {
             }
         } catch (Exception e) {
 
+        }
+        return str;
+    }
+
+    public String changeDate6(String date) {
+        String str = "0000-00-00";
+        try {
+            if (date != null && !date.equals("")) {
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+                str = sdf2.format(sdf1.parse(date));
+            }
+        } catch (Exception e) {
+            print(this, "Error in changeDate6 :: " + e.getMessage());
         }
         return str;
     }
