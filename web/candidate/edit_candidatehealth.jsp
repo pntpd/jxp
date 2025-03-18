@@ -144,10 +144,10 @@
                                                 <label class="form_label">Medical Fitness Certificate Expiry<span class="required" id="spanId4"> *</span></label>
                                                 <div class="input-daterange input-group">
                                                     <html:text property="medifitcertexp" styleId="medifitcertexp" styleClass="form-control add-style wesl_dt date-add" onkeypress="javascript: handleKeySearch(event);" readonly="true" onfocus="if (this.hasAttribute('readonly')) {
-                                                            this.removeAttribute('readonly');
-                                                            this.blur();
-                                                            this.focus();
-                                                        }"/>
+                                                                this.removeAttribute('readonly');
+                                                                this.blur();
+                                                                this.focus();
+                                                            }"/>
                                                     <script type="text/javascript">
                                                         document.getElementById("medifitcertexp").setAttribute('placeholder', 'DD-MMM-YYYY');
                                                     </script>
@@ -209,6 +209,28 @@
                                                     <html:option value="No">No</html:option>
                                                 </html:select>
                                             </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                <label class="form_label">Height (in cm)</label>
+                                                <html:text property="height" styleId="height" styleClass="form-control" maxlength="8" onkeypress="return allowPositiveNumber(event);" onfocus="if (this.value == '0.0') {
+                                                    this.value = '';
+                                                }" onblur="if (this.value == '') {
+                                                            this.value = '0.0';
+                                                        }"/>
+                                                <script type="text/javascript">
+                                                    document.getElementById("height").setAttribute('placeholder', '');
+                                                </script>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                <label class="form_label">Weight (in Kg)</label>
+                                                <html:text property="weight" styleId="weight" styleClass="form-control" maxlength="8" onkeypress="return allowPositiveNumber(event);" onfocus="if (this.value == '0.0') {
+                                                    this.value = '';
+                                                }" onblur="if (this.value == '') {
+                                                            this.value = '0.0';
+                                                        }"/>
+                                                <script type="text/javascript">
+                                                    document.getElementById("weight").setAttribute('placeholder', '');
+                                                </script>
+                                            </div>
                                             <div class="col-lg-3 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Attach File (5MB) (.pdf/.jpeg/.png)</label>
                                                 <html:file property="healthfile" styleId="upload1" onchange="javascript: setClass('1');"/>
@@ -238,15 +260,15 @@
         <script src="../assets/js/bootstrap-datepicker.min.js"></script>
         <script src="/jxp/assets/js/sweetalert2.min.js"></script>
         <script type="text/javascript">
-                                                jQuery(document).ready(function () {
-                                                    $(".kt-selectpicker").selectpicker();
-                                                    $(".wesl_dt").datepicker({
-                                                        todayHighlight: !0,
-                                                        format: "dd-M-yyyy",
-                                                        autoclose: "true",
-                                                        orientation: "bottom"
+                                                    jQuery(document).ready(function () {
+                                                        $(".kt-selectpicker").selectpicker();
+                                                        $(".wesl_dt").datepicker({
+                                                            todayHighlight: !0,
+                                                            format: "dd-M-yyyy",
+                                                            autoclose: "true",
+                                                            orientation: "bottom"
+                                                        });
                                                     });
-                                                });
         </script>            
         <script>
             $(function () {

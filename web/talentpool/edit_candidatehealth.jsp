@@ -187,6 +187,28 @@
                                                     <html:option value="No">No</html:option>
                                                 </html:select>
                                             </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                <label class="form_label">Height (in cm)</label>
+                                                <html:text property="height" styleId="height" styleClass="form-control" maxlength="8" onkeypress="return allowPositiveNumber(event);" onfocus="if (this.value == '0.0') {
+                                                    this.value = '';
+                                                }" onblur="if (this.value == '') {
+                                                            this.value = '0.0';
+                                                        }"/>
+                                                <script type="text/javascript">
+                                                    document.getElementById("height").setAttribute('placeholder', '');
+                                                </script>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                <label class="form_label">Weight (in Kg)</label>
+                                                <html:text property="weight" styleId="weight" styleClass="form-control" maxlength="8" onkeypress="return allowPositiveNumber(event);" onfocus="if (this.value == '0.0') {
+                                                    this.value = '';
+                                                }" onblur="if (this.value == '') {
+                                                            this.value = '0.0';
+                                                        }"/>
+                                                <script type="text/javascript">
+                                                    document.getElementById("weight").setAttribute('placeholder', '');
+                                                </script>
+                                            </div>
                                             <div class="col-lg-3 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Attach File (5MB) (.pdf/.jpeg/.png)</label>
                                                 <html:file property="healthfile" styleId="upload1" onchange="javascript: setClass('1');"/>

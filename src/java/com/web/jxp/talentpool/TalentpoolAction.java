@@ -920,6 +920,8 @@ public class TalentpoolAction extends Action {
                 if (info.getMfFilename() != null) {
                     frm.setHealthfilehidden(info.getMfFilename());
                 }
+                frm.setHeight(info.getHeight());
+                frm.setWeight(info.getWeight());
             }
             return mapping.findForward("add_candidatehealth");
         } else if (frm.getDoSavehealthdetail() != null && frm.getDoSavehealthdetail().equals("yes")) {
@@ -941,6 +943,8 @@ public class TalentpoolAction extends Action {
             String diabetes = validate.replacename(frm.getDiabetes());
             String smoking = validate.replacename(frm.getSmoking());
             String cov192doses = validate.replacename(frm.getCov192doses());
+            double height = frm.getHeight();
+            double weight = frm.getWeight();
             int status = 1;
             String ipAddrStr = request.getRemoteAddr();
             String iplocal = talentpool.getLocalIp();
@@ -962,7 +966,7 @@ public class TalentpoolAction extends Action {
                 fileName1 = talentpool.uploadFile(candidateId, "", image1, localname+"-"+fn, add_candidate_file, foldername);
             }
             TalentpoolInfo info = new TalentpoolInfo(ssmf, ogukmedicalftw, ogukexp, medifitcert, medifitcertexp,
-                    bloodgroup, bloodpressureId, hypertension, diabetes, smoking, fileName1, status, cov192doses);
+                    bloodgroup, bloodpressureId, hypertension, diabetes, smoking, fileName1, status, cov192doses, height, weight);
             if (candidateId > 0) {
                 int cc = talentpool.insertHealthdetails(info, candidateId, uId, userName);
                 if (cc > 0) {

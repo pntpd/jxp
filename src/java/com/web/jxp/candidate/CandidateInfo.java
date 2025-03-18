@@ -237,6 +237,10 @@ public class CandidateInfo {
     private String skill1;
     private String skill2;
     private String role;
+    
+    //New changes
+    private double height;
+    private double weight;
 
     //info for bankdetails
     public CandidateInfo(String bankName, String savingAccountNo, String branch, String IFSCCode, int accountTypeId, String bkFilename) {
@@ -623,7 +627,7 @@ public class CandidateInfo {
 
     //candidatehealth
     public CandidateInfo(String ssmf, String ogukmedicalftw, String ogukexp, String medifitcert, String medifitcertexp, String bloodgroup, int bloodpressure, String hypertension,
-            String diabetes, String smoking, String fileName1, int status, String cov192doses) {
+            String diabetes, String smoking, String fileName1, int status, String cov192doses, double height, double weight) {
         this.ssmf = ssmf;
         this.ogukmedicalftw = ogukmedicalftw;
         this.ogukexp = ogukexp;
@@ -637,11 +641,14 @@ public class CandidateInfo {
         this.mfFilename = fileName1;
         this.status = status;
         this.cov192doses = cov192doses;
+        this.height = height;
+        this.weight = weight;
     }
 
     //get by health id
-    public CandidateInfo(int candidatehealthId, String ssmf, String ogukmedicalftw, String ogukexp, String medifitcert, String medifitcertexp, String bloodgroup, int bloodpressureId, 
-            String hypertension, String diabetes, String smoking, int userId, String mfFilename, int status, String covid192doses, String bloodpressure, int pass) {
+    public CandidateInfo(int candidatehealthId, String ssmf, String ogukmedicalftw, String ogukexp, String medifitcert, String medifitcertexp, String bloodgroup,
+            int bloodpressureId, String hypertension, String diabetes, String smoking, int userId, String mfFilename, int status, String covid192doses, 
+            String bloodpressure, int pass, double height, double weight) {
         this.candidatehealthId = candidatehealthId;
         this.ssmf = ssmf;
         this.ogukmedicalftw = ogukmedicalftw;
@@ -659,6 +666,8 @@ public class CandidateInfo {
         this.cov192doses = covid192doses;
         this.bloodpressure = bloodpressure;
         this.passflag = pass;
+        this.height = height;
+        this.weight = weight;
     }
 
     // for vaccination
@@ -1995,4 +2004,13 @@ public class CandidateInfo {
     public String getRole() {
         return role;
     }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+    
 }

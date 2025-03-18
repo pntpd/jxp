@@ -10,60 +10,56 @@
 <!doctype html>
 <html lang="en">
     <%
-        try
-        {
+        try {
             int mtp = 2, submtp = 7, ctp = 3;
             String per = "N", addper = "N", editper = "N", deleteper = "N";
-            if (session.getAttribute("LOGININFO") == null)
-            {
+            if (session.getAttribute("LOGININFO") == null) {
     %>
     <jsp:forward page="/index1.jsp"/>
     <%
+        } else {
+            UserInfo uinfo = (UserInfo) session.getAttribute("LOGININFO");
+            if (uinfo != null) {
+                per = uinfo.getPermission() != null ? uinfo.getPermission() : "N";
+                addper = uinfo.getAddper() != null ? uinfo.getAddper() : "N";
+                editper = uinfo.getEditper() != null ? uinfo.getEditper() : "N";
+                deleteper = uinfo.getDeleteper() != null ? uinfo.getDeleteper() : "N";
             }
-    else
-            {
-                UserInfo uinfo = (UserInfo) session.getAttribute("LOGININFO");
-                if(uinfo != null)
-                {
-                    per = uinfo.getPermission() != null ? uinfo.getPermission() : "N";
-                    addper = uinfo.getAddper() != null ? uinfo.getAddper() : "N";
-                    editper = uinfo.getEditper() != null ? uinfo.getEditper() : "N";
-                    deleteper = uinfo.getDeleteper() != null ? uinfo.getDeleteper() : "N";
-                }
-            }
-               String message = "", clsmessage = "deleted-msg";
-            if (request.getAttribute("MESSAGE") != null)
-            {
-                message = (String)request.getAttribute("MESSAGE");
-                request.removeAttribute("MESSAGE");
-            }
-            if(message.toLowerCase().contains("success"))
-            {
-                    message = "";
-            }
-            if(message != null && (message.toLowerCase()).indexOf("success") != -1)
-                clsmessage = "updated-msg";
-            ArrayList list = new ArrayList();
-            if(request.getSession().getAttribute("MODULEPER_LIST") != null)
-                list = (ArrayList)request.getSession().getAttribute("MODULEPER_LIST");
-            String file_path = candidate.getMainPath("view_candidate_file");
-                CandidateInfo healthinfo = null;
-            if(session.getAttribute("CANDHEALTHINFO") != null)
-            {
-                healthinfo = (CandidateInfo)session.getAttribute("CANDHEALTHINFO");   
-            }
-            int ipass=0;
-            if(session.getAttribute("PASS") != null)
-                ipass = Integer.parseInt((String)session.getAttribute("PASS"));
-            //For health list
-            ArrayList filelist = new ArrayList();
-            if(session.getAttribute("HEALTHFILELIST") != null)
-                filelist = (ArrayList) session.getAttribute("HEALTHFILELIST");
-            int size = filelist.size();
+        }
+        String message = "", clsmessage = "deleted-msg";
+        if (request.getAttribute("MESSAGE") != null) {
+            message = (String) request.getAttribute("MESSAGE");
+            request.removeAttribute("MESSAGE");
+        }
+        if (message.toLowerCase().contains("success")) {
+            message = "";
+        }
+        if (message != null && (message.toLowerCase()).indexOf("success") != -1) {
+            clsmessage = "updated-msg";
+        }
+        ArrayList list = new ArrayList();
+        if (request.getSession().getAttribute("MODULEPER_LIST") != null) {
+            list = (ArrayList) request.getSession().getAttribute("MODULEPER_LIST");
+        }
+        String file_path = candidate.getMainPath("view_candidate_file");
+        CandidateInfo healthinfo = null;
+        if (session.getAttribute("CANDHEALTHINFO") != null) {
+            healthinfo = (CandidateInfo) session.getAttribute("CANDHEALTHINFO");
+        }
+        int ipass = 0;
+        if (session.getAttribute("PASS") != null) {
+            ipass = Integer.parseInt((String) session.getAttribute("PASS"));
+        }
+        //For health list
+        ArrayList filelist = new ArrayList();
+        if (session.getAttribute("HEALTHFILELIST") != null) {
+            filelist = (ArrayList) session.getAttribute("HEALTHFILELIST");
+        }
+        int size = filelist.size();
     %>
     <head>
         <meta charset="utf-8">
-        <title><%= candidate.getMainPath("title") != null ? candidate.getMainPath("title") : "" %></title>
+        <title><%= candidate.getMainPath("title") != null ? candidate.getMainPath("title") : ""%></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="../assets/images/favicon.png">
         <link href="../assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
@@ -145,7 +141,7 @@
                                 <div class="body-background">
                                     <div class="row d-none1">
                                         <div class="col-lg-12">
-                                            <% if(!message.equals("")) {%><div class="alert <%=clsmessage%> alert-dismissible fade show">
+                                            <% if (!message.equals("")) {%><div class="alert <%=clsmessage%> alert-dismissible fade show">
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button><%=message%>
                                             </div><% } %>
                                             <div class="main-heading m_30">
@@ -153,12 +149,13 @@
                                                     <h4>HEALTH DETAILS</h4>
                                                 </div>   
                                                 <div class="edit_btn pull_right float-end">
-                                                    <% 
-                                                    if(ipass ==2){}else{
-                                                        
-                                                     if(editper.equals("Y")) {%> <a href="javascript: modifyhealthForm();"><img src="../assets/images/edit.png"/></a> <% } %>
+                                                    <%
+                                                        if (ipass == 2) {
+                                                        } else {
+
+                                                            if (editper.equals("Y")) {%> <a href="javascript: modifyhealthForm();"><img src="../assets/images/edit.png"/></a> <% } %>
                                                         <%
-                                                        }
+                                                            }
                                                         %>
                                                 </div>
                                             </div>
@@ -166,73 +163,80 @@
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Seaman Specific Medical Fitness</label>
-                                                <span class="form-control"><%= healthinfo != null && healthinfo.getSsmf() != null && !healthinfo.getSsmf().equals("")  ? healthinfo.getSsmf() :  "&nbsp;" %></span>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getSsmf() != null && !healthinfo.getSsmf().equals("") ? healthinfo.getSsmf() : "&nbsp;"%></span>
                                             </div>
                                             <div class="col-lg-8 col-md-8 col-sm-8 col-4 form_group">
                                                 <label class="form_label">OGUK Medical FTW</label>
-                                                <span class="form-control"><%= healthinfo != null &&  healthinfo.getOgukmedicalftw() != null && !healthinfo.getOgukmedicalftw().equals("")  ? healthinfo.getOgukmedicalftw() : "&nbsp;" %></span>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getOgukmedicalftw() != null && !healthinfo.getOgukmedicalftw().equals("") ? healthinfo.getOgukmedicalftw() : "&nbsp;"%></span>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">OGUK Expiry</label>
                                                 <div class="input-daterange input-group">
-                                                    <span class="form-control"><%=  healthinfo != null &&  healthinfo.getOgukexp() != null && !healthinfo.getOgukexp().equals("")  ? healthinfo.getOgukexp() : "&nbsp;" %></span>
+                                                    <span class="form-control"><%=  healthinfo != null && healthinfo.getOgukexp() != null && !healthinfo.getOgukexp().equals("") ? healthinfo.getOgukexp() : "&nbsp;"%></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Medical Fitness Certificate</label>
-                                                <span class="form-control"><%=  healthinfo != null &&  healthinfo.getMedifitcert() != null && !healthinfo.getMedifitcert().equals("")  ? healthinfo.getMedifitcert() : "&nbsp;" %></span>
+                                                <span class="form-control"><%=  healthinfo != null && healthinfo.getMedifitcert() != null && !healthinfo.getMedifitcert().equals("") ? healthinfo.getMedifitcert() : "&nbsp;"%></span>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Medical Fitness Certificate Expiry</label>
                                                 <div class="input-daterange input-group">
-                                                    <span class="form-control"><%=  healthinfo != null &&  healthinfo.getMedifitcertexp() != null && !healthinfo.getMedifitcertexp().equals("")  ? healthinfo.getMedifitcertexp() : " &nbsp;" %></span>
+                                                    <span class="form-control"><%=  healthinfo != null && healthinfo.getMedifitcertexp() != null && !healthinfo.getMedifitcertexp().equals("") ? healthinfo.getMedifitcertexp() : " &nbsp;"%></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Blood Group</label>
-                                                <span class="form-control"><%=  healthinfo != null &&  healthinfo.getBloodgroup() != null && !healthinfo.getBloodgroup().equals("")  ? healthinfo.getBloodgroup() : " &nbsp;" %></span>
+                                                <span class="form-control"><%=  healthinfo != null && healthinfo.getBloodgroup() != null && !healthinfo.getBloodgroup().equals("") ? healthinfo.getBloodgroup() : " &nbsp;"%></span>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Blood Pressure</label>
-                                                <span class="form-control"><%=  healthinfo != null &&  healthinfo.getBloodpressure() != null && !healthinfo.getBloodpressure().equals("")  ? healthinfo.getBloodpressure() :"&nbsp;" %></span>
+                                                <span class="form-control"><%=  healthinfo != null && healthinfo.getBloodpressure() != null && !healthinfo.getBloodpressure().equals("") ? healthinfo.getBloodpressure() : "&nbsp;"%></span>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Hypertension</label>
-                                                <span class="form-control"><%= healthinfo != null &&  healthinfo.getHypertension() != null && !healthinfo.getHypertension().equals("")  ? healthinfo.getHypertension() : "&nbsp;" %></span>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getHypertension() != null && !healthinfo.getHypertension().equals("") ? healthinfo.getHypertension() : "&nbsp;"%></span>
                                             </div>
                                         </div>
                                         <div class="row">	
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Diabetes</label>
-                                                <span class="form-control"><%= healthinfo != null &&  healthinfo.getDiabetes() != null && !healthinfo.getDiabetes().equals("")  ? healthinfo.getDiabetes() : "&nbsp;" %></span>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getDiabetes() != null && !healthinfo.getDiabetes().equals("") ? healthinfo.getDiabetes() : "&nbsp;"%></span>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Smoking</label>
-                                                <span class="form-control"><%= healthinfo != null && healthinfo.getSmoking() != null && !healthinfo.getSmoking().equals("")  ? healthinfo.getSmoking() : "&nbsp;" %></span>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getSmoking() != null && !healthinfo.getSmoking().equals("") ? healthinfo.getSmoking() : "&nbsp;"%></span>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
                                                 <label class="form_label">Covid-19 2 Doses</label>
-                                                <span class="form-control"><%= healthinfo != null && healthinfo.getCov192doses() != null && !healthinfo.getCov192doses().equals("")  ? healthinfo.getCov192doses() : "&nbsp;" %></span>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getCov192doses() != null && !healthinfo.getCov192doses().equals("") ? healthinfo.getCov192doses() : "&nbsp;"%></span>
                                             </div>
-                                            <% if(healthinfo != null && healthinfo.getMfFilename() !=null && !healthinfo.getMfFilename().equals("")) {%>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                <label class="form_label">Height (in cm)</label>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getHeight() > 0 ? healthinfo.getHeight() : "&nbsp;"%></span>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                <label class="form_label">Weight (in Kg)</label>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getWeight() > 0 ? healthinfo.getWeight() : "&nbsp;"%></span>
+                                            </div>
+                                            <% if (healthinfo != null && healthinfo.getMfFilename() != null && !healthinfo.getMfFilename().equals("")) {%>
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-12 text-left flex-end align-items-end edit_sec">
                                                 <ul class="resume_attach">
                                                     <li><label class="form_label">File</label></li>
-                                                    <li><a href="javascript:;" class="attache_btn"><i class="fas fa-paperclip"></i> Attachment <span class="attach_number"> <%=candidate.changeNum(1,3)%></span></a></li>
+                                                    <li><a href="javascript:;" class="attache_btn"><i class="fas fa-paperclip"></i> Attachment <span class="attach_number"> <%=candidate.changeNum(1, 3)%></span></a></li>
                                                     <li>
                                                         <div class="down_prev text-end">
-                                                            <a href="javascript:;" class="" data-bs-toggle="modal" data-bs-target="#view_pdf" onclick="javascript:setIframe('<%=file_path+healthinfo.getMfFilename() %>');">Preview</a>
+                                                            <a href="javascript:;" class="" data-bs-toggle="modal" data-bs-target="#view_pdf" onclick="javascript:setIframe('<%=file_path + healthinfo.getMfFilename()%>');">Preview</a>
                                                         </div>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <%}%>
                                         </div>									
-                                    
-<%
-                                            if(size > 1)
-                                            {                                       
-%>                                   
+
+                                        <%
+                                            if (size > 1) {
+                                        %>                                   
                                         <div class="col-lg-6 mt_30">
                                             <div class="main-heading mb_10">
                                                 <div class="add-btn">
@@ -256,37 +260,35 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody id="sort_id">
-<%
-                                                        CandidateInfo info;
-                                                        for (int i = 0; i < size; i++)
-                                                        {
-                                                            info = (CandidateInfo) filelist.get(i);
-                                                            if (info != null) 
-                                                            {
-%>
+                                                            <%
+                                                                CandidateInfo info;
+                                                                for (int i = 0; i < size; i++) {
+                                                                    info = (CandidateInfo) filelist.get(i);
+                                                                    if (info != null) {
+                                                            %>
                                                             <tr>
-                                                                <td><%= info.getDate() != null ? info.getDate() : "" %></td>
+                                                                <td><%= info.getDate() != null ? info.getDate() : ""%></td>
                                                                 <td class="action_column">
-                                                                    <% if(!info.getFilename().equals("")) {%><a href="javascript:;" class="mr_15" data-bs-toggle="modal" data-bs-target="#view_pdf" onclick="javascript:setIframe('<%=file_path+info.getFilename() %>');"><img src="../assets/images/attachment.png"/> </a><% } else { %><a href='javascript:;'><span style='width: 35px;'>&nbsp;</span></a><% } %>
+                                                                    <% if (!info.getFilename().equals("")) {%><a href="javascript:;" class="mr_15" data-bs-toggle="modal" data-bs-target="#view_pdf" onclick="javascript:setIframe('<%=file_path + info.getFilename()%>');"><img src="../assets/images/attachment.png"/> </a><% } else { %><a href='javascript:;'><span style='width: 35px;'>&nbsp;</span></a><% } %>
                                                                 </td>
-                                                                <%if (deleteper.equals("Y")){%>
+                                                                <%if (deleteper.equals("Y")) {%>
                                                                 <td class="action_column text-right">
-                                                                    <%if(i > 0){%><a href="javascript: deleteHealthFile('<%= info.getHealthfileId()%>');" class="mr_15"><img src="../assets/images/trash.png"> </a><%}%>                                                                       
+                                                                    <%if (i > 0) {%><a href="javascript: deleteHealthFile('<%= info.getHealthfileId()%>');" class="mr_15"><img src="../assets/images/trash.png"> </a><%}%>                                                                       
                                                                 </td>
                                                                 <%}%>
                                                             </tr>                                                         
                                                             <%
-                                                                                                            }
-                                                                                                        }
+                                                                    }
+                                                                }
                                                             %>
                                                         </tbody>
                                                     </table>
                                                 </div>	
                                             </div>
                                         </div>
-<%
+                                        <%
                                             }
-%>
+                                        %>
                                     </div>
                                 </div>
                             </div>
@@ -328,12 +330,12 @@
         <script src="../assets/js/bootstrap-datepicker.min.js"></script>
         <script src="/jxp/assets/js/sweetalert2.min.js"></script>
         <script>
-                                                                // toggle class show hide text section
-                                                                $(document).on('click', '.toggle-title', function () {
-                                                                    $(this).parent()
-                                                                            .toggleClass('toggled-on')
-                                                                            .toggleClass('toggled-off');
-                                                                });
+                                                                        // toggle class show hide text section
+                                                                        $(document).on('click', '.toggle-title', function () {
+                                                                            $(this).parent()
+                                                                                    .toggleClass('toggled-on')
+                                                                                    .toggleClass('toggled-off');
+                                                                        });
         </script>
         <script type="text/javascript">
             jQuery(document).ready(function () {
@@ -357,10 +359,8 @@
     </html:form>
 </body>
 <%
-}
-catch(Exception e)
-{
-    e.printStackTrace();
-}
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 %>
 </html>

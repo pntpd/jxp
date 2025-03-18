@@ -1517,7 +1517,7 @@ public class Candidate extends Base {
                     if (info.getMfFilename() != null && !info.getMfFilename().equals("")) {
                         sb.append("s_filename =?, ");
                     }
-                    sb.append("s_covid192doses =?, i_status =?, i_userid =?, ts_moddate =? WHERE i_healthid =? AND i_candidateid =? ");
+                    sb.append("s_covid192doses =?, i_status =?, i_userid =?, ts_moddate =?, d_height =?, d_weight =? WHERE i_healthid =? AND i_candidateid =? ");
                     String query1 = (sb.toString()).intern();
                     sb.setLength(0);
                     pstmt = conn.prepareStatement(query1);
@@ -1540,6 +1540,8 @@ public class Candidate extends Base {
                     pstmt.setInt(++scc, info.getStatus());
                     pstmt.setInt(++scc, userId);
                     pstmt.setString(++scc, currDate1());
+                    pstmt.setDouble(++scc, info.getHeight());
+                    pstmt.setDouble(++scc, info.getWeight());
                     pstmt.setInt(++scc, candidatehealthId);
                     pstmt.setInt(++scc, candidateId);
                     print(this, "updateHealth :: " + pstmt.toString());
@@ -1563,8 +1565,9 @@ public class Candidate extends Base {
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.append("INSERT INTO t_healthdeclaration (s_ssmf, s_ogukmedicalftw, d_ogukexp, s_medifitcert, d_medifitcertexp, s_bloodgroup, i_bloodpressureid, ");
-                    sb.append("s_hypertension, s_diabetes, s_smoking, s_filename, s_covid192doses, i_status,i_vstatus, i_userid,i_candidateid, ts_regdate, ts_moddate) ");
-                    sb.append("VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    sb.append("s_hypertension, s_diabetes, s_smoking, s_filename, s_covid192doses, i_status,i_vstatus, i_userid,i_candidateid, ts_regdate, ");
+                    sb.append("ts_moddate, d_height, d_weight) ");
+                    sb.append("VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     String query2 = (sb.toString()).intern();
                     sb.setLength(0);
                     pstmt = conn.prepareStatement(query2, Statement.RETURN_GENERATED_KEYS);
@@ -1587,6 +1590,8 @@ public class Candidate extends Base {
                     pstmt.setInt(++scc, candidateId);
                     pstmt.setString(++scc, currDate1());
                     pstmt.setString(++scc, currDate1());
+                    pstmt.setDouble(++scc, info.getHeight());
+                    pstmt.setDouble(++scc, info.getWeight());
                     print(this, "createHealth :: " + pstmt.toString());
                     pstmt.executeUpdate();
                     rs = pstmt.getGeneratedKeys();
@@ -1622,7 +1627,7 @@ public class Candidate extends Base {
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT s_ssmf, s_ogukmedicalftw,DATE_FORMAT(d_ogukexp, '%d-%b-%Y'), s_medifitcert,DATE_FORMAT(d_medifitcertexp, '%d-%b-%Y'), s_bloodgroup, ");
         sb.append("t_healthdeclaration.i_bloodpressureid, s_hypertension, s_diabetes, s_smoking, t_healthdeclaration.i_userid, s_covid192doses, s_filename, ");
-        sb.append("t_healthdeclaration.i_status ,i_healthid , t_bloodpressure.s_name, t_candidate.i_pass ");
+        sb.append("t_healthdeclaration.i_status ,i_healthid , t_bloodpressure.s_name, t_candidate.i_pass, d_height, d_weight ");
         sb.append("FROM t_healthdeclaration ");
         sb.append("LEFT JOIN t_candidate ON (t_candidate.i_candidateid = t_healthdeclaration.i_candidateid) ");
         sb.append("LEFT JOIN t_bloodpressure ON (t_bloodpressure.i_bloodpressureid = t_healthdeclaration.i_bloodpressureid) WHERE t_healthdeclaration.i_candidateid =? ");
@@ -1654,8 +1659,10 @@ public class Candidate extends Base {
                 int candidatehealthId = rs.getInt(15);
                 String bloodpressure = rs.getString(16) != null ? rs.getString(16): "";
                 int pass = rs.getInt(17);
-                info = new CandidateInfo(candidatehealthId, ssmf, ogukmedicalftw, ogukexp, medifitcert, medifitcertexp,
-                        bloodgroup, bloodpressureId, hypertension, diabetes, smoking, userId, mfFilename, status, covid192doses, bloodpressure, pass);
+                double height = rs.getDouble(18);
+                double weight = rs.getDouble(19);
+                info = new CandidateInfo(candidatehealthId, ssmf, ogukmedicalftw, ogukexp, medifitcert, medifitcertexp, bloodgroup, bloodpressureId, hypertension, 
+                        diabetes, smoking, userId, mfFilename, status, covid192doses, bloodpressure, pass, height, weight);
             }
         } catch (Exception exception) {
             print(this, "getCandidateHealthDetailBycandidateId :: " + exception.getMessage());

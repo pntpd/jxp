@@ -110,19 +110,27 @@
                                                     <label class="form_label">Covid-19 2 Doses</label>
                                                     <span class="form-control"><%= healthinfo != null && healthinfo.getCov192doses() != null && !healthinfo.getCov192doses().equals("")  ? healthinfo.getCov192doses() : "&nbsp;" %></span>
                                                 </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 form_group">
+                                                    <label class="form_label">Height (in cm)</label>
+                                                    <span class="form-control"><%= healthinfo != null && healthinfo.getHeight() > 0 ? healthinfo.getHeight() : "&nbsp;"%></span>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 form_group">
+                                                    <label class="form_label">Weight (in Kg)</label>
+                                                    <span class="form-control"><%= healthinfo != null && healthinfo.getWeight() > 0 ? healthinfo.getWeight() : "&nbsp;"%></span>
+                                                </div>
                                                 <% if(healthinfo != null && healthinfo.getMfFilename() !=null && !healthinfo.getMfFilename().equals("")) {%>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12 text-left flex-end align-items-end edit_sec">
-                                                <ul class="resume_attach">
-                                                    <li><label class="form_label">File</label></li>
-                                                    <li><a href="javascript:;" class="attache_btn"><i class="fas fa-paperclip"></i> Attachment <span class="attach_number"> <%=candidate.changeNum(1,3)%></span></a></li>
-                                                    <li>
-                                                        <div class="down_prev text-end">
-                                                            <a href="javascript:;" class="" data-bs-toggle="modal" data-bs-target="#view_pdf" onclick="javascript:setIframe('<%=file_path+healthinfo.getMfFilename() %>');">Preview</a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <%}%>
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 text-left flex-end align-items-end edit_sec">
+                                                    <ul class="resume_attach">
+                                                        <li><label class="form_label">File</label></li>
+                                                        <li><a href="javascript:;" class="attache_btn"><i class="fas fa-paperclip"></i> Attachment <span class="attach_number"> <%=candidate.changeNum(1,3)%></span></a></li>
+                                                        <li>
+                                                            <div class="down_prev text-end">
+                                                                <a href="javascript:;" class="" data-bs-toggle="modal" data-bs-target="#view_pdf" onclick="javascript:setIframe('<%=file_path+healthinfo.getMfFilename() %>');">Preview</a>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <%}%>
                                             </div>
                                         </div>
                                     </div>
@@ -139,8 +147,8 @@
                     <div class="modal-header">
                         <button type="button" class="close close_modal_btn pull-right" data-bs-dismiss="modal" aria-hidden="true"><i class="ion ion-md-close"></i></button>
                         <span class="resume_title"> File</span>
-                            <a href="javascript:;" data-bs-toggle="fullscreen" class="full_screen">Full Screen</a>
-                            <a id='diframe' href="" class="down_btn" download=""><img src="../assets/images/download.png"/></a>
+                        <a href="javascript:;" data-bs-toggle="fullscreen" class="full_screen">Full Screen</a>
+                        <a id='diframe' href="" class="down_btn" download=""><img src="../assets/images/download.png"/></a>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -159,18 +167,18 @@
         <script src="../assets/libs/metismenu/metisMenu.min.js"></script>
         <script src="../assets/js/app.js"></script>
         <script type="text/javascript">
-        function addLoadEvent(func) {
-            var oldonload = window.onload;
-            if (typeof window.onload != 'function') {
-                window.onload = func;
-            } else {
-                window.onload = function () {
-                    if (oldonload) {
-                        oldonload();
-                    }
-                }
-            }
-        }
+                                                                function addLoadEvent(func) {
+                                                                    var oldonload = window.onload;
+                                                                    if (typeof window.onload != 'function') {
+                                                                        window.onload = func;
+                                                                    } else {
+                                                                        window.onload = function () {
+                                                                            if (oldonload) {
+                                                                                oldonload();
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
         </script>
     </html:form>
 </body>

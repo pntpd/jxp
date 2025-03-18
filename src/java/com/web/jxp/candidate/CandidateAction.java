@@ -84,21 +84,19 @@ public class CandidateAction extends Action {
         int positionIdIndex = frm.getPositionIdIndex();
         Collection assettypess = assettype.getAssettypes();
         frm.setAssettypes(assettypess);
-        
+
         Collection positionss = candidate.getPositionassettypes(assettypeIdIndex);
         frm.setPositions(positionss);
-        
+
         Collection courses = candidate.getCourseName();
-        frm.setCoursenames(courses);                
+        frm.setCoursenames(courses);
         int courseIndex = frm.getCourseIndex();
-        
+
         int uId = 0;
         String permission = "N";
-        if (request.getSession().getAttribute("LOGININFO") != null) 
-        {
+        if (request.getSession().getAttribute("LOGININFO") != null) {
             UserInfo uInfo = (UserInfo) request.getSession().getAttribute("LOGININFO");
-            if (uInfo != null) 
-            {
+            if (uInfo != null) {
                 permission = uInfo.getPermission();
                 uId = uInfo.getUserId();
             }
@@ -121,7 +119,7 @@ public class CandidateAction extends Action {
             frm.setDepartments(experiencedepts);
             Collection positions = candidate.getPositionassettypes(-1);
             frm.setPositions(positions);
-            Collection positions2 = candidate.getPosition2assettypes(-1,-1);
+            Collection positions2 = candidate.getPosition2assettypes(-1, -1);
             frm.setPositions2(positions2);
             Collection currencies = currency.getCurrencys();
             frm.setCurrencies(currencies);
@@ -135,9 +133,7 @@ public class CandidateAction extends Action {
             request.removeAttribute("PHOTO");
             request.setAttribute("FILECOUNT", candidate.changeNum(0, 3) + "");
             return mapping.findForward("add_candidate");
-        } 
-        else if (frm.getDoViewHeader() != null && frm.getDoViewHeader().equals("yes")) 
-        {
+        } else if (frm.getDoViewHeader() != null && frm.getDoViewHeader().equals("yes")) {
             frm.setDoViewHeader("no");
             int candidateId = frm.getCandidateIdHeader();
             frm.setCandidateId(candidateId);
@@ -145,9 +141,7 @@ public class CandidateAction extends Action {
             request.getSession().setAttribute("PASS", "" + info.getPassflag());
             request.getSession().setAttribute("CANDIDATE_DETAIL", info);
             return mapping.findForward("view_candidate");
-        } 
-        else if (frm.getDoView() != null && frm.getDoView().equals("yes")) 
-        {
+        } else if (frm.getDoView() != null && frm.getDoView().equals("yes")) {
             frm.setDoView("no");
             int candidateId = frm.getCandidateId();
             frm.setCandidateId(candidateId);
@@ -155,8 +149,7 @@ public class CandidateAction extends Action {
             request.getSession().setAttribute("PASS", "" + info.getPassflag());
             request.getSession().setAttribute("CANDIDATE_DETAIL", info);
             return mapping.findForward("view_candidate");
-        } 
-        else if (frm.getDoModify() != null && frm.getDoModify().equals("yes")) {
+        } else if (frm.getDoModify() != null && frm.getDoModify().equals("yes")) {
             frm.setDoModify("no");
             int candidateId = frm.getCandidateId();
             frm.setCandidateId(candidateId);
@@ -169,7 +162,7 @@ public class CandidateAction extends Action {
             frm.setRelations(relation.getRelations());
             frm.setMaritalstatuses(maritalstatus.getMaritialStatus());
             frm.setAssettypes(assettype.getAssettypes());
-            frm.setCurrentDate(base.currDate3());            
+            frm.setCurrentDate(base.currDate3());
             CandidateInfo info = candidate.getCandidateDetailById(candidateId);
             if (info != null) {
                 frm.setCandidateId(candidateId);
@@ -258,16 +251,16 @@ public class CandidateAction extends Action {
                 }
                 frm.setMaritalstatusId(info.getMaritalstatusId());
                 frm.setAssettypeId(info.getAssettypeId());
-                
+
                 Collection positions2 = candidate.getPositionassettypes(info.getAssettypeId());
                 frm.setPositions(positions2);
                 frm.setPositionIdhidden(info.getPositionId());
                 frm.setPositionId(info.getPositionId());
-                
+
                 Collection positions3 = candidate.getPosition2assettypes(info.getAssettypeId(), info.getPositionId());
                 frm.setPositions2(positions3);
-                frm.setPositionId2(info.getPositionId2());              
-                
+                frm.setPositionId2(info.getPositionId2());
+
                 frm.setApplytype(info.getApplytype());
                 if (info.getPhotofilename() != null) {
                     frm.setPhotofilehidden(info.getPhotofilename());
@@ -275,20 +268,20 @@ public class CandidateAction extends Action {
                 if (info.getResumefilename() != null) {
                     frm.setResumefilehidden(info.getResumefilename());
                 }
-                if (info.getReligion()!= null) {
+                if (info.getReligion() != null) {
                     frm.setReligion(info.getReligion());
                 }
-                Collection states  = candidate.getCountryStates(info.getCountryId());
+                Collection states = candidate.getCountryStates(info.getCountryId());
                 frm.setStates(states);
                 frm.setStateId(info.getStateId());
-                if (info.getPinCode()!= null) {
+                if (info.getPinCode() != null) {
                     frm.setPinCode(info.getPinCode());
                 }
                 frm.setAge(info.getAge());
-                if(info.getAirport1()!= null){
+                if (info.getAirport1() != null) {
                     frm.setAirport1(info.getAirport1());
                 }
-                if(info.getAirport2()!= null){
+                if (info.getAirport2() != null) {
                     frm.setAirport2(info.getAirport2());
                 }
                 request.setAttribute("PHOTO", info.getPhotofilename());
@@ -349,7 +342,7 @@ public class CandidateAction extends Action {
             int stateId = frm.getStateId();
             String pincode = validate.replacedesc(frm.getPinCode());
             int status = 1;
-            int age =  frm.getAge();
+            int age = frm.getAge();
             String airport1 = validate.replacedesc(frm.getAirport1());
             String airport2 = validate.replacedesc(frm.getAirport2());
             String profile = frm.getProfile();
@@ -392,10 +385,10 @@ public class CandidateAction extends Action {
             CandidateInfo info = new CandidateInfo(firstname, middlename, lastname, dob, placeofbirth, emailId, code1, code2, code3, contactno1, contactno2,
                     contactno3, gender, countryId, nationalityId, address1line1, address1line2, address1line3, address2line1, address2line2, address2line3,
                     nextofkin, relationId, ecode1, ecode2, econtactno1, econtactno2, maritalstatusId, fileName1, status, fileName2, positionId, departmentId,
-                    currencyId, expectedsalary, cityId, AssettypeId, employeeId,"",applytype, religion, positionId2, stateId, pincode, age, airport1, airport2,
+                    currencyId, expectedsalary, cityId, AssettypeId, employeeId, "", applytype, religion, positionId2, stateId, pincode, age, airport1, airport2,
                     profile, skill1, skill2);
             if (candidateId <= 0) {
-                int cc = candidate.createCandidate(info, uId,1);
+                int cc = candidate.createCandidate(info, uId, 1);
                 frm.setCandidateId(cc);
                 if (cc > 0) {
                     String fname = frm.getFname() != null ? frm.getFname() : "";
@@ -407,7 +400,7 @@ public class CandidateAction extends Action {
                         try {
                             conn = candidate.getConnection();
                             for (int i = 0; i < len; i++) {
-                                String fileName = candidate.saveImage(fnameval[i], add_candidate_file, foldername, candidate.getfilename(localfname[i])+"-"+fn + "_" + i);
+                                String fileName = candidate.saveImage(fnameval[i], add_candidate_file, foldername, candidate.getfilename(localfname[i]) + "-" + fn + "_" + i);
                                 candidate.createPic(conn, cc, fileName, uId, localfname[i]);
                             }
                         } finally {
@@ -434,7 +427,7 @@ public class CandidateAction extends Action {
                     try {
                         conn = candidate.getConnection();
                         for (int i = 0; i < len; i++) {
-                            String fileName = candidate.saveImage(fnameval[i], add_candidate_file, foldername, candidate.getfilename(localfname[i])+"-"+fn + "_" + i);
+                            String fileName = candidate.saveImage(fnameval[i], add_candidate_file, foldername, candidate.getfilename(localfname[i]) + "-" + fn + "_" + i);
                             candidate.createPic(conn, candidateId, fileName, uId, localfname[i]);
                         }
                     } finally {
@@ -460,7 +453,7 @@ public class CandidateAction extends Action {
             if (next < 0) {
                 next = 0;
             }
-            ArrayList candidateList = candidate.getCandidateByName(search, statusIndex, next, count, 
+            ArrayList candidateList = candidate.getCandidateByName(search, statusIndex, next, count,
                     onlineflag, statustype, assettypeIdIndex, positionIdIndex);
             int cnt = 0;
             if (candidateList.size() > 0) {
@@ -489,8 +482,7 @@ public class CandidateAction extends Action {
             Collection bankaccounttypes = bankaccounttype.getBankAccountType();
             frm.setBankAccountTypes(bankaccounttypes);
             request.getSession().removeAttribute("FILENAME");
-            if (frm.getBankdetailId() > 0) 
-            {
+            if (frm.getBankdetailId() > 0) {
                 CandidateInfo info = candidate.getBankDetailByCandidateId(bankDetailId);
                 if (info != null) {
                     if (info.getBankName() != "" && !info.getBankName().equals("")) {
@@ -515,7 +507,7 @@ public class CandidateAction extends Action {
                         frm.setBankfilehidden(info.getBkFilename());
                     }
                     frm.setPrimarybankId(info.getPrimarybankId());
-                    if (info.getAccountHolder()!= null) {
+                    if (info.getAccountHolder() != null) {
                         frm.setAccountHolder(info.getAccountHolder());
                     }
                     request.getSession().setAttribute("FILENAME", info.getBkFilename());
@@ -536,8 +528,7 @@ public class CandidateAction extends Action {
             frm.setCandidateId(candidateId);
             int status = 1;
             int ck = candidate.checkDuplicacyBank(candidateId, bankdetailId, bankName, savingAccountNo);
-            if (ck == 1)
-            {
+            if (ck == 1) {
                 Collection bankaccounttypes = bankaccounttype.getBankAccountType();
                 frm.setBankAccountTypes(bankaccounttypes);
                 frm.setBankName(bankName);
@@ -555,17 +546,15 @@ public class CandidateAction extends Action {
             String fn = String.valueOf(now.getTime());
             String fileName1 = "", localname = "";
             FormFile filename = frm.getBankfile();
-            if(filename != null)
-            {
+            if (filename != null) {
                 localname = filename.getFileName().replaceAll("[/'\"]+", "");
-                if(localname.contains("."))
-                {
+                if (localname.contains(".")) {
                     localname = localname.substring(0, localname.lastIndexOf("."));
                 }
             }
-            System.out.println("localname :: "+localname);
+            System.out.println("localname :: " + localname);
             if (filename != null && filename.getFileSize() > 0) {
-                fileName1 = candidate.uploadFile(candidateId, frm.getBankfilehidden(), filename, localname+"-"+fn, add_candidate_file, foldername);
+                fileName1 = candidate.uploadFile(candidateId, frm.getBankfilehidden(), filename, localname + "-" + fn, add_candidate_file, foldername);
             }
             CandidateInfo info = new CandidateInfo(candidateId, bankName, savingAccountNo, branch, IFSCCode, accountTypeId, fileName1, status, primarybankId, accountHolder);
             frm.setBankdetailId(-1);
@@ -619,11 +608,9 @@ public class CandidateAction extends Action {
             int candidateLangId = frm.getCandidateLangId();
             frm.setCandidateLangId(candidateLangId);
             request.getSession().removeAttribute("FILENAME");
-            if (candidateLangId > 0) 
-            {
+            if (candidateLangId > 0) {
                 CandidateInfo info = candidate.getcandlangForModify(candidateLangId);
-                if (info != null) 
-                {
+                if (info != null) {
                     frm.setProficiencies(proficiency.getProficiencies());
                     frm.setLanguages(language.getLanguages());
                     frm.setProficiencyId(info.getProficiencyId());
@@ -644,8 +631,7 @@ public class CandidateAction extends Action {
             int languageId = frm.getLanguageId();
             int status = 1;
             int ck = candidate.checkDuplicacyLang(candidateId, languageId, candidateLangId);
-            if (ck == 1) 
-            {
+            if (ck == 1) {
                 frm.setProficiencies(proficiency.getProficiencies());
                 frm.setLanguages(language.getLanguages());
                 frm.setLanguageId(languageId);
@@ -661,17 +647,15 @@ public class CandidateAction extends Action {
             String fn = String.valueOf(now.getTime());
             String fileName1 = "", localname = "";
             FormFile filename = frm.getLangfile();
-            if(filename != null)
-            {
+            if (filename != null) {
                 localname = filename.getFileName().replaceAll("[/'\"]+", "");
-                if(localname.contains("."))
-                {
+                if (localname.contains(".")) {
                     localname = localname.substring(0, localname.lastIndexOf("."));
                 }
             }
-            System.out.println("localname ::: "+localname);
+            System.out.println("localname ::: " + localname);
             if (filename != null && filename.getFileSize() > 0) {
-                fileName1 = candidate.uploadFile(candidateLangId, frm.getLangfilehidden(), filename, localname+"-"+fn, add_candidate_file, foldername);
+                fileName1 = candidate.uploadFile(candidateLangId, frm.getLangfilehidden(), filename, localname + "-" + fn, add_candidate_file, foldername);
             }
             CandidateInfo info = new CandidateInfo(candidateLangId, languageId, proficiencyId, status, fileName1);
             if (candidateLangId <= 0) {
@@ -701,8 +685,7 @@ public class CandidateAction extends Action {
                 request.setAttribute("CANDLANGLIST", list);
                 return mapping.findForward("view_candidatelanguage");//view.page page
             }
-        } 
-        else if (frm.getDoDeletelangdetail() != null && frm.getDoDeletelangdetail().equals("yes")) {
+        } else if (frm.getDoDeletelangdetail() != null && frm.getDoDeletelangdetail().equals("yes")) {
             frm.setDoDeletelangdetail("no");
             int candidateId = frm.getCandidateId();
             int candidateLangId = frm.getCandidateLangId();
@@ -718,8 +701,7 @@ public class CandidateAction extends Action {
             ArrayList list = candidate.getCandlanguageList(candidateId);
             request.setAttribute("CANDLANGLIST", list);
             return mapping.findForward("view_candidatelanguage");//view.page page
-        } 
-        else if (frm.getDoViewhealthdetail() != null && frm.getDoViewhealthdetail().equals("yes")) {
+        } else if (frm.getDoViewhealthdetail() != null && frm.getDoViewhealthdetail().equals("yes")) {
             frm.setDoViewhealthdetail("no");
             int candidateId = frm.getCandidateId();
             frm.setCandidateId(candidateId);
@@ -727,11 +709,11 @@ public class CandidateAction extends Action {
             frm.setBloodpressures(bloodpressures);
             CandidateInfo info = candidate.getCandidateHealthDetailBycandidateId(candidateId);
             ArrayList list = candidate.getHealthFileList(candidateId);
-            
+
             request.getSession().setAttribute("HEALTHFILELIST", list);
             request.getSession().setAttribute("CANDHEALTHINFO", info);
             return mapping.findForward("view_candidatehealth");//do view.jsp
-            
+
         } else if (frm.getDoaddhealthdetail() != null && frm.getDoaddhealthdetail().equals("yes")) {
             frm.setDoaddhealthdetail("no");
             int candidateId = frm.getCandidateId();
@@ -739,8 +721,7 @@ public class CandidateAction extends Action {
             Collection bloodpressures = bloodpressure.getBloodpressures();
             frm.setBloodpressures(bloodpressures);
             CandidateInfo info = candidate.getCandidateHealthDetailBycandidateId(frm.getCandidateId());
-            if (info != null) 
-            {
+            if (info != null) {
                 frm.setSsmf(info.getSsmf());
                 if (info.getOgukmedicalftw() != null) {
                     frm.setOgukmedicalftw(info.getOgukmedicalftw());
@@ -763,6 +744,8 @@ public class CandidateAction extends Action {
                 if (info.getMfFilename() != null) {
                     frm.setHealthfilehidden(info.getMfFilename());
                 }
+                frm.setHeight(info.getHeight());
+                frm.setWeight(info.getWeight());
             }
             return mapping.findForward("add_candidatehealth");
         } else if (frm.getDoSavehealthdetail() != null && frm.getDoSavehealthdetail().equals("yes")) {
@@ -784,31 +767,31 @@ public class CandidateAction extends Action {
             String diabetes = validate.replacename(frm.getDiabetes());
             String smoking = validate.replacename(frm.getSmoking());
             String cov192doses = validate.replacename(frm.getCov192doses());
+            double height = frm.getHeight();
+            double weight = frm.getWeight();
             int status = 1;
             String ipAddrStr = request.getRemoteAddr();
             String iplocal = candidate.getLocalIp();
-            
+
             String add_candidate_file = candidate.getMainPath("add_candidate_file");
             String foldername = candidate.createFolder(add_candidate_file);
             Date now = new Date();
             String fn = String.valueOf(now.getTime());
             String fileName1 = "", localname = "";
             FormFile filename = frm.getHealthfile();
-            if(filename != null)
-            {
+            if (filename != null) {
                 localname = filename.getFileName().replaceAll("[/'\"]+", "");
-                if(localname.contains("."))
-                {
+                if (localname.contains(".")) {
                     localname = localname.substring(0, localname.lastIndexOf("."));
                 }
             }
-            System.out.println("localname :: "+localname);
-            System.out.println("frm.getHealthfilehidden() :: "+frm.getHealthfilehidden());
+            System.out.println("localname :: " + localname);
+            System.out.println("frm.getHealthfilehidden() :: " + frm.getHealthfilehidden());
             if (filename != null && filename.getFileSize() > 0) {
-                fileName1 = candidate.uploadFile(candidateId, frm.getHealthfilehidden(), filename, localname+"-"+fn, add_candidate_file, foldername);
+                fileName1 = candidate.uploadFile(candidateId, frm.getHealthfilehidden(), filename, localname + "-" + fn, add_candidate_file, foldername);
             }
-            CandidateInfo info = new CandidateInfo(ssmf, ogukmedicalftw, ogukexp, medifitcert, medifitcertexp,
-                    bloodgroup, bloodpressureId, hypertension, diabetes, smoking, fileName1, status, cov192doses);
+            CandidateInfo info = new CandidateInfo(ssmf, ogukmedicalftw, ogukexp, medifitcert, medifitcertexp, bloodgroup, bloodpressureId, hypertension,
+                    diabetes, smoking, fileName1, status, cov192doses, height, weight);
             if (candidateId > 0) {
                 int cc = candidate.insertHealthdetails(info, candidateId, uId);
                 if (cc > 0) {
@@ -818,25 +801,24 @@ public class CandidateAction extends Action {
                 }
                 info = candidate.getCandidateHealthDetailBycandidateId(frm.getCandidateId());
                 ArrayList list = candidate.getHealthFileList(candidateId);
-            
+
                 request.getSession().setAttribute("HEALTHFILELIST", list);
                 request.getSession().setAttribute("CANDHEALTHINFO", info);
                 return mapping.findForward("view_candidatehealth");
             }
             request.setAttribute("MESSAGE", "Something went wrong..");
-            return mapping.findForward("cancel");            
-        }else if (frm.getDoDeleteHealthFile()!= null && frm.getDoDeleteHealthFile().equals("yes")) {
+            return mapping.findForward("cancel");
+        } else if (frm.getDoDeleteHealthFile() != null && frm.getDoDeleteHealthFile().equals("yes")) {
             frm.setDoDeleteHealthFile("no");
             int candidateId = frm.getCandidateId();
             int healthfileId = frm.getHealthfileId();
             frm.setHealthfileId(healthfileId);
             candidate.delhelathfile(healthfileId);
             ArrayList list = candidate.getHealthFileList(candidateId);
-            
+
             request.getSession().setAttribute("HEALTHFILELIST", list);
             return mapping.findForward("view_candidatehealth");//view.page page
-        }            
-         else if (frm.getDoViewvaccinationlist() != null && frm.getDoViewvaccinationlist().equals("yes")) {
+        } else if (frm.getDoViewvaccinationlist() != null && frm.getDoViewvaccinationlist().equals("yes")) {
             frm.setDoViewvaccinationlist("no");
             int candidateId = frm.getCandidateId();
             frm.setCandidateId(candidateId);
@@ -857,8 +839,7 @@ public class CandidateAction extends Action {
             request.getSession().removeAttribute("FILENAME");
             if (candidatevaccineId > 0) {
                 CandidateInfo info = candidate.getcandVaccForModify(candidatevaccineId);
-                if (info != null) 
-                {
+                if (info != null) {
                     frm.setVacinationnames(vaccine.getVaccines());
                     frm.setVaccinationNameId(info.getVaccinationNameId());
                     frm.setCurrentDate(base.currDate3());
@@ -909,17 +890,15 @@ public class CandidateAction extends Action {
             String fn = String.valueOf(now.getTime());
             String fileName1 = "", localname = "";
             FormFile filename = frm.getVaccinedetailfile();
-            if(filename != null)
-            {
+            if (filename != null) {
                 localname = filename.getFileName().replaceAll("[/'\"]+", "");
-                if(localname.contains("."))
-                {
+                if (localname.contains(".")) {
                     localname = localname.substring(0, localname.lastIndexOf("."));
                 }
             }
-            System.out.println("localname :: "+localname);
+            System.out.println("localname :: " + localname);
             if (filename != null && filename.getFileSize() > 0) {
-                fileName1 = candidate.uploadFile(candidatevaccineId, frm.getVaccinedetailhiddenfile(), filename, localname+"-"+fn, add_candidate_file, foldername);
+                fileName1 = candidate.uploadFile(candidatevaccineId, frm.getVaccinedetailhiddenfile(), filename, localname + "-" + fn, add_candidate_file, foldername);
             }
             CandidateInfo info = new CandidateInfo(candidatevaccineId, vaccinationNameId, vaccinationTypeId, placeofapplicationId, dateofapplication, dateofexpiry, status, fileName1);
             if (candidatevaccineId <= 0) {
@@ -964,8 +943,7 @@ public class CandidateAction extends Action {
             ArrayList list = candidate.getCandgovdocList(candidateId);
             request.setAttribute("CANDGOVDOCLIST", list);
             return mapping.findForward("view_documentdetail");
-        } else if (frm.getDomodifygovdocumentdetail() != null && frm.getDomodifygovdocumentdetail().equals("yes")) 
-        {
+        } else if (frm.getDomodifygovdocumentdetail() != null && frm.getDomodifygovdocumentdetail().equals("yes")) {
             frm.setDomodifygovdocumentdetail("no");
             int candidateId = frm.getCandidateId();
             int govdocumentId = frm.getGovdocumentId();
@@ -975,8 +953,7 @@ public class CandidateAction extends Action {
             frm.setCurrentDate(base.currDate3());
             Collection countries = country.getCountrys();
             frm.setCountries(countries);
-            if (govdocumentId <= 0) 
-            {
+            if (govdocumentId <= 0) {
                 Collection documentissuedbys = documentissuedby.getDocumentissuedbys(-1);
                 frm.setDocumentissuedbys(documentissuedbys);
             }
@@ -1042,29 +1019,29 @@ public class CandidateAction extends Action {
             String foldername = candidate.createFolder(add_candidate_file);
             Date now = new Date();
             String fn = String.valueOf(now.getTime());
-            
+
             CandidateInfo info = new CandidateInfo(govdocumentId, documentTypeId, documentno, DocumentIssuedbyId, cityId, dateofissue, dateofexpiry, status);
             if (govdocumentId <= 0) {
                 int cc = candidate.insertGovdocumentdetail(info, candidateId, uId);
                 if (cc > 0) {
                     String fname = frm.getFname() != null ? frm.getFname() : "";
-                        if (!"".equals(fname)) {
-                            String fnameval[] = fname.split("@#@");
-                            String localname[] = localFile.split("@#@");
-                            int len = fnameval.length;
-                            Connection conn = null;
-                            try {
-                                conn = candidate.getConnection();
-                                for (int i = 0; i < len; i++) {
-                                    String fileName = candidate.saveImage(fnameval[i], add_candidate_file, foldername, candidate.getfilename(localname[i])+"-"+fn);
-                                    candidate.createdocumentfiles(conn, cc, fileName, uId);
-                                }
-                            } finally {
-                                if (conn != null) {
-                                    conn.close();
-                                }
+                    if (!"".equals(fname)) {
+                        String fnameval[] = fname.split("@#@");
+                        String localname[] = localFile.split("@#@");
+                        int len = fnameval.length;
+                        Connection conn = null;
+                        try {
+                            conn = candidate.getConnection();
+                            for (int i = 0; i < len; i++) {
+                                String fileName = candidate.saveImage(fnameval[i], add_candidate_file, foldername, candidate.getfilename(localname[i]) + "-" + fn);
+                                candidate.createdocumentfiles(conn, cc, fileName, uId);
+                            }
+                        } finally {
+                            if (conn != null) {
+                                conn.close();
                             }
                         }
+                    }
                     request.setAttribute("MESSAGE", "Data added successfully.");
                 }
                 request.getSession().removeAttribute("FILENAME");
@@ -1083,7 +1060,7 @@ public class CandidateAction extends Action {
                         try {
                             conn = candidate.getConnection();
                             for (int i = 0; i < len; i++) {
-                                String fileName = candidate.saveImage(fnameval[i], add_candidate_file, foldername, candidate.getfilename(localname[i])+"-"+fn);
+                                String fileName = candidate.saveImage(fnameval[i], add_candidate_file, foldername, candidate.getfilename(localname[i]) + "-" + fn);
                                 candidate.createdocumentfiles(conn, govdocumentId, fileName, uId);
                             }
                         } finally {
@@ -1114,21 +1091,21 @@ public class CandidateAction extends Action {
             ArrayList list = candidate.getCandgovdocList(candidateId);
             request.setAttribute("CANDGOVDOCLIST", list);
             return mapping.findForward("view_documentdetail");
-        }  else if (frm.getDoViewtrainingcertlist() != null && frm.getDoViewtrainingcertlist().equals("yes")) {
+        } else if (frm.getDoViewtrainingcertlist() != null && frm.getDoViewtrainingcertlist().equals("yes")) {
             frm.setDoViewtrainingcertlist("no");
             int candidateId = frm.getCandidateId();
             frm.setCandidateId(candidateId);
-            ArrayList list = candidate.gettrainingCertificatelist(candidateId, 0,count, courseIndex);
+            ArrayList list = candidate.gettrainingCertificatelist(candidateId, 0, count, courseIndex);
             int cnt = 0;
             if (list.size() > 0) {
                 CandidateInfo cinfo = (CandidateInfo) list.get(list.size() - 1);
                 cnt = cinfo.getCandidateId();
                 list.remove(list.size() - 1);
-            }            
+            }
             request.getSession().setAttribute("CANDTRAININGCERTLIST", list);
             request.getSession().setAttribute("COUNT_CERTLIST", cnt + "");
             request.getSession().setAttribute("NEXTCERT", "0");
-            request.getSession().setAttribute("NEXTCERTVALUE", "1");  
+            request.getSession().setAttribute("NEXTCERTVALUE", "1");
             return mapping.findForward("view_trainingcertdetail");
         } else if (frm.getDoaddtrainingcertdetail() != null && frm.getDoaddtrainingcertdetail().equals("yes")) {
             frm.setDoaddtrainingcertdetail("no");
@@ -1189,8 +1166,7 @@ public class CandidateAction extends Action {
             int approvedbyId = frm.getApprovedbyId();
             int status = 1;
             int ck = candidate.checkDuplicacytrainingCertificate(candidateId, trainingandcertId, coursetypeId, coursenameId, educationInstitute, dateofissue);
-            if (ck == 1) 
-            {
+            if (ck == 1) {
                 frm.setCandidateId(candidateId);
                 Collection approvedbys = approvedby.getApprovedbys();
                 frm.setApprovedbys(approvedbys);
@@ -1211,38 +1187,35 @@ public class CandidateAction extends Action {
             String fn = String.valueOf(now.getTime());
             String fileName1 = "", localname = "";
             FormFile filename = frm.getTrainingcertfile();
-            if(filename != null)
-            {
+            if (filename != null) {
                 localname = filename.getFileName().replaceAll("[/'\"]+", "");
-                if(localname.contains("."))
-                {
+                if (localname.contains(".")) {
                     localname = localname.substring(0, localname.lastIndexOf("."));
                 }
             }
-            System.out.println("localname :: "+localname);
-            if (filename != null && filename.getFileSize() > 0) 
-            {
-                fileName1 = candidate.uploadFile(trainingandcertId, frm.getTrainingcerthiddenfile(), filename, localname+"-"+fn, add_candidate_file, foldername);
+            System.out.println("localname :: " + localname);
+            if (filename != null && filename.getFileSize() > 0) {
+                fileName1 = candidate.uploadFile(trainingandcertId, frm.getTrainingcerthiddenfile(), filename, localname + "-" + fn, add_candidate_file, foldername);
             }
             CandidateInfo info = new CandidateInfo(trainingandcertId, coursetypeId, coursenameId, educationInstitute, locationofInstituteId, fieldofstudy, coursestarted,
                     passingdate, dateofissue, certificationno, dateofexpiry, courseverification, approvedbyId, status, fileName1);
             if (trainingandcertId <= 0) {
-                int cc = candidate.inserttrainingCertificate(info, candidateId, uId,1);
+                int cc = candidate.inserttrainingCertificate(info, candidateId, uId, 1);
                 if (cc > 0) {
                     request.setAttribute("MESSAGE", "Data added successfully.");
                 }
                 request.getSession().removeAttribute("FILENAME");
-                ArrayList list = candidate.gettrainingCertificatelist(candidateId, 0,count, courseIndex);
+                ArrayList list = candidate.gettrainingCertificatelist(candidateId, 0, count, courseIndex);
                 int cnt = 0;
                 if (list.size() > 0) {
                     CandidateInfo cinfo = (CandidateInfo) list.get(list.size() - 1);
                     cnt = cinfo.getCandidateId();
                     list.remove(list.size() - 1);
-                }            
+                }
                 request.getSession().setAttribute("CANDTRAININGCERTLIST", list);
                 request.getSession().setAttribute("COUNT_CERTLIST", cnt + "");
                 request.getSession().setAttribute("NEXTCERT", "0");
-                request.getSession().setAttribute("NEXTCERTVALUE", "1");  
+                request.getSession().setAttribute("NEXTCERTVALUE", "1");
                 return mapping.findForward("view_trainingcertdetail");
             } else {
                 int cc = candidate.updatetrainingCertificate(info, candidateId, uId);
@@ -1250,17 +1223,17 @@ public class CandidateAction extends Action {
                     request.setAttribute("MESSAGE", "Data updated successfully.");
                 }
                 request.getSession().removeAttribute("FILENAME");
-                ArrayList list = candidate.gettrainingCertificatelist(candidateId, 0,count, courseIndex);
+                ArrayList list = candidate.gettrainingCertificatelist(candidateId, 0, count, courseIndex);
                 int cnt = 0;
                 if (list.size() > 0) {
                     CandidateInfo cinfo = (CandidateInfo) list.get(list.size() - 1);
                     cnt = cinfo.getCandidateId();
                     list.remove(list.size() - 1);
-                }            
+                }
                 request.getSession().setAttribute("CANDTRAININGCERTLIST", list);
                 request.getSession().setAttribute("COUNT_CERTLIST", cnt + "");
                 request.getSession().setAttribute("NEXTCERT", "0");
-                request.getSession().setAttribute("NEXTCERTVALUE", "1");  
+                request.getSession().setAttribute("NEXTCERTVALUE", "1");
                 return mapping.findForward("view_trainingcertdetail");
             }
         } else if (frm.getDoDeletetrainingcertdetail() != null && frm.getDoDeletetrainingcertdetail().equals("yes")) {
@@ -1276,17 +1249,17 @@ public class CandidateAction extends Action {
             if (cc > 0) {
                 request.setAttribute("MESSAGE", "Status updated successfully");
             }
-            ArrayList list = candidate.gettrainingCertificatelist(candidateId, 0,count, courseIndex);
+            ArrayList list = candidate.gettrainingCertificatelist(candidateId, 0, count, courseIndex);
             int cnt = 0;
             if (list.size() > 0) {
                 CandidateInfo cinfo = (CandidateInfo) list.get(list.size() - 1);
                 cnt = cinfo.getCandidateId();
                 list.remove(list.size() - 1);
-            }            
+            }
             request.getSession().setAttribute("CANDTRAININGCERTLIST", list);
             request.getSession().setAttribute("COUNT_CERTLIST", cnt + "");
             request.getSession().setAttribute("NEXTCERT", "0");
-            request.getSession().setAttribute("NEXTCERTVALUE", "1");  
+            request.getSession().setAttribute("NEXTCERTVALUE", "1");
             return mapping.findForward("view_trainingcertdetail");
         } else if (frm.getDoVieweducationlist() != null && frm.getDoVieweducationlist().equals("yes")) {
             frm.setDoVieweducationlist("no");
@@ -1311,8 +1284,7 @@ public class CandidateAction extends Action {
             request.getSession().removeAttribute("FILENAME");
             if (educationdetailId > 0) {
                 CandidateInfo info = candidate.geteducationDetailById(educationdetailId);
-                if (info != null) 
-                {
+                if (info != null) {
                     frm.setKindId(info.getKindId());
                     frm.setDegreeId(info.getDegreeId());
                     frm.setBackgroundofstudy(info.getBackgroundofstudy());
@@ -1344,8 +1316,7 @@ public class CandidateAction extends Action {
             String passingdate = validate.replacedate(frm.getPassingdate());
             int highestqualification = frm.getHighestqualification();
             int status = 1;
-            if (kindId <= 0 || degreeId <= 0) 
-            {
+            if (kindId <= 0 || degreeId <= 0) {
                 Collection qualificationtypes = qualificationtype.getQualificationTypes();
                 Collection degrees = degree.getDegree();
                 frm.setQualificationtypes(qualificationtypes);
@@ -1357,8 +1328,7 @@ public class CandidateAction extends Action {
                 return mapping.findForward("modify_educationaldetail");
             }
             int ck = candidate.checkDuplicacyeducation(candidateId, educationdetailId, kindId, degreeId, backgroundofstudy);
-            if (ck == 1) 
-            {
+            if (ck == 1) {
                 Collection qualificationtypes = qualificationtype.getQualificationTypes();
                 Collection degrees = degree.getDegree();
                 Collection countries = country.getCountrys();
@@ -1374,19 +1344,17 @@ public class CandidateAction extends Action {
             String foldername = candidate.createFolder(add_candidate_file);
             Date now = new Date();
             String fn = String.valueOf(now.getTime());
-            String fileName1 = "", localname= "";
+            String fileName1 = "", localname = "";
             FormFile filename = frm.getEducationfile();
-            if(filename != null)
-            {
+            if (filename != null) {
                 localname = filename.getFileName().replaceAll("[/'\"]+", "");
-                if(localname.contains("."))
-                {
+                if (localname.contains(".")) {
                     localname = localname.substring(0, localname.lastIndexOf("."));
                 }
             }
-            System.out.println("localname :: "+localname);
+            System.out.println("localname :: " + localname);
             if (filename != null && filename.getFileSize() > 0) {
-                fileName1 = candidate.uploadFile(educationdetailId, frm.getEducationhiddenfile(), filename, localname+"-"+fn, add_candidate_file, foldername);
+                fileName1 = candidate.uploadFile(educationdetailId, frm.getEducationhiddenfile(), filename, localname + "-" + fn, add_candidate_file, foldername);
             }
 
             CandidateInfo info = new CandidateInfo(educationdetailId, kindId, degreeId, backgroundofstudy, educationInstitute,
@@ -1464,8 +1432,7 @@ public class CandidateAction extends Action {
             request.getSession().removeAttribute("FILENAME1");
             if (experiencedetailId > 0) {
                 CandidateInfo info = candidate.getexperiencedetailById(experiencedetailId);
-                if (info != null) 
-                {
+                if (info != null) {
                     positions = candidate.getPositionassettypes(info.getAssettypeId());
                     frm.setPositions(positions);
                     frm.setCompanyname(info.getCompanyname());
@@ -1487,8 +1454,7 @@ public class CandidateAction extends Action {
                     frm.setExperiencehiddenfile(info.getExperiencefilename());
                     frm.setWorkinghiddenfile(info.getWorkfilename());
                     frm.setCurrentDate(base.currDate3());
-                    if (info.getCurrentworkingstatus() > 0)
-                    {
+                    if (info.getCurrentworkingstatus() > 0) {
                         frm.setSkillsId(info.getSkillsId());
                         frm.setGradeid(info.getGradeId());
                         frm.setOwnerpool(info.getOwnerpool());
@@ -1500,8 +1466,7 @@ public class CandidateAction extends Action {
                         frm.setMonthlysalary(info.getMonthlysalary());
                         frm.setMonthlysalarycurrencyId(info.getMonthlysalarycurrencyId());
                     }
-                    if(info.getRole()!= null && !info.getRole().equals(""))
-                    {
+                    if (info.getRole() != null && !info.getRole().equals("")) {
                         String add_path = candidate.getMainPath("add_candidate_file");
                         frm.setRolehiddenfile(info.getRole());
                         String str = candidate.readHTMLFile(info.getRole(), add_path);
@@ -1548,16 +1513,15 @@ public class CandidateAction extends Action {
             int monthlysalarycurrencyId = frm.getMonthlysalarycurrencyId();
             int lastdrawnsalarycurrencyId = frm.getLastdrawnsalarycurrencyId();
             String role = frm.getRole();
-            String p1 = "", pstr ="";
+            String p1 = "", pstr = "";
             p1 = role.replaceAll("\n", "</li><li>");
-            pstr = "<ul><li>"+p1+"</li></ul>";
+            pstr = "<ul><li>" + p1 + "</li></ul>";
             String rolehidden = frm.getRolehiddenfile();
             int status = 1;
             if (currentworkstatus > 0) {
                 workenddate = "";
             }
-            if (currentworkstatus <= 0) 
-            {
+            if (currentworkstatus <= 0) {
                 skillId = 0;
                 gradeId = 0;
                 ownerpool = "";
@@ -1569,8 +1533,7 @@ public class CandidateAction extends Action {
                 dayratecurrencyId = 0;
                 monthlysalarycurrencyId = 0;
             }
-            if (assettypeId <= 0 || comnpanyindustryId <= 0 || companyName.equals("") || workstartdate.equals("")) 
-            {
+            if (assettypeId <= 0 || comnpanyindustryId <= 0 || companyName.equals("") || workstartdate.equals("")) {
                 Collection currencies = currency.getCurrencys();
                 Collection companyindustries = companyindustry.getcompanyindustrys();
                 Collection countries = country.getCountrys();
@@ -1596,8 +1559,7 @@ public class CandidateAction extends Action {
                 return mapping.findForward("modify_experiencedetail");
             }
             int ck = candidate.checkDuplicacyexperience(candidateId, experiencedetailId, companyName, workstartdate, workenddate);
-            if (ck == 1)
-            {
+            if (ck == 1) {
                 Collection currencies = currency.getCurrencys();
                 Collection companyindustries = companyindustry.getcompanyindustrys();
                 Collection countries = country.getCountrys();
@@ -1623,7 +1585,7 @@ public class CandidateAction extends Action {
                 request.setAttribute("MESSAGE", "Experience already exists");
                 return mapping.findForward("modify_experiencedetail");
             }
-            
+
             String add_path2 = candidate.getMainPath("add_candidate_file");
             java.util.Date now2 = new java.util.Date();
             String fname2 = String.valueOf(now2.getTime());
@@ -1643,36 +1605,32 @@ public class CandidateAction extends Action {
                 pstr = candidate.writeHTMLFile(pstr, add_path2 + htmlFolderName2, fname2 + ".html");
                 pstr = htmlFolderName2 + "/" + pstr;
             }
-            
+
             String add_candidate_file = candidate.getMainPath("add_candidate_file");
             String foldername = candidate.createFolder(add_candidate_file);
             Date now = new Date();
             String fn = String.valueOf(now.getTime());
-            String fileName1 = "", localname ="";
+            String fileName1 = "", localname = "";
             FormFile filename = frm.getExperiencefile();
-            if(filename != null)
-            {
+            if (filename != null) {
                 localname = filename.getFileName().replaceAll("[/'\"]+", "");
-                if(localname.contains("."))
-                {
+                if (localname.contains(".")) {
                     localname = localname.substring(0, localname.lastIndexOf("."));
                 }
             }
             if (filename != null && filename.getFileSize() > 0) {
-                fileName1 = candidate.uploadFile(experiencedetailId, frm.getExperiencehiddenfile(), filename, localname+"-"+fn, add_candidate_file, foldername);
+                fileName1 = candidate.uploadFile(experiencedetailId, frm.getExperiencehiddenfile(), filename, localname + "-" + fn, add_candidate_file, foldername);
             }
-            String fileName2 = "", localname2 ="";
+            String fileName2 = "", localname2 = "";
             FormFile filename2 = frm.getWorkingfile();
-            if(filename2 != null)
-            {
+            if (filename2 != null) {
                 localname2 = filename2.getFileName().replaceAll("[/'\"]+", "");
-                if(localname2.contains("."))
-                {
+                if (localname2.contains(".")) {
                     localname2 = localname2.substring(0, localname2.lastIndexOf("."));
                 }
             }
             if (filename2 != null && filename2.getFileSize() > 0) {
-                fileName2 = candidate.uploadFile(experiencedetailId, frm.getWorkinghiddenfile(), filename2, localname2+"-"+fn, add_candidate_file, foldername);
+                fileName2 = candidate.uploadFile(experiencedetailId, frm.getWorkinghiddenfile(), filename2, localname2 + "-" + fn, add_candidate_file, foldername);
             }
             CandidateInfo info = new CandidateInfo(experiencedetailId, companyName, comnpanyindustryId, assettypeId, assetname, positionId, departmentId, countryId,
                     cityId, clientpartyname, waterdepthId, lastdrawnsalary, workstartdate, workenddate, currentworkstatus, skillId, gradeId, ownerpool, crewtypeId,
@@ -1698,8 +1656,7 @@ public class CandidateAction extends Action {
                 request.setAttribute("CANDEXPERIENCELIST", list);
                 return mapping.findForward("view_experiencelist");
             }
-        } else if (frm.getDoDeleteexperiencedetail() != null && frm.getDoDeleteexperiencedetail().equals("yes")) 
-        {
+        } else if (frm.getDoDeleteexperiencedetail() != null && frm.getDoDeleteexperiencedetail().equals("yes")) {
             frm.setDoDeleteexperiencedetail("no");
             int candidateId = frm.getCandidateId();
             frm.setCandidateId(candidateId);
@@ -1715,10 +1672,8 @@ public class CandidateAction extends Action {
             ArrayList list = candidate.getexperiencelist(candidateId);
             request.setAttribute("CANDEXPERIENCELIST", list);
             return mapping.findForward("view_experiencelist");
-        }
-        //
-        else if (frm.getDoViewNomineelist() != null && frm.getDoViewNomineelist().equals("yes")) 
-        {
+        } //
+        else if (frm.getDoViewNomineelist() != null && frm.getDoViewNomineelist().equals("yes")) {
             frm.setDoViewNomineelist("no");
             frm.setNomineedetailId(-1);
             int candidateId = frm.getCandidateId();
@@ -1754,8 +1709,8 @@ public class CandidateAction extends Action {
                     }
                     if (info.getCode1Id() != null) {
                         frm.setCode1Id(info.getCode1Id());
-                    }                    
-                    if (info.getAddress()!= null) {
+                    }
+                    if (info.getAddress() != null) {
                         frm.setAddress(info.getAddress());
                     }
                     frm.setAge(info.getAge());
@@ -1778,8 +1733,7 @@ public class CandidateAction extends Action {
             int status = 1;
             String code1 = validate.replaceint(frm.getCode1Id());
             int ck = candidate.checkDuplicacyNominee(candidateId, nomineedetailId, nomineeName);
-            if (ck == 1) 
-            {
+            if (ck == 1) {
                 Collection relations = relation.getRelations();
                 frm.setRelations(relations);
                 relationId = frm.getRelationId();
@@ -1827,8 +1781,7 @@ public class CandidateAction extends Action {
             request.setAttribute("CANDNOMINEELIST", list);
             return mapping.findForward("view_candidatenomineelist");
 
-        }
-        //
+        } //
         else {
             print(this, "else block.");
             if (frm.getCtp() == 0) {
@@ -1839,7 +1792,7 @@ public class CandidateAction extends Action {
                 blist.push(request.getRequestURI());
                 request.getSession().setAttribute("BACKURL", blist);
             }
-            ArrayList candidateList = candidate.getCandidateByName(search, statusIndex, 0, count, onlineflag, 
+            ArrayList candidateList = candidate.getCandidateByName(search, statusIndex, 0, count, onlineflag,
                     statustype, assettypeIdIndex, positionIdIndex);
             int cnt = 0;
             if (candidateList.size() > 0) {

@@ -78,8 +78,7 @@ public class Talentpool extends Base {
             sb.append("AND (CONCAT_WS(' ', c.s_firstname, c.s_middlename, c.s_lastname) LIKE ? OR CONCAT_WS(' ', c.s_firstname, c.s_lastname) LIKE ? OR c.i_candidateid LIKE ? ");
             sb.append("OR t_country.s_name LIKE ? OR t_client.s_name LIKE ? OR t_position.s_name LIKE ? OR t_grade.s_name LIKE ? OR t_clientasset.s_name LIKE ? OR c.s_empno like ?) ");
         }
-        if(employementIndex > 0)
-        {
+        if (employementIndex > 0) {
             if (employementIndex == 1) {
                 sb.append("AND c.i_clientid = 0 AND c.i_status != 4 ");
             }
@@ -89,8 +88,7 @@ public class Talentpool extends Base {
             if (employementIndex == 3) {
                 sb.append("AND c.i_status = 4 ");
             }
-        }else if (employementIndex <= 0)
-        {
+        } else if (employementIndex <= 0) {
             sb.append("AND c.i_status != 4 ");
         }
         if (assettypeIdIndex > 0) {
@@ -148,8 +146,7 @@ public class Talentpool extends Base {
             sb.append("AND (CONCAT_WS(' ', c.s_firstname, c.s_middlename, c.s_lastname) LIKE ? OR CONCAT_WS(' ', c.s_firstname, c.s_lastname) LIKE ? OR c.i_candidateid LIKE ? ");
             sb.append("OR t_country.s_name LIKE ? OR t_client.s_name LIKE ? OR t_position.s_name LIKE ? OR t_grade.s_name LIKE ? OR t_clientasset.s_name LIKE ? OR c.s_empno like ?) ");
         }
-        if(employementIndex > 0)
-        {
+        if (employementIndex > 0) {
             if (employementIndex == 1) {
                 sb.append("AND c.i_clientid = 0 AND c.i_status != 4 ");
             }
@@ -159,8 +156,7 @@ public class Talentpool extends Base {
             if (employementIndex == 3) {
                 sb.append("AND c.i_status = 4 ");
             }
-        }else if (employementIndex <= 0)
-        {
+        } else if (employementIndex <= 0) {
             sb.append("AND c.i_status != 4 ");
         }
         if (assettypeIdIndex > 0) {
@@ -406,14 +402,13 @@ public class Talentpool extends Base {
             print(this, "getCandidateDetail :: " + pstmt.toString());
             rs = pstmt.executeQuery();
             String name, dob, place, email, contact1_code, contact1, contact2_code, contact2, contact3_code,
-            contact3, gender, countryName, nationality, address1line1, address1line2, address2line1, address2line2,
-            address2line3, nextofkin, relation, econtact1_code, econtact1, econtact2_code, econtact2, maritialstatus,
-            photo, positionName, address1line3, cityName, experiencedept, currency, firstname, gradeName, assetName,
-            clientName, employeeId, applytypevalue, ratetype, religion, position2, grade2, state, pincode, airport1, airport2, date2, onboardingdate;
+                    contact3, gender, countryName, nationality, address1line1, address1line2, address2line1, address2line2,
+                    address2line3, nextofkin, relation, econtact1_code, econtact1, econtact2_code, econtact2, maritialstatus,
+                    photo, positionName, address1line3, cityName, experiencedept, currency, firstname, gradeName, assetName,
+                    clientName, employeeId, applytypevalue, ratetype, religion, position2, grade2, state, pincode, airport1, airport2, date2, onboardingdate;
             int expectedsalary, filecount, vflag, clientId, assetId, progressId, positionId, status, positionId2, travelDays, age, assetTypeId;
             double rate1, rate2, p2rate1, p2rate2;
-            while (rs.next()) 
-            {
+            while (rs.next()) {
                 name = rs.getString(1) != null ? rs.getString(1) : "";
                 dob = rs.getString(2) != null ? rs.getString(2) : "";
                 place = rs.getString(3) != null ? rs.getString(3) : "";
@@ -470,8 +465,8 @@ public class Talentpool extends Base {
                 p2rate2 = rs.getDouble(54);
                 positionId2 = rs.getInt(55);
                 travelDays = rs.getInt(56);
-                state = rs.getString(57) != null ? rs.getString(57): "";
-                pincode = rs.getString(58) != null ? rs.getString(58): "";
+                state = rs.getString(57) != null ? rs.getString(57) : "";
+                pincode = rs.getString(58) != null ? rs.getString(58) : "";
                 age = rs.getInt(59);
                 airport1 = rs.getString(60) != null ? rs.getString(60) : "";
                 airport2 = rs.getString(61) != null ? rs.getString(61) : "";
@@ -481,7 +476,7 @@ public class Talentpool extends Base {
                 String skill1 = rs.getString(65) != null ? rs.getString(65) : "";
                 String skill2 = rs.getString(66) != null ? rs.getString(66) : "";
                 if (!position2.equals("")) {
-                    if (!grade2.equals("")){
+                    if (!grade2.equals("")) {
                         position2 += " | " + grade2;
                     }
                 }
@@ -562,8 +557,8 @@ public class Talentpool extends Base {
                 enddate = rs.getString(5) != null ? rs.getString(5) : "";
                 companyname = rs.getString(6) != null ? rs.getString(6) : "";
                 positionid2 = rs.getInt(7);
-                filename = rs.getString(8) != null ? rs.getString(8) : "";                
-                info = new TalentpoolInfo(candidateId, positionid, departmentid, assetname, startdate, 
+                filename = rs.getString(8) != null ? rs.getString(8) : "";
+                info = new TalentpoolInfo(candidateId, positionid, departmentid, assetname, startdate,
                         enddate, companyname, positionid2, filename);
             }
         } catch (Exception exception) {
@@ -593,10 +588,11 @@ public class Talentpool extends Base {
             pstmt.setInt(6, candidateId);
             pstmt.setString(7, currDate1());
             pstmt.setString(8, currDate1());
-            if(toPositionId2 > 0)
+            if (toPositionId2 > 0) {
                 pstmt.setInt(9, toPositionId2);
-            else
+            } else {
                 pstmt.setInt(9, info3.getPositionId());
+            }
             pstmt.setString(10, info3.getFilename());
             pstmt.setInt(11, 1);
             pstmt.setInt(12, assettypeId);
@@ -634,7 +630,7 @@ public class Talentpool extends Base {
                 fileName = rs.getString(6) != null ? rs.getString(6) : "";
                 primarybankid = rs.getInt(7);
                 accountholder = rs.getString(8) != null ? rs.getString(8) : "";
-                info = new TalentpoolInfo(bankdetid, bankname, savingAccountNo, branch, accountTypeId, 
+                info = new TalentpoolInfo(bankdetid, bankname, savingAccountNo, branch, accountTypeId,
                         ifsccode, fileName, primarybankid, accountholder);
             }
             rs.close();
@@ -1190,15 +1186,15 @@ public class Talentpool extends Base {
                 String profile = rs.getString(50) != null ? rs.getString(50) : "";
                 String skill1 = rs.getString(51) != null ? rs.getString(51) : "";
                 String skill2 = rs.getString(52) != null ? rs.getString(52) : "";
-                
-                info = new TalentpoolInfo(firstname, middlename, lastname, dob, placeofbirth, 
-                email, code1, code2, contactno1, contactno2, code3, contactno3, gender, 
-                countryid, nationalityid, address1line1, address1line2, address2line1, 
-                address2line2, address2line3, nextofkin, relationid, ecode1, econtactno1, 
-                ecode2, econtactno2, maritialstatusid, photofilename, address1line3, departmentId,
-                positionId, currencyId, expectedsalary, status, cityName, cityId, filecount, 
-                assettypeId, employeeId, applytype, ratetype, religion, positionId2, 
-                travelDays, stateId, pincode, age, airport1, airport2, profile, skill1, skill2);
+
+                info = new TalentpoolInfo(firstname, middlename, lastname, dob, placeofbirth,
+                        email, code1, code2, contactno1, contactno2, code3, contactno3, gender,
+                        countryid, nationalityid, address1line1, address1line2, address2line1,
+                        address2line2, address2line3, nextofkin, relationid, ecode1, econtactno1,
+                        ecode2, econtactno2, maritialstatusid, photofilename, address1line3, departmentId,
+                        positionId, currencyId, expectedsalary, status, cityName, cityId, filecount,
+                        assettypeId, employeeId, applytype, ratetype, religion, positionId2,
+                        travelDays, stateId, pincode, age, airport1, airport2, profile, skill1, skill2);
             }
         } catch (Exception exception) {
             print(this, "getCandidateDetailById :: " + exception.getMessage());
@@ -1641,6 +1637,8 @@ public class Talentpool extends Base {
                     sb.append("s_covid192doses = ?, ");
                     sb.append("i_status = ?, ");
                     sb.append("i_userid = ?, ");
+                    sb.append("d_height = ?, ");
+                    sb.append("d_weight = ?, ");
                     sb.append("ts_moddate = ? ");
                     sb.append("WHERE i_healthid = ? AND i_candidateid = ? ");
                     String query1 = (sb.toString()).intern();
@@ -1663,6 +1661,8 @@ public class Talentpool extends Base {
                     pstmt.setString(++scc, cipher(info.getCov192doses()));
                     pstmt.setInt(++scc, info.getStatus());
                     pstmt.setInt(++scc, userId);
+                    pstmt.setDouble(++scc, info.getHeight());
+                    pstmt.setDouble(++scc, info.getWeight());
                     pstmt.setString(++scc, currDate1());
                     pstmt.setInt(++scc, candidatehealthId);
                     pstmt.setInt(++scc, candidateId);
@@ -1688,8 +1688,8 @@ public class Talentpool extends Base {
                     sb.append("INSERT INTO t_healthdeclaration ");
                     sb.append("( s_ssmf, s_ogukmedicalftw, d_ogukexp, s_medifitcert, d_medifitcertexp, ");
                     sb.append("s_bloodgroup, i_bloodpressureid, s_hypertension, s_diabetes, s_smoking, s_filename,s_covid192doses, ");
-                    sb.append(" i_status,i_vstatus, i_userid,i_candidateid, ts_regdate, ts_moddate ) ");
-                    sb.append("VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?,?,?,?,?)");
+                    sb.append(" i_status,i_vstatus, i_userid,i_candidateid, ts_regdate, ts_moddate, d_height, d_weight) ");
+                    sb.append("VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     String query2 = (sb.toString()).intern();
                     sb.setLength(0);
                     pstmt = conn.prepareStatement(query2, Statement.RETURN_GENERATED_KEYS);
@@ -1712,6 +1712,8 @@ public class Talentpool extends Base {
                     pstmt.setInt(++scc, candidateId);
                     pstmt.setString(++scc, currDate1());
                     pstmt.setString(++scc, currDate1());
+                    pstmt.setDouble(++scc, info.getHeight());
+                    pstmt.setDouble(++scc, info.getWeight());
                     print(this, "createHealth :: " + pstmt.toString());
                     pstmt.executeUpdate();
                     rs = pstmt.getGeneratedKeys();
@@ -1745,7 +1747,7 @@ public class Talentpool extends Base {
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT s_ssmf, s_ogukmedicalftw,DATE_FORMAT(d_ogukexp, '%d-%b-%Y') , s_medifitcert,DATE_FORMAT(d_medifitcertexp, '%d-%b-%Y') , ");
         sb.append("s_bloodgroup, t_healthdeclaration.i_bloodpressureid, s_hypertension, s_diabetes, s_smoking,t_healthdeclaration.i_userid,s_covid192doses, ");
-        sb.append("s_filename, t_healthdeclaration.i_status ,i_healthid , t_bloodpressure.s_name ");
+        sb.append("s_filename, t_healthdeclaration.i_status ,i_healthid , t_bloodpressure.s_name, d_height, d_weight ");
         sb.append("FROM t_healthdeclaration ");
         sb.append(" LEFT JOIN t_bloodpressure ON (t_bloodpressure.i_bloodpressureid = t_healthdeclaration.i_bloodpressureid) ");
         sb.append("WHERE  i_candidateid = ? ");
@@ -1774,9 +1776,11 @@ public class Talentpool extends Base {
                 int status = rs.getInt(14);
                 int candidatehealthId = rs.getInt(15);
                 String bloodpressure = rs.getString(16) != null ? rs.getString(16) : "";
+                double height = rs.getDouble(17);
+                double weight = rs.getDouble(18);
                 info = new TalentpoolInfo(candidatehealthId, ssmf, ogukmedicalftw, ogukexp, medifitcert, medifitcertexp,
-                        bloodgroup, bloodpressureId, hypertension, diabetes, smoking, userId, mfFilename, status, 
-                        covid192doses, bloodpressure, "", candidateId);
+                        bloodgroup, bloodpressureId, hypertension, diabetes, smoking, userId, mfFilename, status,
+                        covid192doses, bloodpressure, "", candidateId, height, weight);
             }
         } catch (Exception exception) {
             print(this, "getCandidateHealthDetailBycandidateId :: " + exception.getMessage());
@@ -1822,7 +1826,7 @@ public class Talentpool extends Base {
                         placeofapplication += " (" + countryname + ")";
                     }
                 }
-                list.add(new TalentpoolInfo(candidatevaccId, vaccinename, vaccinetypename, placeofapplication, 
+                list.add(new TalentpoolInfo(candidatevaccId, vaccinename, vaccinetypename, placeofapplication,
                         filename, status, dateofapplication, dateofexpiry, "", candidateId));
             }
             rs.close();
@@ -2390,7 +2394,7 @@ public class Talentpool extends Base {
         return ck;
     }
 
-    public int deletevaccination(int candidateId, int candidatevaccineId, int userId, int status, 
+    public int deletevaccination(int candidateId, int candidatevaccineId, int userId, int status,
             String ipAddrStr, String iplocal, String username) {
         int cc = 0;
         try {
@@ -2636,7 +2640,7 @@ public class Talentpool extends Base {
         return cc;
     }
 
-    public int deletegovdocument(int candidateId, int govdocumentId, int userId, int status, 
+    public int deletegovdocument(int candidateId, int govdocumentId, int userId, int status,
             String ipAddrStr, String iplocal, String username) {
         int cc = 0;
         try {
@@ -2875,7 +2879,7 @@ public class Talentpool extends Base {
         }
         String query = (sb.toString()).intern();
         sb.setLength(0);
-        
+
         sb.append("SELECT COUNT(1) FROM t_trainingandcert ");
         sb.append("LEFT JOIN t_coursetype ON (t_coursetype.i_coursetypeid = t_trainingandcert. i_coursetypeid) ");
         sb.append("LEFT JOIN t_city ON (t_city.i_cityid = t_trainingandcert.i_locationofinstitid) ");
@@ -2944,7 +2948,7 @@ public class Talentpool extends Base {
         return list;
     }
 
-    public int deletetrainingCertificate(int candidateId, int candidatecertficateId, int userId, 
+    public int deletetrainingCertificate(int candidateId, int candidatecertficateId, int userId,
             int status, String ipAddrStr, String iplocal, String username) {
         int cc = 0;
         try {
@@ -3092,7 +3096,7 @@ public class Talentpool extends Base {
             pstmt.setInt(++scc, candidateId);
             cc = pstmt.executeUpdate();
             String remarks = "Verify Education tab";
-            insertAlertBy(candidateId, 6, 1, remarks, uId, conn,  username);
+            insertAlertBy(candidateId, 6, 1, remarks, uId, conn, username);
             updateverification(6, uId, candidateId, info.getEducationdetailId());
         } catch (Exception exception) {
             print(this, "updateeducation :: " + exception.getMessage());
@@ -3227,7 +3231,7 @@ public class Talentpool extends Base {
         return list;
     }
 
-    public int deleteeducation(int candidateId, int educationdetailId, int userId, int status, 
+    public int deleteeducation(int candidateId, int educationdetailId, int userId, int status,
             String ipAddrStr, String iplocal, String username) {
         int cc = 0;
         try {
@@ -3367,7 +3371,7 @@ public class Talentpool extends Base {
             if (info.getRole() != null && !info.getRole().equals("")) {
                 sb.append("s_role = ?, ");
             }
-            sb.append("i_status =?, i_userid =?, ts_moddate =?  ");            
+            sb.append("i_status =?, i_userid =?, ts_moddate =?  ");
             sb.append("WHERE i_experienceid =? AND i_candidateid =? ");
             String query = (sb.toString()).intern();
             sb.setLength(0);
@@ -3410,7 +3414,7 @@ public class Talentpool extends Base {
             }
             pstmt.setInt(++scc, info.getStatus());
             pstmt.setInt(++scc, uId);
-            pstmt.setString(++scc, currDate1());            
+            pstmt.setString(++scc, currDate1());
             pstmt.setInt(++scc, info.getExperiencedetailId());
             pstmt.setInt(++scc, candidateId);
             cc = pstmt.executeUpdate();
@@ -3507,7 +3511,7 @@ public class Talentpool extends Base {
                 int status = rs.getInt(28);
                 String cityname = rs.getString(29) != null ? rs.getString(29) : "";
                 String roles = rs.getString(30) != null ? rs.getString(30) : "";
-                
+
                 info = new TalentpoolInfo(companyName, companyindustryId, assettypeId, assetName, positionId, departmentId, countryId, cityId, clientpartyname,
                         waterdepthId, lastdrawnsalarycurrencyId, currentworkingstatus, skillId, gradeId, ownerpool, crewtypeId, ocsemployed, legalrights, dayratecurrencyId,
                         dayrate, monthlysalarycurrencyId, monthlysalary, workstartdate, workenddate, lastdrawnsalary, filenamework, filenameexp, cityname, status, roles);
@@ -3551,7 +3555,7 @@ public class Talentpool extends Base {
                 int status = rs.getInt(7);
                 int experiencedetailId = rs.getInt(8);
                 String experiencefilename = rs.getString(9) != null ? rs.getString(9) : "";
-                String workfilename = rs.getString(10) != null ? rs.getString(10) : "";                
+                String workfilename = rs.getString(10) != null ? rs.getString(10) : "";
                 int currentworkingstatus = rs.getInt(11);
                 if (currentworkingstatus == 1) {
                     enddate = "Present";
@@ -3573,7 +3577,7 @@ public class Talentpool extends Base {
         return list;
     }
 
-    public int deleteexperiencedetail(int candidateId, int experiencedetailId, int userId, int status, 
+    public int deleteexperiencedetail(int candidateId, int experiencedetailId, int userId, int status,
             String ipAddrStr, String iplocal, String username) {
         int cc = 0;
         try {
@@ -3663,7 +3667,7 @@ public class Talentpool extends Base {
             pstmt.setString(5, currDate1());
             pstmt.setString(6, currDate1());
             pstmt.setString(7, localFile);
-            print(this,"createPic :: " + pstmt.toString());
+            print(this, "createPic :: " + pstmt.toString());
             cc = pstmt.executeUpdate();
         } catch (Exception exception) {
             print(this, "createPic :: " + exception.getMessage());
@@ -3869,7 +3873,7 @@ public class Talentpool extends Base {
         sb.append("LEFT JOIN t_currency ON (t_currency.i_currencyid = c.i_currencyid) ");
         sb.append("LEFT JOIN t_dayrate ON (t_dayrate.i_candidateid = c.i_candidateid AND t_dayrate.i_positionid = c.i_positionid and c.i_clientassetid = t_dayrate.i_clientassetid) ");
         sb.append("LEFT JOIN (SELECT t_crewrotation.i_candidateid, MIN(ts_fromdate) AS fromdate FROM t_cractivity left join t_crewrotation on (t_crewrotation.i_crewrotationid = t_cractivity.i_crewrotationid) ");
-        sb.append("WHERE t_cractivity.i_activityid = 6 and t_crewrotation.i_active = 1 GROUP BY  t_crewrotation.i_candidateid) AS c1 ON (c.i_candidateid = c1.i_candidateid) ");        
+        sb.append("WHERE t_cractivity.i_activityid = 6 and t_crewrotation.i_active = 1 GROUP BY  t_crewrotation.i_candidateid) AS c1 ON (c.i_candidateid = c1.i_candidateid) ");
         sb.append("LEFT JOIN (SELECT tr1.i_candidateid, tr1.s_remark AS remark, tr1.s_reason AS reason, DATE_FORMAT(tr1.s_enddate, '%d-%b-%Y') AS enddate ");
         sb.append("FROM (SELECT * FROM t_transfer WHERE i_type = 2 ORDER BY s_enddate DESC, ts_regdate DESC) ");
         sb.append("AS tr1 GROUP BY i_candidateid) AS tr2 ON (c.i_candidateid = tr2.i_candidateid) ");
@@ -4360,14 +4364,12 @@ public class Talentpool extends Base {
     }
 
     public ArrayList getAlertdetailByCandidateId(int candidateId, int typeId) {
-        ArrayList list = new ArrayList();        
-        try 
-        {
+        ArrayList list = new ArrayList();
+        try {
             conn = getConnection();
             String remarks = "", date = "", name = "", coursename = "", document = "";
-            int alertId = 0, type = 0, tabno = 0, userId = 0,documentid = 0;  
-            if(typeId == -1 || typeId == 2)
-            {
+            int alertId = 0, type = 0, tabno = 0, userId = 0, documentid = 0;
+            if (typeId == -1 || typeId == 2) {
                 StringBuilder sb = new StringBuilder();
                 sb.append("SELECT i_alertid,i_type,i_tabno,s_remarks,i_userid, DATE_FORMAT(ts_regdate, '%d-%b-%Y'), s_updatedby FROM t_alert ");
                 sb.append("WHERE i_candidateid = ? AND i_status = 1 ");
@@ -4377,7 +4379,7 @@ public class Talentpool extends Base {
                 pstmt = conn.prepareStatement(query);
                 pstmt.setInt(1, candidateId);
                 print(this, "getAlertdetailByCandidateId :" + pstmt.toString());
-                rs = pstmt.executeQuery();                              
+                rs = pstmt.executeQuery();
                 while (rs.next()) {
                     alertId = rs.getInt(1);
                     type = rs.getInt(2);
@@ -4392,8 +4394,7 @@ public class Talentpool extends Base {
                 rs.close();
                 pstmt.close();
             }
-            if(typeId == -1 || typeId == 1)
-            {
+            if (typeId == -1 || typeId == 1) {
                 StringBuilder sb2 = new StringBuilder();
                 sb2.append("SELECT t_govdoc.i_govid, t_doctype.s_doc, DATE_FORMAT(t_govdoc.d_expirydate, '%d-%b-%Y') ");
                 sb2.append(" FROM t_govdoc ");
@@ -4419,8 +4420,7 @@ public class Talentpool extends Base {
                 rs.close();
                 pstmt.close();
             }
-            if(typeId == -1 || typeId == 1)
-            {
+            if (typeId == -1 || typeId == 1) {
                 StringBuilder sb3 = new StringBuilder();
                 sb3.append("SELECT  t_trainingandcert.i_tcid,  t_coursename.s_name, DATE_FORMAT(t_trainingandcert.d_expirydate,'%d-%b-%Y') ");
                 sb3.append(" FROM t_trainingandcert ");
@@ -4432,7 +4432,7 @@ public class Talentpool extends Base {
                 sb3.setLength(0);
 
                 pstmt = conn.prepareStatement(certquery);
-                pstmt.setInt(1, candidateId);                
+                pstmt.setInt(1, candidateId);
                 int certid = 0;
                 print(this, "getAlertCertByCandidateId :" + pstmt.toString());
                 rs = pstmt.executeQuery();
@@ -4494,8 +4494,7 @@ public class Talentpool extends Base {
     public String getClientselectiontatusbyId(int sflag, int oflag) {
         String stval = "";
         if (oflag <= 0) {
-            switch (sflag) 
-            {
+            switch (sflag) {
                 case 2:
                     stval = "CV Generated";
                     break;
@@ -4568,8 +4567,7 @@ public class Talentpool extends Base {
     }
 
     // Onboarding
-    public ArrayList getOnboardinghistoryByCandidateId(int candidateId) 
-    {
+    public ArrayList getOnboardinghistoryByCandidateId(int candidateId) {
         ArrayList list = new ArrayList();
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT t_client.s_name, t_clientasset.s_name, t_position.s_name, t_grade.s_name, DATE_FORMAT(t_shortlist.d_date,'%d-%b-%Y'), ");
@@ -4618,7 +4616,7 @@ public class Talentpool extends Base {
                         clientName += " | " + clientassetName;
                     }
                 }
-                list.add(new TalentpoolInfo(clientName, clientassetName, positionName, gradeName, arrivalDate, 
+                list.add(new TalentpoolInfo(clientName, clientassetName, positionName, gradeName, arrivalDate,
                         mobdate, onboardStatus, candidateId, clientId, clientassetId, shortlistId, username));
             }
             rs.close();
@@ -4797,7 +4795,7 @@ public class Talentpool extends Base {
         }
         return coll;
     }
-    
+
     public Collection getPostions2(int clientassetId, int positionId) {
         Collection coll = new LinkedList();
         if (clientassetId > 0) {
@@ -4848,7 +4846,7 @@ public class Talentpool extends Base {
             torate1 = info.getTorate1() != null && !info.getTorate1().equals("") ? info.getTorate1() : "0";
             torate2 = info.getTorate2() != null && !info.getTorate2().equals("") ? info.getTorate2() : "0";
             torate3 = info.getTorate3() != null && !info.getTorate3().equals("") ? info.getTorate3() : "0";
-            
+
             top2rate1 = info.getTop2rate1() != null && !info.getTop2rate1().equals("") ? info.getTop2rate1() : "0";
             top2rate2 = info.getTop2rate2() != null && !info.getTop2rate2().equals("") ? info.getTop2rate2() : "0";
             top2rate3 = info.getTop2rate3() != null && !info.getTop2rate3().equals("") ? info.getTop2rate3() : "0";
@@ -4919,9 +4917,9 @@ public class Talentpool extends Base {
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, changeDate1(info.getJoiningDate()));
             pstmt.setString(2, changeDate1(info.getEndDate()));
-            if(info.getReason() != null){
+            if (info.getReason() != null) {
                 pstmt.setString(3, info.getReason());
-            }else{
+            } else {
                 pstmt.setString(3, "Transfer");
             }
             pstmt.setString(4, (info.getTerminateRemark()));
@@ -5032,7 +5030,7 @@ public class Talentpool extends Base {
                 filename = rs.getString(2) != null ? rs.getString(2) : "";
                 date = rs.getString(3) != null ? rs.getString(3) : "";
                 name = rs.getString(4) != null ? rs.getString(4) : "";
-                list.add(new TalentpoolInfo(fileId, filename, date, name,"",0));
+                list.add(new TalentpoolInfo(fileId, filename, date, name, "", 0));
             }
             rs.close();
         } catch (Exception e) {
@@ -5119,20 +5117,18 @@ public class Talentpool extends Base {
         sb.append("WHERE t_transfer.i_candidateid =? ORDER BY t_transfer.ts_moddate DESC, t_transfer.i_type ");
         String query = (sb.toString()).intern();
         sb.setLength(0);
-        try 
-        {
+        try {
             conn = getConnection();
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, candidateId);
             logger.info("getTransferTerminationhistory :: " + pstmt.toString());
             rs = pstmt.executeQuery();
-            String date, assettname, username, remark, reason, filename, clientname, 
+            String date, assettname, username, remark, reason, filename, clientname,
                     positionname, grade, currency, torate1, torate2, torate3,
                     position2, grade2, currency2, top2rate1, top2rate2, top2rate3;
             int type;
             int scc = 0;
-            while (rs.next()) 
-            {
+            while (rs.next()) {
                 scc = 0;
                 type = rs.getInt(++scc);
                 date = rs.getString(++scc) != null ? rs.getString(scc) : "";
@@ -5164,14 +5160,16 @@ public class Talentpool extends Base {
                 top2rate1 = rs.getString(++scc) != null ? rs.getString(scc) : "";
                 top2rate2 = rs.getString(++scc) != null ? rs.getString(scc) : "";
                 top2rate3 = rs.getString(++scc) != null ? rs.getString(scc) : "";
-                
-                if(positionname != null && !positionname.equals(""))
+
+                if (positionname != null && !positionname.equals("")) {
                     list.add(new TalentpoolInfo(type, date, username, remark, assettname, reason, filename, clientname, positionname, currency, torate1, torate2, torate3));
-                
-                if(position2 != null && !position2.equals(""))
+                }
+
+                if (position2 != null && !position2.equals("")) {
                     list.add(new TalentpoolInfo(type, date, username, remark, assettname, reason, filename, clientname, position2, currency2, top2rate1, top2rate2, top2rate3));
-                else  
+                } else {
                     list.add(new TalentpoolInfo(type, date, username, remark, assettname, reason, filename, clientname, "Not Available", currency2, top2rate1, top2rate2, top2rate3));
+                }
             }
             rs.close();
         } catch (Exception e) {
@@ -5181,7 +5179,7 @@ public class Talentpool extends Base {
         }
         return list;
     }
-    
+
     // Wellness feedback
     public ArrayList getWellnessFeedbackhistory(int candidateId, int statusId, int next, int count) {
         ArrayList list = new ArrayList();
@@ -5449,7 +5447,7 @@ public class Talentpool extends Base {
         }
         return list;
     }
-    
+
     public Collection getClients(String cids, int allclient, String permission) {
         Collection coll = new LinkedList();
         StringBuilder sb = new StringBuilder();
@@ -5774,7 +5772,7 @@ public class Talentpool extends Base {
             pstmt.setInt(1, candidateId);
             logger.info("getNomineeList :: " + pstmt.toString());
             rs = pstmt.executeQuery();
-            String nomineename, nomineecontactno, address,nomineerelation, code;
+            String nomineename, nomineecontactno, address, nomineerelation, code;
             int nomineedetailId, status, age;
             double percentage;
             while (rs.next()) {
@@ -5792,7 +5790,7 @@ public class Talentpool extends Base {
                         nomineecontactno = "+" + code + " " + nomineecontactno;
                     }
                 }
-                list.add(new TalentpoolInfo(nomineedetailId, nomineename, nomineecontactno, 
+                list.add(new TalentpoolInfo(nomineedetailId, nomineename, nomineecontactno,
                         nomineerelation, status, code, address, age, percentage, "", candidateId));
             }
             rs.close();

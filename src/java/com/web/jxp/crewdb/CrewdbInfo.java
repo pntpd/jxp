@@ -86,6 +86,8 @@ public class CrewdbInfo {
     private String vaccine3dose;
     private String vaccine3date;
     private String mfFilename;
+    private double height;
+    private double weight;
 
     // for work experience
     private String company;
@@ -185,7 +187,7 @@ public class CrewdbInfo {
     private int alertId;
     private String applytypevalue;
     private String position2;
-    
+
     //Nominee
     private String nomineeName;
     private String nomineeRelation;
@@ -197,7 +199,7 @@ public class CrewdbInfo {
     private int age;
     private String airport1;
     private String airport2;
-    
+
     //For Nominee
     private String ccval;
 
@@ -213,7 +215,6 @@ public class CrewdbInfo {
         return cflag10;
     }
 
-    
     public int getCassessmenthId() {
         return cassessmenthId;
     }
@@ -1144,7 +1145,7 @@ public class CrewdbInfo {
 
     // for health declaration 
     public CrewdbInfo(String ssmf, String ogukmedicalftw, String ogukexp, String medifitcert, String medifitcertexp, String bloodgroup, String bloodpressure,
-            String hypertension, String diabetes, String smoking, String covid192doses, int vstatus) {
+            String hypertension, String diabetes, String smoking, String covid192doses, int vstatus, double height, double weight) {
         this.ssmf = ssmf;
         this.ogukmedicalftw = ogukmedicalftw;
         this.ogukexp = ogukexp;
@@ -1157,6 +1158,8 @@ public class CrewdbInfo {
         this.smoking = smoking;
         this.cov192doses = covid192doses;
         this.vstatus = vstatus;
+        this.height = height;
+        this.weight = weight;
     }
 
     //for Hitch
@@ -1311,8 +1314,8 @@ public class CrewdbInfo {
             String nationality, String address1line1, String address1line2, String address1line3, String address2line1,
             String address2line2, String address2line3, String preferredDept, int expectedsalary, String currency, String nextofkin, String relation,
             String econtact1_code, String econtact1, String econtact2_code, String econtact2,
-            String maritialstatus, String resumefilename, String photo, String position, String firstname, int filecount, 
-            int vstatus, int cflag3, int cflag8, int cflag9, int cflag10,String ccval, String position2, String applytypevalue, 
+            String maritialstatus, String resumefilename, String photo, String position, String firstname, int filecount,
+            int vstatus, int cflag3, int cflag8, int cflag9, int cflag10, String ccval, String position2, String applytypevalue,
             int cflag11, String stateName, String pincode, int age, String airport1, String airport2) {
         this.crewdbId = crewdbId;
         this.name = name;
@@ -1393,10 +1396,10 @@ public class CrewdbInfo {
         this.time = time;
         this.status = status;
     }
-    
+
     //Nomineelist
-    public CrewdbInfo(int nomineedetailId, String nomineeName, String nomineeContactno, 
-            String nomineeRelation, int status, String code1Id,  int vstatus) {
+    public CrewdbInfo(int nomineedetailId, String nomineeName, String nomineeContactno,
+            String nomineeRelation, int status, String code1Id, int vstatus) {
         this.nomineedetailId = nomineedetailId;
         this.nomineeName = nomineeName;
         this.nomineeContactno = nomineeContactno;
@@ -1700,6 +1703,7 @@ public class CrewdbInfo {
     public String getCurrentsalarystr() {
         return currentsalarystr;
     }
+
     /**
      * @return the ccval
      */
@@ -1720,7 +1724,7 @@ public class CrewdbInfo {
     public String getPosition2() {
         return position2;
     }
-    
+
     public String getApplytypevalue() {
         return applytypevalue;
     }
@@ -1801,6 +1805,13 @@ public class CrewdbInfo {
     public String getAirport2() {
         return airport2;
     }
-    
-    
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
 }

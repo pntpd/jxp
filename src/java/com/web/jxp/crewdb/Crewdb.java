@@ -400,7 +400,7 @@ public class Crewdb extends Base {
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT t_healthdeclaration.s_ssmf, t_healthdeclaration.s_ogukmedicalftw, DATE_FORMAT(d_ogukexp,'%d-%b-%Y'), s_medifitcert, ");
         sb.append("DATE_FORMAT(d_medifitcertexp, '%d-%b-%Y'), s_bloodgroup, t_bloodpressure.s_name, s_hypertension, s_diabetes, s_smoking, s_covid192doses, ");
-        sb.append("t_healthdeclaration.i_vstatus FROM t_healthdeclaration ");
+        sb.append("t_healthdeclaration.i_vstatus, d_height, d_weight FROM t_healthdeclaration ");
         sb.append("LEFT JOIN t_bloodpressure ON (t_bloodpressure.i_bloodpressureid = t_healthdeclaration.i_bloodpressureid) ");
         sb.append("WHERE t_healthdeclaration.i_candidateid = ? and t_healthdeclaration.i_status = 1 ");
         String query = (sb.toString()).intern();
@@ -427,8 +427,10 @@ public class Crewdb extends Base {
                 String smoking = decipher(rs.getString(10) != null ? rs.getString(10): "") ;
                 String covid192doses = decipher(rs.getString(11) != null ? rs.getString(11): "") ;
                 int vstatus = rs.getInt(12);
+                double height = rs.getDouble(13);
+                double weight = rs.getDouble(14);
                 info = new CrewdbInfo(ssmf, ogukmedicalftw, ogukexp, medifitcert, medifitcertexp, bloodgroup, bloodpressure, hypertension, diabetes, smoking,
-                        covid192doses, vstatus);
+                        covid192doses, vstatus, height, weight);
             }
             rs.close();
         } catch (Exception e) {

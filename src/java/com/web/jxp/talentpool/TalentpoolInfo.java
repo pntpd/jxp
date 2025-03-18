@@ -98,6 +98,8 @@ public class TalentpoolInfo {
     private String vaccine3dose;
     private String vaccine3date;
     private String mfFilename;
+    private double height;
+    private double weight;
 
     //for hitch
     private int enginetypeId;
@@ -425,25 +427,25 @@ public class TalentpoolInfo {
     private double p2rate2;
     private double p2rate3;
     private int travelDays;
-    
+
     private int toPositionId2;
     private int toCurrencyId2;
     private String top2rate1;
     private String top2rate2;
     private String top2rate3;
-    
+
     //For Appraisal
     private int appraisalId;
     private String position2;
     private double oldRate1;
     private double oldRate2;
     private double oldRate3;
-    
+
     //For state
     private String stateName;
     private String pinCode;
     private int stateId;
-    
+
     private int age;
     private String airport1;
     private String airport2;
@@ -452,7 +454,7 @@ public class TalentpoolInfo {
     private String profile;
     private String skill1;
     private String skill2;
-    
+
     //For dayrate tab
     private int dayrateId;
 
@@ -802,10 +804,9 @@ public class TalentpoolInfo {
             String maritialstatus, String photo, String position, String address1line3, String cityName, String experiencedept, int expectedsalary, String currency,
             int filecount, String firstname, int vflag, String assettype, int clientId, String assetName, int assetId, String clientName, String employeeId,
             int progressId, String applytypevalue, int positionId, String ratetype, double rate1, double rate2, int status, String religion,
-            String position2, double p2rate1, double p2rate2, int positionId2, int travelDays, String state, String pincode, int age, String airport1, 
-            String airport2, int assetTypeId, String date2, String profile, String skill1, String skill2)
-    {
-        
+            String position2, double p2rate1, double p2rate2, int positionId2, int travelDays, String state, String pincode, int age, String airport1,
+            String airport2, int assetTypeId, String date2, String profile, String skill1, String skill2) {
+
         this.candidateId = candidateId;
         this.name = name;
         this.dob = dob;
@@ -862,7 +863,7 @@ public class TalentpoolInfo {
         this.positionId2 = positionId2;
         this.travelDays = travelDays;
         this.stateName = state;
-        this.pinCode = pincode;   
+        this.pinCode = pincode;
         this.age = age;
         this.airport1 = airport1;
         this.airport2 = airport2;
@@ -893,7 +894,7 @@ public class TalentpoolInfo {
     }
 
     //Nominee Listing
-    public TalentpoolInfo(int nomineedetailId, String nomineeName, String nomineeContactno, String nomineeRelation, 
+    public TalentpoolInfo(int nomineedetailId, String nomineeName, String nomineeContactno, String nomineeRelation,
             int status, String code1Id, String address, int age, double percentage, String employeeId, int candidateId) {
         this.nomineedetailId = nomineedetailId;
         this.nomineeName = nomineeName;
@@ -909,7 +910,7 @@ public class TalentpoolInfo {
     }
 
     //for add-modify
-    public TalentpoolInfo(int nomineedetailId, String nomineename, String nomineecontactno, int relationId, 
+    public TalentpoolInfo(int nomineedetailId, String nomineename, String nomineecontactno, int relationId,
             String code1Id, String address, int age, double percentage) {
         this.nomineedetailId = nomineedetailId;
         this.nomineeName = nomineename;
@@ -922,8 +923,7 @@ public class TalentpoolInfo {
     }
 
     //save nominee
-    
-    public TalentpoolInfo(int candidateId, int nomineedetailId, String nomineeName, String nomineeContactno, 
+    public TalentpoolInfo(int candidateId, int nomineedetailId, String nomineeName, String nomineeContactno,
             int relationId, int status, String code1Id, String address, int age, double percentage) {
         this.candidateId = candidateId;
         this.nomineeName = nomineeName;
@@ -960,7 +960,7 @@ public class TalentpoolInfo {
             String address1line2, String address1line3, String address2line1, String address2line2, String address2line3, String nextofkin, int relationId, String ecode1,
             String ecode2, String econtactno1, String econtactno2, int maritalstatusId, String photofilename, int status, String resumefilename, int positionId,
             int departmentId, int currencyId, int expectedsalary, int cityId, int assettypeId, String employeeId, int applytype, double rate1, double rate2, String religion,
-            int positionId2, double p2rate1, double p2rate2, int travelDays, int stateId, String pincode, int age, String airport1, String airport2, String profile, 
+            int positionId2, double p2rate1, double p2rate2, int travelDays, int stateId, String pincode, int age, String airport1, String airport2, String profile,
             String skill1, String skill2) {
         this.applytype = applytype;
         this.firstname = firstname;
@@ -1021,7 +1021,7 @@ public class TalentpoolInfo {
 
     //create bankddetails
     public TalentpoolInfo(int candidateId, String bankName, String savingAccountNo,
-            String branch, String IFSCCode, int accountTypeId, String fileName1, 
+            String branch, String IFSCCode, int accountTypeId, String fileName1,
             int status, int primarybankId, String accountHolder) {
         this.candidateId = candidateId;
         this.bankName = bankName;
@@ -1054,7 +1054,7 @@ public class TalentpoolInfo {
             String address2line2, String address2line3, String nextofkin, int relationid, String ecode1, String econtactno1, String ecode2, String econtactno2,
             int maritialstatusid, String photofilename, String address1line3, int departmentId, int positionId, int currencyId, int expectedsalary, int status, String cityName,
             int cityId, int filecount, int assettypeId, String employeeId, int applytype, String ratetype, String religion,
-            int positionId2, int travelDays, int stateId, String pincode, int age, String airport1, String airport2, String profile, 
+            int positionId2, int travelDays, int stateId, String pincode, int age, String airport1, String airport2, String profile,
             String skill1, String skill2) {
 
         this.applytype = applytype;
@@ -1170,7 +1170,7 @@ public class TalentpoolInfo {
         this.status = status;
         this.offshorefile = offshorefile;
         this.date = date;
-        this.candidateId =candidateId;
+        this.candidateId = candidateId;
         this.employeeId = employeeId;
     }
 
@@ -1204,7 +1204,7 @@ public class TalentpoolInfo {
 
     //candidatehealth
     public TalentpoolInfo(String ssmf, String ogukmedicalftw, String ogukexp, String medifitcert, String medifitcertexp, String bloodgroup, int bloodpressure,
-            String hypertension, String diabetes, String smoking, String fileName1, int status, String cov192doses) {
+            String hypertension, String diabetes, String smoking, String fileName1, int status, String cov192doses, double height, double weight) {
         this.ssmf = ssmf;
         this.ogukmedicalftw = ogukmedicalftw;
         this.ogukexp = ogukexp;
@@ -1218,6 +1218,8 @@ public class TalentpoolInfo {
         this.mfFilename = fileName1;
         this.status = status;
         this.cov192doses = cov192doses;
+        this.height = height;
+        this.weight = weight;
     }
     //Onboarding
 
@@ -1236,10 +1238,10 @@ public class TalentpoolInfo {
     }
 
     //get by health id
-    public TalentpoolInfo(int candidatehealthId, String ssmf, String ogukmedicalftw, String ogukexp, 
-            String medifitcert, String medifitcertexp, String bloodgroup, int bloodpressureId, 
-            String hypertension, String diabetes, String smoking, int userId, String mfFilename, 
-            int status, String covid192doses, String bloodpressure, String employeeId, int candidateId) {
+    public TalentpoolInfo(int candidatehealthId, String ssmf, String ogukmedicalftw, String ogukexp,
+            String medifitcert, String medifitcertexp, String bloodgroup, int bloodpressureId,
+            String hypertension, String diabetes, String smoking, int userId, String mfFilename,
+            int status, String covid192doses, String bloodpressure, String employeeId, int candidateId, double height, double weight) {
         this.candidatehealthId = candidatehealthId;
         this.ssmf = ssmf;
         this.ogukmedicalftw = ogukmedicalftw;
@@ -1258,6 +1260,8 @@ public class TalentpoolInfo {
         this.bloodpressure = bloodpressure;
         this.employeeId = employeeId;
         this.candidateId = candidateId;
+        this.height = height;
+        this.weight = weight;
     }
 
     // for vaccination
@@ -1274,7 +1278,7 @@ public class TalentpoolInfo {
     }
 
     //vaccination list
-    public TalentpoolInfo(int candidatevaccId, String vaccinename, String vaccinetypename, 
+    public TalentpoolInfo(int candidatevaccId, String vaccinename, String vaccinetypename,
             String placeofapplication, String filename, int status, String dateofapplication,
             String dateofexpiry, String empId, int candidateId) {
         this.candidatevaccineId = candidatevaccId;
@@ -1582,7 +1586,7 @@ public class TalentpoolInfo {
         this.filename = filename;
         this.date = date;
         this.name = name;
-        this.localFile =localFile;
+        this.localFile = localFile;
     }
 
     //For Competency Feedback modal
@@ -1922,7 +1926,7 @@ public class TalentpoolInfo {
     }
 
     //for PPE listing
-    public TalentpoolInfo(int ppedetailId, String remark, int status, String ppetype, 
+    public TalentpoolInfo(int ppedetailId, String remark, int status, String ppetype,
             String date, String username, String employeeId, int candidateId) {
         this.ppedetailId = ppedetailId;
         this.remarks = remark;
@@ -1951,9 +1955,8 @@ public class TalentpoolInfo {
 
     //For Appraisal Listing
     public TalentpoolInfo(int appraisalId, int positionId, String position, int positionId2,
-            String position2, String remarks, String fromDate, int status, String filename, 
-            double newRate1, double newRate2, double newRate3, String toDate, String employeeId, int candidateId)
-    {
+            String position2, String remarks, String fromDate, int status, String filename,
+            double newRate1, double newRate2, double newRate3, String toDate, String employeeId, int candidateId) {
         this.appraisalId = appraisalId;
         this.positionId = positionId;
         this.position = position;
@@ -1970,26 +1973,24 @@ public class TalentpoolInfo {
         this.employeeId = employeeId;
         this.candidateId = candidateId;
     }
-    
+
     //For hard position
-    public TalentpoolInfo(int positionId, String position, int positionId2, String position2, int clientassetId)
-    {
+    public TalentpoolInfo(int positionId, String position, int positionId2, String position2, int clientassetId) {
         this.positionId = positionId;
         this.position = position;
         this.positionId2 = positionId2;
         this.position2 = position2;
         this.clientassetId = clientassetId;
     }
-    
-    public TalentpoolInfo(double rate1, double rate2, double rate3)
-    {
+
+    public TalentpoolInfo(double rate1, double rate2, double rate3) {
         this.rate1 = rate1;
         this.rate2 = rate2;
         this.p2rate2 = rate3;
     }
+
     //For getDayRateForEdit
-    public TalentpoolInfo(int dayratehId, double rate1, double rate2, double rate3, String fromDate, String toDate, int positionId)
-    {
+    public TalentpoolInfo(int dayratehId, double rate1, double rate2, double rate3, String fromDate, String toDate, int positionId) {
         this.dayrateId = dayratehId;
         this.rate1 = rate1;
         this.rate2 = rate2;
@@ -1998,10 +1999,9 @@ public class TalentpoolInfo {
         this.toDate = toDate;
         this.positionId = positionId;
     }
-    
-    public TalentpoolInfo(int appraisalId, int positionId, int positionId2, double rate1, double rate2, 
-            double rate3, String fromDate, String toDate, int status, String fileName1, String remark, int checktype)
-    {
+
+    public TalentpoolInfo(int appraisalId, int positionId, int positionId2, double rate1, double rate2,
+            double rate3, String fromDate, String toDate, int status, String fileName1, String remark, int checktype) {
         this.appraisalId = appraisalId;
         this.positionId = positionId;
         this.positionId2 = positionId2;
@@ -2012,13 +2012,12 @@ public class TalentpoolInfo {
         this.toDate = toDate;
         this.status = status;
         this.filename = fileName1;
-        this.remarks = remark;   
+        this.remarks = remark;
         this.type = checktype;
     }
-    
-    public TalentpoolInfo(int positionId, int positionId2, String date, double rate1, 
-            double rate2, double rate3, String remarks, String filename, int type)
-    {
+
+    public TalentpoolInfo(int positionId, int positionId2, String date, double rate1,
+            double rate2, double rate3, String remarks, String filename, int type) {
         this.positionId = positionId;
         this.positionId2 = positionId2;
         this.date = date;
@@ -2029,9 +2028,8 @@ public class TalentpoolInfo {
         this.filename = filename;
         this.type = type;
     }
-    
-    public TalentpoolInfo(double rate1, double rate2, double rate3, int positionId, int positionId2, double prate1,double prate2, double prate3)
-    {
+
+    public TalentpoolInfo(double rate1, double rate2, double rate3, int positionId, int positionId2, double prate1, double prate2, double prate3) {
         this.rate1 = rate1;
         this.rate2 = rate2;
         this.rate3 = rate3;
@@ -2041,16 +2039,15 @@ public class TalentpoolInfo {
         this.p2rate2 = prate2;
         this.p2rate3 = prate3;
     }
-    
+
     //For Excel Data Report
     public TalentpoolInfo(int candidateId, String clientName, String clientAsset, String employeeId,
-            String name, String positionName, String primarycontact, String econtact, String email, String dob, 
-            String gender, String maritalstatus,String countryName, String city, String address1line1,
+            String name, String positionName, String primarycontact, String econtact, String email, String dob,
+            String gender, String maritalstatus, String countryName, String city, String address1line1,
             String address1line2, String address1line3, String nationality, String currency,
             double rate1, double rate2, int ct1, int ct2, int ct3, int ct4, int ct5, int ct6, int ct7,
-            String contact2, String contact3, String placeofbirth, String nextofkin, String relation, 
-            String address2line1, String address2line2, String address2line3, String experiencedept, int expectedsalary)
-    {     
+            String contact2, String contact3, String placeofbirth, String nextofkin, String relation,
+            String address2line1, String address2line2, String address2line3, String experiencedept, int expectedsalary) {
         this.candidateId = candidateId;
         this.clientName = clientName;
         this.clientAsset = clientAsset;
@@ -2090,11 +2087,10 @@ public class TalentpoolInfo {
         this.department = experiencedept;
         this.expectedsalary = expectedsalary;
     }
-    
+
     //For Dayrate Listing    
-    TalentpoolInfo(int dayratehId, String position, String fromDate, String toDate, double rate1, 
-            double rate2, double rate3, int positionId, String employeeId, int candidateId)
-    {
+    TalentpoolInfo(int dayratehId, String position, String fromDate, String toDate, double rate1,
+            double rate2, double rate3, int positionId, String employeeId, int candidateId) {
         this.dayrateId = dayratehId;
         this.position = position;
         this.fromDate = fromDate;
@@ -2106,7 +2102,7 @@ public class TalentpoolInfo {
         this.employeeId = employeeId;
         this.candidateId = candidateId;
     }
-    
+
     public int getCandidateId() {
         return candidateId;
     }
@@ -3958,6 +3954,7 @@ public class TalentpoolInfo {
     public String getLocalFile() {
         return localFile;
     }
+
     /**
      * @return the dayrateId
      */
@@ -4021,12 +4018,19 @@ public class TalentpoolInfo {
         return skill1;
     }
 
-    
-
     /**
      * @return the skill2
      */
     public String getSkill2() {
         return skill2;
     }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
 }

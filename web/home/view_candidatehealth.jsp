@@ -15,39 +15,39 @@
             int mtp = 2, submtp = 7, ctp = 3;
             if (session.getAttribute("HOME_EMAILID") == null)
         {
-%>
+    %>
     <jsp:forward page="/homeindex1.jsp"/>
-<%
-        }
+    <%
+            }
 
-               String message = "", clsmessage = "deleted-msg";
-            if (request.getAttribute("MESSAGE") != null)
-            {
-                message = (String)request.getAttribute("MESSAGE");
-                request.removeAttribute("MESSAGE");
-            }
-            if(message.toLowerCase().contains("success"))
-            {
-                    message = "";
-            }
-            if(message != null && (message.toLowerCase()).indexOf("success") != -1)
-                clsmessage = "updated-msg";
-            ArrayList list = new ArrayList();
-            if(request.getSession().getAttribute("MODULEPER_LIST") != null)
-                list = (ArrayList)request.getSession().getAttribute("MODULEPER_LIST");
-            String file_path = candidate.getMainPath("view_candidate_file");
-                CandidateInfo healthinfo = null;
-            if(session.getAttribute("CANDHEALTHINFO") != null)
-            {
-                healthinfo = (CandidateInfo)session.getAttribute("CANDHEALTHINFO");   
-            }
-            int ipass=0;
-            if(session.getAttribute("PASS") != null)
-                ipass = Integer.parseInt((String)session.getAttribute("PASS"));
-            ArrayList filelist = new ArrayList();
-            if(session.getAttribute("HEALTHFILELIST") != null)
-                filelist = (ArrayList) session.getAttribute("HEALTHFILELIST");
-            int size = filelist.size();
+                   String message = "", clsmessage = "deleted-msg";
+                if (request.getAttribute("MESSAGE") != null)
+                {
+                    message = (String)request.getAttribute("MESSAGE");
+                    request.removeAttribute("MESSAGE");
+                }
+                if(message.toLowerCase().contains("success"))
+                {
+                        message = "";
+                }
+                if(message != null && (message.toLowerCase()).indexOf("success") != -1)
+                    clsmessage = "updated-msg";
+                ArrayList list = new ArrayList();
+                if(request.getSession().getAttribute("MODULEPER_LIST") != null)
+                    list = (ArrayList)request.getSession().getAttribute("MODULEPER_LIST");
+                String file_path = candidate.getMainPath("view_candidate_file");
+                    CandidateInfo healthinfo = null;
+                if(session.getAttribute("CANDHEALTHINFO") != null)
+                {
+                    healthinfo = (CandidateInfo)session.getAttribute("CANDHEALTHINFO");   
+                }
+                int ipass=0;
+                if(session.getAttribute("PASS") != null)
+                    ipass = Integer.parseInt((String)session.getAttribute("PASS"));
+                ArrayList filelist = new ArrayList();
+                if(session.getAttribute("HEALTHFILELIST") != null)
+                    filelist = (ArrayList) session.getAttribute("HEALTHFILELIST");
+                int size = filelist.size();
     %>
     <head>
         <meta charset="utf-8">
@@ -113,7 +113,7 @@
                                                     <% 
                                                     if(ipass ==2){}else{
                                                         
-                                                     %> <a href="javascript: modifyhealthForm();"><img src="../assets/images/edit.png"/></a> 
+                                                    %> <a href="javascript: modifyhealthForm();"><img src="../assets/images/edit.png"/></a> 
                                                         <%
                                                         }
                                                         %>
@@ -171,6 +171,14 @@
                                                 <label class="form_label">Covid-19 2 Doses</label>
                                                 <span class="form-control"><%= healthinfo != null && healthinfo.getCov192doses() != null && !healthinfo.getCov192doses().equals("")  ? healthinfo.getCov192doses() : "&nbsp;" %></span>
                                             </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                <label class="form_label">Height (in cm)</label>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getHeight() > 0 ? healthinfo.getHeight() : "&nbsp;"%></span>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-4 form_group">
+                                                <label class="form_label">Weight (in Kg)</label>
+                                                <span class="form-control"><%= healthinfo != null && healthinfo.getWeight() > 0 ? healthinfo.getWeight() : "&nbsp;"%></span>
+                                            </div>
                                             <% if(healthinfo != null && healthinfo.getMfFilename() !=null && !healthinfo.getMfFilename().equals("")) {%>
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-12 text-left flex-end align-items-end edit_sec">
                                                 <ul class="resume_attach">
@@ -185,66 +193,66 @@
                                             </div>
                                             <%}%>
                                         </div>	
-                                        
-<%
-                                        if(size > 1)
-                                        {                                       
-%>                                
-                                            <div class="col-lg-6">
-                                                    <div class="main-heading mb_10">
-                                                        <div class="add-btn">
-                                                            <h4>FILE HISTORY</h4>
-                                                        </div>   
-                                                    </div>
-                                                    <div class="table-rep-plugin sort_table">
-                                                        <div class="table-responsive mb-0" data-bs-pattern="priority-columns">       
 
-                                                            <table id="tech-companies-1" class="table table-striped">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th width="%">
-                                                                            <span><b>Date</b> </span>
-                                                                        </th>
-                                                                        <th width="%" class="action_column">
-                                                                            <span><b>View</b> </span>
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody id="sort_id">
-<%
-                                                            CandidateInfo info;
-                                                            for (int i = 0; i < size; i++)
-                                                            {
-                                                                info = (CandidateInfo) filelist.get(i);
-                                                                if (info != null) 
-                                                                {
-%>
-                                                                    <tr>
-                                                                        <td><%= info.getDate() != null ? info.getDate() : "" %></td>
-                                                                        <td class="action_column">
-                                                                            <% if(!info.getFilename().equals("")) {%><a href="javascript:;" class="mr_15" data-bs-toggle="modal" data-bs-target="#view_pdf" onclick="javascript:setIframe('<%=file_path+info.getFilename() %>');"><img src="../assets/images/attachment.png"/> </a><% } else { %><a href='javascript:;'><span style='width: 35px;'>&nbsp;</span></a><% } %>
-                                                                        </td>
-                                                                    </tr>                                                         
-<%
-                                                                }
-                                                            }
-%>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>	
-                                                    </div>
-                                                </div>
-<%
-                                            }   
-%>
-                                        
+                                        <%
+                                                                                if(size > 1)
+                                                                                {                                       
+                                        %>                                
+                                        <div class="col-lg-6">
+                                            <div class="main-heading mb_10">
+                                                <div class="add-btn">
+                                                    <h4>FILE HISTORY</h4>
+                                                </div>   
+                                            </div>
+                                            <div class="table-rep-plugin sort_table">
+                                                <div class="table-responsive mb-0" data-bs-pattern="priority-columns">       
+
+                                                    <table id="tech-companies-1" class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width="%">
+                                                                    <span><b>Date</b> </span>
+                                                                </th>
+                                                                <th width="%" class="action_column">
+                                                                    <span><b>View</b> </span>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="sort_id">
+                                                            <%
+                                                                                                                        CandidateInfo info;
+                                                                                                                        for (int i = 0; i < size; i++)
+                                                                                                                        {
+                                                                                                                            info = (CandidateInfo) filelist.get(i);
+                                                                                                                            if (info != null) 
+                                                                                                                            {
+                                                            %>
+                                                            <tr>
+                                                                <td><%= info.getDate() != null ? info.getDate() : "" %></td>
+                                                                <td class="action_column">
+                                                                    <% if(!info.getFilename().equals("")) {%><a href="javascript:;" class="mr_15" data-bs-toggle="modal" data-bs-target="#view_pdf" onclick="javascript:setIframe('<%=file_path+info.getFilename() %>');"><img src="../assets/images/attachment.png"/> </a><% } else { %><a href='javascript:;'><span style='width: 35px;'>&nbsp;</span></a><% } %>
+                                                                </td>
+                                                            </tr>                                                         
+                                                            <%
+                                                                                                                            }
+                                                                                                                        }
+                                                            %>
+                                                        </tbody>
+                                                    </table>
+                                                </div>	
+                                            </div>
+                                        </div>
+                                        <%
+                                                                                    }   
+                                        %>
+
                                     </div>
                                 </div>
                             </div>
                         </div> 
                     </div>                                                                                         
 
-                                            
+
                 </div>
             </div>
         </div>
@@ -255,8 +263,8 @@
                     <div class="modal-header">
                         <button type="button" class="close close_modal_btn pull-right" data-bs-dismiss="modal" aria-hidden="true"><i class="ion ion-md-close"></i></button>
                         <span class="resume_title"> File</span>
-                            <a href="javascript:;" data-bs-toggle="fullscreen" class="full_screen">Full Screen</a>
-                            <a id='diframe' href="" class="down_btn" download=""><img src="../assets/images/download.png"/></a>
+                        <a href="javascript:;" data-bs-toggle="fullscreen" class="full_screen">Full Screen</a>
+                        <a id='diframe' href="" class="down_btn" download=""><img src="../assets/images/download.png"/></a>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -278,12 +286,12 @@
         <script src="../assets/js/bootstrap-datepicker.min.js"></script>
         <script src="/jxp/assets/js/sweetalert2.min.js"></script>
         <script>
-        // toggle class show hide text section
-        $(document).on('click', '.toggle-title', function () {
-            $(this).parent()
-                    .toggleClass('toggled-on')
-                    .toggleClass('toggled-off');
-        });
+                                                                                // toggle class show hide text section
+                                                                                $(document).on('click', '.toggle-title', function () {
+                                                                                    $(this).parent()
+                                                                                            .toggleClass('toggled-on')
+                                                                                            .toggleClass('toggled-off');
+                                                                                });
         </script>
         <script type="text/javascript">
             jQuery(document).ready(function () {

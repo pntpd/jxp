@@ -752,8 +752,8 @@ public class Export extends Base{
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT s_ssmf, s_ogukmedicalftw, DATE_FORMAT(d_ogukexp, '%d-%b-%Y'), s_medifitcert, DATE_FORMAT(d_medifitcertexp, '%d-%b-%Y'), ");  
         sb.append("s_bloodgroup, t_healthdeclaration.i_bloodpressureid, s_hypertension, s_diabetes, s_smoking, t_healthdeclaration.i_userid, s_covid192doses, ");  
-        sb.append("s_filename, t_healthdeclaration.i_status, i_healthid, t_bloodpressure.s_name, t_candidate.s_empno, t_candidate.i_candidateid "); 
-        sb.append("FROM t_healthdeclaration ");
+        sb.append("s_filename, t_healthdeclaration.i_status, i_healthid, t_bloodpressure.s_name, t_candidate.s_empno, t_candidate.i_candidateid, "); 
+        sb.append("d_height, d_weight FROM t_healthdeclaration ");
         sb.append("LEFT JOIN t_candidate ON (t_candidate.i_candidateid = t_healthdeclaration.i_candidateid) ");  
         sb.append("LEFT JOIN t_bloodpressure ON (t_bloodpressure.i_bloodpressureid = t_healthdeclaration.i_bloodpressureid) ");  
         sb.append("WHERE t_candidate.s_empno LIKE 'AIMS%' ");
@@ -787,10 +787,12 @@ public class Export extends Base{
                 String bloodpressure = rs.getString(16) != null ? rs.getString(16) : "";
                 String empId = rs.getString(17) != null ? rs.getString(17) : "";
                 int candidateId = rs.getInt(18);
+                double height = rs.getDouble(19);
+                double weight = rs.getDouble(20);
                 
                 list.add(new TalentpoolInfo(candidatehealthId, ssmf, ogukmedicalftw, ogukexp, medifitcert, medifitcertexp,
                         bloodgroup, bloodpressureId, hypertension, diabetes, smoking, userId, mfFilename, status, 
-                        covid192doses, bloodpressure, empId, candidateId));
+                        covid192doses, bloodpressure, empId, candidateId, height, weight));
             }
         } catch (Exception e) {
             print(this, "getHealthDetailDump :: " + e.getMessage());

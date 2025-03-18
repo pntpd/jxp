@@ -111,6 +111,8 @@ public class HomeForm extends ActionForm
     private String doModifyhealthdetail;
     private String doViewhealthdetail;
     private FormFile healthfile;
+    private double height;
+    private double weight;
 
     //vaccination detail
     private int candidatevaccineId;
@@ -2069,4 +2071,21 @@ public class HomeForm extends ActionForm
     public void setLocalFile(String localFile) {
         this.localFile = localFile;
     }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+    
 }

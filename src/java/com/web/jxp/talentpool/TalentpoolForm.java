@@ -138,6 +138,8 @@ public class TalentpoolForm extends ActionForm {
     private String doModifyhealthdetail;
     private String doViewhealthdetail;
     private FormFile healthfile;
+    private double height;
+    private double weight;
 
     //vaccination detail
     private int candidatevaccineId;
@@ -4282,4 +4284,21 @@ public class TalentpoolForm extends ActionForm {
     public void setRolehiddenfile(String rolehiddenfile) {
         this.rolehiddenfile = rolehiddenfile;
     }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+    
 }

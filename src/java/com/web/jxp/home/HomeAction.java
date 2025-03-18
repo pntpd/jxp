@@ -519,6 +519,8 @@ public class HomeAction extends Action
                 if (info.getMfFilename() != null) {
                     frm.setHealthfilehidden(info.getMfFilename());
                 }
+                frm.setHeight(info.getHeight());
+                frm.setWeight(info.getWeight());
             }
             return mapping.findForward("add_candidatehealth");
         } else if (frm.getDoSavehealthdetail() != null && frm.getDoSavehealthdetail().equals("yes")) {
@@ -540,6 +542,8 @@ public class HomeAction extends Action
             String diabetes = validate.replacename(frm.getDiabetes());
             String smoking = validate.replacename(frm.getSmoking());
             String cov192doses = validate.replacename(frm.getCov192doses());
+            double height = frm.getHeight();
+            double weight = frm.getWeight();
             int status = 1;
             String ipAddrStr = request.getRemoteAddr();
             String iplocal = candidate.getLocalIp();
@@ -562,7 +566,7 @@ public class HomeAction extends Action
                 fileName1 = candidate.uploadFile(candidateId, frm.getHealthfilehidden(), filename, localname+"-"+fn, add_candidate_file, foldername);
             }
             CandidateInfo info = new CandidateInfo(ssmf, ogukmedicalftw, ogukexp, medifitcert, medifitcertexp,
-                    bloodgroup, bloodpressureId, hypertension, diabetes, smoking, fileName1, status, cov192doses);
+                    bloodgroup, bloodpressureId, hypertension, diabetes, smoking, fileName1, status, cov192doses,height, weight);
             if (candidateId > 0) {
                 int cc = candidate.insertHealthdetails(info, candidateId, uId);
                 if (cc > 0) {
