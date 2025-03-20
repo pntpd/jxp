@@ -74,7 +74,7 @@
         <url-pattern>/mob/getwellnessdetails</url-pattern>
     </servlet-mapping>
     
-     <servlet>
+    <servlet>
         <servlet-name>MobWellnessSaveAction</servlet-name>
         <servlet-class>com.web.jxp.mobwellness.MobWellnessSaveAction</servlet-class>
     </servlet>
@@ -94,7 +94,6 @@
         <url-pattern>/mob/getschedule</url-pattern>
     </servlet-mapping>
     
-    
     <servlet>
         <servlet-name>MobWellnessScheduleSaveAction</servlet-name>
         <servlet-class>com.web.jxp.mobwellness.MobWellnessScheduleSaveAction</servlet-class>
@@ -105,4 +104,13 @@
         <url-pattern>/mob/setschedule</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>MobWellnessSaveSteps</servlet-name>
+        <servlet-class>com.web.jxp.mobwellness.MobWellnessSaveSteps</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>MobWellnessSaveSteps</servlet-name>
+        <url-pattern>/mob/setdailysteps</url-pattern>
+    </servlet-mapping>
 </web-app>

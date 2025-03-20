@@ -69,7 +69,7 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4 bg-white box_shadow login_div_area">
                                                             <div class="mt-4">
                                                                 <div class="full_width">
-                                                                    <center><img class="otp_logo" src="/jxp/assets/images/ocs-logo.jpg" alt="logo"></center>
+                                                                    <center><img class="otp_logo" src="/jxp/assets/images/ocs-logo.png" alt="logo"></center>
                                                                 </div>
                                                                 <div class="form-group field-pdg m_30">
                                                                     <label>Email</label>

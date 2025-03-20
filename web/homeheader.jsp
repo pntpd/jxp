@@ -3,7 +3,7 @@
         <div class="d-flex">
             <div class="navbar-brand-box">
                 <a href="javascript:;" class="logo logo-light">
-                    <span class="logo-lg"><img src="/jxp/assets/images/ocs-logo.jpg" alt="logo"></span>
+                    <span class="logo-lg"><img src="/jxp/assets/images/ocs-logo.png" alt="logo"></span>
                 </a>
             </div>
         </div>

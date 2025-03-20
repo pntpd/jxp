@@ -127,7 +127,7 @@ public class MobCrewloginAction extends HttpServlet {
                         CrewloginInfo info = (CrewloginInfo) request.getSession().getAttribute("CREWLOGIN");
                         if (info != null) {
                             jo.put("status", "success");
-                            jo.put("message", "Verified");
+                            jo.put("message", "Welcome to JourneyXPro!");
                             jo.put("url", crewlogin.getMainPath("web_path") + "/jxp/feedback/feedback_welcome.jsp?mobLogin=" + email);
                             id = info.getCandidateId();
                             user_name = info.getName() != null ? (info.getName().replaceAll("\\s+", " ").trim()) : "";

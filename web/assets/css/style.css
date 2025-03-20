@@ -2383,6 +2383,9 @@ body[data-sidebar=dark] .privacy_button.mm-active .active{color: #0066AF !import
 @media screen and (max-width:991px){
     /* Login Page Start */
     .login_box {padding:10px 20px 10px 20px;}
+    .cleint_asset_name {display: none !important;} /*hide name for mobile view*/
+    .bg_image {background: #f1f2f2 !important; background-image: none !important;}/*hide image for mobile view*/
+    .heading_title h1{font-size: 24px;margin-bottom:0px;padding: 10px 0px;color: #0E2B5C;}
     /* Login Page End */
 }
 
@@ -2423,9 +2426,9 @@ body[data-sidebar=dark] .privacy_button.mm-active .active{color: #0066AF !import
     .client_search_title .search_label{display:none;}
     .user_client_box .portlet.box{width:100%;float:left;}
     /* Client Mode End */
-    .cleint_asset_name {display: none !important;} /*hide name for mobile view*/
-    .bg_image {background: #f1f2f2 !important; background-image: none !important;}/*hide image for mobile view*/
-    .heading_title h1{font-size: 24px;margin-bottom:0px;padding: 10px 0px;color: #0E2B5C;}
+    /*    .cleint_asset_name {display: none !important;} hide name for mobile view
+        .bg_image {background: #f1f2f2 !important; background-image: none !important;}hide image for mobile view
+        .heading_title h1{font-size: 24px;margin-bottom:0px;padding: 10px 0px;color: #0E2B5C;}*/
 }
 
 @media screen and (max-width: 700px){

@@ -17,7 +17,7 @@
         <div class="d-flex">
             <div class="navbar-brand-box">
                 <a href="javascript:;" class="logo logo-light">
-                    <span class="logo-lg"><img src="../assets/images/ocs-logo.jpg" alt="logo" onclick="javascript: backtohome();"></span>
+                    <span class="logo-lg"><img src="../assets/images/ocs-logo.png" alt="logo" onclick="javascript: backtohome();"></span>
                     <!--<button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect menu-icon-right" id="vertical-menu-btn"><i class="mdi mdi-menu"></i></button>-->
                 </a>
             </div>

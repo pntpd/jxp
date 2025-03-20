@@ -355,6 +355,34 @@ public class Crewlogin extends Base {
         return cc;
     }
 
+    public int doSaveWellnessStepsDetails(int userId, int dailysteps, String date) {
+        int cc = 0;
+        if (userId > 0 && dailysteps > 0 && (date != null && !date.isEmpty())) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("UPDATE t_mobwellness SET ");
+            sb.append("i_dailysteps =?, ");
+            sb.append("i_userid =? ");
+            sb.append("WHERE i_candidateid =? AND DATE_FORMAT(ts_regdate,'%Y-%m-%d') =?");
+            String query = (sb.toString()).intern();
+            sb.setLength(0);
+            try {
+                conn = getConnection();
+                pstmt = conn.prepareStatement(query);
+                pstmt.setInt(1, dailysteps);
+                pstmt.setInt(2, userId);
+                pstmt.setInt(3, userId);
+                pstmt.setString(4, changeDate6(date));
+                print(this, "doSaveWellnessStepsDetails :: " + pstmt.toString());
+                cc = pstmt.executeUpdate();
+            } catch (Exception exception) {
+                print(this, "doSaveWellnessStepsDetails :: " + exception.getMessage());
+            } finally {
+                close(conn, pstmt, rs);
+            }
+        }
+        return cc;
+    }
+
     public int doSaveScheduleDetails(int userId, String sleeptime, String wakeuptime, double sleephours,
             double activityhours, double standhours) {
         int cc = 0, id = 0;
